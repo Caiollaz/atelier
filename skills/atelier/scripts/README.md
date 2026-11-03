@@ -19,7 +19,7 @@ It is heuristic on purpose. A hit is a lead to check on the rendered screen, not
 
 ## shoot.mjs
 
-Captures a running product the way the skill judges it: desktop 1440x900 at 2x, phone 390x844 at 3x with an iPhone user agent, in light and dark. It waits for the network and fonts, dismisses common cookie and consent buttons, and captures with reduced motion so entrances are settled.
+Captures a running product the way the skill judges it: desktop 1440x900 at 2x, wide 2560x1440 (a 2K monitor), phone 390x844 at 3x with an iPhone user agent, in light and dark. It waits for the network and fonts, dismisses common cookie and consent buttons, scrolls full-page captures once so lazy images load, and captures with reduced motion so entrances are settled.
 
 ```bash
 node shoot.mjs http://localhost:3000

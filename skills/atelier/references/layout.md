@@ -152,11 +152,37 @@ In a split hero, center the text vertically against the visual; if the visual is
 | 600 to 840 (tablet portrait) | Two columns where content allows; sidebar collapses to a rail or sheet |
 | 840 to 1200 (tablet landscape, small laptop) | Full layout with tighter gaps |
 | 1200 to 1600 (desktop) | The design target |
-| 1600 and up | Cap content width; let backgrounds and images run to the edges |
+| 1600 and up | Cap the text, widen the stage, run fields to the edges (next section) |
 
 - Phone is its own composition: re-author line breaks, re-crop images to portrait, simplify dense previews (fewer rows and columns) instead of zooming out, put the visual after the actions.
 - Container queries for components that live in columns of different widths.
 - Test 320, 390, 768, 1024, 1440 and 2560, and at 200% zoom. No horizontal scroll at any width.
+
+## Wide screens (1920 to 2560 and up)
+
+Many buyers and most designers look at a 2K or 4K monitor. A page designed at 1440 and centered becomes an island at 2560: a 1200px column of small type with empty bands on both sides and a first screen that fills half the height. `scripts/shoot.mjs` captures 2560x1440 by default; judge that capture as seriously as the phone.
+
+What well-made sites do at 2560 (measured on incident.io, Parloa, AccessGrid, Raycast, Polar):
+
+| Layer | Width at 2560 | How |
+|---|---|---|
+| Text column (headline, paragraphs, nav content) | 1200 to 1320, centered | `max-width` on the text container; the measure stays readable |
+| Visual stage (product view, hero image, bento) | 1600 to 1760 | A second, wider container: `width: min(100% - 2 * gutter, 1760px)`. The product is wider than the headline above it |
+| Fields (section backgrounds, bands, full-bleed photos, art) | 100% of the viewport | Backgrounds, photos and dark bands run edge to edge; a tinted field behind the stage can stop at about 1800 with a large radius |
+| Structure (grid lines, borders of a framed column) | Edge to edge, or framing the column down the page | Thin lines that continue past the column make the sides intentional |
+
+Rules:
+- The first screen is composed for 2560x1440 too: the hero fills the viewport height (`min-height: min(100svh, 1100px)` or content that reaches it) and the product or the main visual is visible in it. A hero that ends at 600px on a 1440px tall screen is a half-empty page.
+- Type keeps growing until about 1920 and then stops: `clamp()` with the preferred value in `vw` and a max reached near 1920 (hero about 72 to 88px, section titles 48 to 56px, body 18px).
+- Every section has either a full-bleed field or a stage wider than the text. A page where every section is a 1200px column on the same background fails at 2560 even if it is good at 1440.
+- Phone first is not an excuse: the 390, the 1440 and the 2560 are three compositions.
+
+Apps at 2560:
+- Content stays fluid with page padding 32 to 48, capped around 1600 to 1920 for reading and settings pages (`tokens.md`); listings, maps and canvases use the whole width.
+- Tables keep columns sized to their content (`width` on the short ones, one flexible column for the name or description) instead of spreading ten columns across 2300px with 300px gaps. Above about 1800, prefer adding columns that were hidden at 1440 over widening the gaps.
+- Dashboards add columns to their grids (`repeat(auto-fit, minmax(…))`) rather than stretching cards.
+- The root size may step up above 1920 (14 to 15px in dense apps, 16 to 17px on reading pages) so the interface does not look like it was zoomed out. Scale type and control heights with a variable (`font-size: calc(13px * var(--escala))`, `--escala` 1 then about 1.07 and 1.14 by width); never `zoom` on the page: it multiplies `100vh` past the window and misaligns libraries that measure the DOM (React Flow handles, Radix and Floating UI popovers).
+- Auth screens (login, sign up) are split: the form on one side, a brand or product panel on the other (a real screen of the product, a sentence, the logo). Never a 380px card alone in a 2560 field.
 
 ## States are part of the layout
 

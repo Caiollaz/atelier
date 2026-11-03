@@ -180,6 +180,7 @@ These are not slop. They are what a cleaned-up screen falls back to when nobody 
 | Tell | Fix |
 |---|---|
 | Pure grey page, Inter, white text, the old brand color on one button, for a product whose world is warm or bright | A ramp tinted toward the world; the accent taken from it |
+| Island at 2560: every section a 1200px column on one background, small type, a hero that fills half the screen height, a login card alone in a huge field | Wide stage for visuals, full-bleed fields, type that grows to 1920, hero composed for 1440 tall, split auth screens (`layout.md`, wide screens) |
 | A headline that fits another product | The product's own nouns and promise |
 | A hero visual that is an empty box or a generic picture | A coded preview of the real product, or one image from the world |
 | Every product you touch gets the same layout, type and palette | Let the direction decide; vary on purpose |

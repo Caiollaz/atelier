@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // atelier shoot: screenshots of a running product for design review.
-// Usage: node shoot.mjs <url|file.html> [--out dir] [--full] [--only desktop,phone] [--theme light,dark] [--wait ms]
-// Desktop 1440x900 @2x; phone 390x844 @3x with an iPhone user agent (many sites serve the desktop layout otherwise).
+// Usage: node shoot.mjs <url|file.html> [--out dir] [--full] [--only desktop,wide,phone] [--theme light,dark] [--wait ms]
+// Desktop 1440x900 @2x; wide 2560x1440 @1x (a 2K monitor, where centered islands show); phone 390x844 @3x with an iPhone user agent (many sites serve the desktop layout otherwise).
 // Needs Playwright (npm i -D playwright && npx playwright install chromium) or a local Chrome, Chromium or Edge.
 
 import { existsSync, mkdirSync, statSync } from 'node:fs';
@@ -17,20 +17,21 @@ const opt = (name, fallback) => {
 const valueFlags = new Set(['--out', '--only', '--theme', '--wait']);
 const input = args.find((a, i) => !a.startsWith('--') && !valueFlags.has(args[i - 1]));
 if (!input) {
-  console.error('usage: node shoot.mjs <url|file.html> [--out dir] [--full] [--only desktop,phone] [--theme light,dark] [--wait ms]');
+  console.error('usage: node shoot.mjs <url|file.html> [--out dir] [--full] [--only desktop,wide,phone] [--theme light,dark] [--wait ms]');
   process.exit(2);
 }
 
 const url = /^[a-z]+:\/\//i.test(input) ? input : existsSync(input) && statSync(input).isFile() ? pathToFileURL(resolve(input)).href : `http://${input}`;
 const outDir = resolve(opt('out', 'atelier-shots'));
 const full = args.includes('--full');
-const only = opt('only', 'desktop,phone').split(',');
+const only = opt('only', 'desktop,wide,phone').split(',');
 const themes = opt('theme', 'light,dark').split(',');
 const extraWait = Number(opt('wait', 800));
 
 const IPHONE_UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1';
 const VIEWPORTS = {
   desktop: { viewport: { width: 1440, height: 900 }, deviceScaleFactor: 2 },
+  wide: { viewport: { width: 2560, height: 1440 }, deviceScaleFactor: 1 },
   phone: { viewport: { width: 390, height: 844 }, deviceScaleFactor: 3, isMobile: true, hasTouch: true, userAgent: IPHONE_UA },
 };
 const CONSENT = /^(accept|accept all|agree|i agree|allow|allow all|ok|okay|got it|continue|aceitar|aceito|aceitar todos|concordo|entendi|ok, entendi|aceptar|acepto|accepter|tout accepter|akzeptieren|alle akzeptieren|zustimmen|accetta|accetto)$/i;
@@ -106,6 +107,14 @@ for (const vp of only) {
           await page.waitForTimeout(500);
           break;
         }
+      }
+      // Full-page captures: scroll through once so lazy images load, then return to the top.
+      if (full) {
+        await page.evaluate(async () => {
+          for (let y = 0; y < document.documentElement.scrollHeight; y += innerHeight / 2) { scrollTo(0, y); await new Promise((r) => setTimeout(r, 120)); }
+          scrollTo(0, 0);
+        }).catch(() => {});
+        await page.waitForTimeout(600);
       }
       const file = join(outDir, `${host}-${vp}-${theme}.png`);
       await page.screenshot({ path: file, fullPage: full });

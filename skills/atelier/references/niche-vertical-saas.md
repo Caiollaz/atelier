@@ -16,6 +16,10 @@ Read this when the page sells software to a profession or an industry: clinic ma
 | **Stacked, product below** | A label naming the audience, a two-line headline, one sentence, a primary and a secondary button, centered; a large product view rising from the bottom edge and running past it. Centering is right here because the product view anchors the composition |
 | **Product with chips** | The same stack, or a split, with the product view surrounded by three to six small labelled chips (feature names with an icon), one style, slightly overlapping the frame |
 | **Split** | Text left, product view right at half the width or more, in a browser or device frame (`assets/browser-frame.html`) |
+| **Full-bleed photo** | A photograph of the customer's world across the whole hero, headline low on a calm area, small UI cards over the photo showing what the product does in that scene |
+| **Art field** | A dark full-bleed field with one abstract mark drawn from the logo, the headline centered over it, the product right after the fold |
+
+At 2560 (`layout.md`, wide screens) the text stays at 1200 to 1320 and the product stage grows to 1600 to 1760, on a tinted field that runs edge to edge or nearly. The hero fills the first 1440px of height with the product starting inside it. Measure the references at 2560 before deciding.
 
 The product view is the real interface (a screenshot or careful HTML with plausible data), in light on a dark page or framed on a light one. One soft wash behind it: a tonal gradient inside the accent's hue, as a background field. Never a glow around buttons, cards or text (a hard rule in `SKILL.md`).
 
