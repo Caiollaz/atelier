@@ -160,21 +160,26 @@ In a split hero, center the text vertically against the visual; if the visual is
 
 ## Wide screens (1920 to 2560 and up)
 
-Many buyers and most designers look at a 2K or 4K monitor. A page designed at 1440 and centered becomes an island at 2560: a 1200px column of small type with empty bands on both sides and a first screen that fills half the height. `scripts/shoot.mjs` captures 2560x1440 by default; judge that capture as seriously as the phone.
+Many buyers and most designers look at a 2K or 4K monitor. A page designed at 1440 and centered becomes an island at 2560: a 1200px column of small type with empty bands on both sides and a first screen that fills half the height. `scripts/shoot.mjs` captures 2560x1440 by default; judge that capture as seriously as the phone, and run `scripts/check.mjs`, which measures every screen at 2560.
 
-What well-made sites do at 2560 (measured on twenty-four SaaS pages and fourteen Awwwards Sites of the Day):
+What holds at 2560 (from twenty-four SaaS pages, fourteen Awwwards Sites of the Day, and pages reviewed on 2K monitors):
 
 | Layer | Width at 2560 | How |
 |---|---|---|
-| Text column (headline, paragraphs, nav content) | 1200 to 1320, centered | `max-width` on the text container; the measure stays readable |
-| Visual stage (product view, hero image, bento) | 1320 to 1760 | A second, wider container: `width: min(100% - 2 * gutter, 1760px)`. The product is at least as wide as the headline above it. Most top SaaS keep the stage near 1450 and let the field carry the rest |
-| Fields (section backgrounds, bands, full-bleed photos, art) | 100% of the viewport | Backgrounds, photos and dark bands run edge to edge; a tinted field behind the stage can stop at about 1800 with a large radius |
-| Structure (grid lines, borders of a framed column) | Edge to edge, or framing the column down the page | Thin lines that continue past the column make the sides intentional |
+| Page grid (nav, section heads, text, stage) | 1680 to 1760; in the Showcase tier, the full width with 20 to 64px margins | One edge for everything: `--edge: max(var(--gutter), (100vw - 1760px) / 2)` as the inline padding of every section, so the wordmark, the headline and the first column start on the same line |
+| Reading text | 45 to 75 characters, inside the grid | `max-width: 65ch` on the paragraph, on the grid's left line. Never a centered 1200 to 1400 box of its own |
+| Visual stage (product view, hero image, bento) | The grid width, or past it to a viewport edge | At least as wide as the headline above it. A hero panel, photo or brand art may bleed off one side: `margin-inline-end: calc(-1 * var(--edge))` |
+| Fields (bands, full-bleed photos, art) | 100% of the viewport | A field carries the width only when it stands apart from the page (about 1.25:1 or more, a dark band, a photo). White on off-white does not |
+| Structure (hairlines, waves, rules) | Edge to edge | Lines that continue past the grid make the sides intentional |
+
+The measure: every screen at 2560 paints at least about 65% of the width (about 1680px) with text, media and rules, or has a field, a photo or art that meets a viewport edge. `check.mjs` lists each screen that fails.
+
+What reviews on 2K monitors showed: a SaaS page with a 1400 container, a 1200 text column and near-white sections was rejected, even with a product view in the hero and type that grew; a personal-service page on a 1760 grid, with text on the grid's left line and a hero panel bleeding to the right edge, passed; a showcase page on a full-width 12-column grid with 2.5vw margins passed. Gallery numbers (text near 1300, stage near 1450) describe pages that lean on strong fields; without those fields they read as islands.
 
 Rules:
 - The first screen is composed for 2560x1440 too: the hero fills the viewport height (`min-height: min(100svh, 1100px)` or content that reaches it) and the product or the main visual is visible in it. A hero that ends at 600px on a 1440px tall screen is a half-empty page.
 - Display type by tier (`showcase.md`): Marketing keeps the 1440 value or grows at most 1.25 times at 2560 (a hero of 64 to 160px at 1440); Showcase keeps scaling with `vw` to 2560. Body stops near 18 to 20px; labels grow from 12 to 14px. The field, not stretched type, carries the width in Marketing.
-- Every section has either a full-bleed field or a stage wider than the text. A page where every section is a 1200px column on the same background fails at 2560 even if it is good at 1440.
+- Every section has either a strong full-bleed field or a stage as wide as the grid. A page where every section is a centered 1200 to 1400 column on the page color fails at 2560 even if it is good at 1440.
 - Phone first is not an excuse: the 390, the 1440 and the 2560 are three compositions.
 
 Apps at 2560:

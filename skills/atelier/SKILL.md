@@ -25,7 +25,7 @@ Always reply in the language the user writes in. The files of this skill are in 
 
 1. **Read before you design.** In an existing project the project's design authority wins: a `DESIGN.md`, token or theme files, the component library, the screens next door. Extend it; never fork a parallel system.
 2. **Surface first, then direction, then tokens.** Most slop is compositional: a hero and three feature cards on a dashboard cannot be fixed by recoloring. Name the surface before choosing a single value (see `references/direction.md`).
-3. **Look at what you made.** Render the screen and inspect it at desktop (1440), wide (2560x1440) and phone (390), light and dark when both exist. The wide capture catches the centered island that looks fine at 1440 (`references/layout.md`, wide screens). Judge pixels, not only code. Keep it to three render-and-check cycles per run unless the user wants more.
+3. **Look at what you made.** Render the screen and inspect it at desktop (1440), wide (2560x1440) and phone (390), light and dark when both exist. The wide capture catches the centered island that looks fine at 1440 (`references/layout.md`, wide screens); `scripts/check.mjs` measures it. Judge pixels, not only code. Keep it to three render-and-check cycles per run unless the user wants more.
 4. **Diagnose, then treat.** In existing work, list every problem with its location before editing anything.
 5. **Stop at the direction.** Before a redesign or a new build, show the direction (and the audit, if any) and wait for a yes. For a landing page, show it rendered: build the first screen only, screenshot it at desktop and phone width, and ask on the pixels. People cannot judge a direction written in words. Use a question tool if your environment has one; otherwise ask in plain text and stop. Skip the wait only if the user said to just do it.
 6. **Keep the product.** When refining, keep features, content and section order unless asked. Change how it looks and reads, not what it is.
@@ -63,8 +63,9 @@ Useful searches: `rg -l "DESIGN.md|tokens|theme" -g '!node_modules'`, `rg -n ":r
 - **Only a screenshot:** read it closely. For a refine, rebuild it first as one static HTML file that matches it, and treat that as the original; the deliverable is code the owner can port.
 - **Only code:** audit from code, and label every visual finding as "from code, not seen".
 - Always also run `node <skill>/scripts/scan.mjs <path>` on the source: it finds the tells that are visible in code (gradients, emoji, arbitrary spacing, `transition: all`, ungated hover and more) with file and line.
+- For any page people scroll (landing, site, docs), run `node <skill>/scripts/check.mjs <url|file> --frames <dir>`: it measures islands at 2560, sideways overflow, reading with JavaScript off, reduced motion, reveals left hidden, focus, anchors and Page Down, and saves one motion-on frame per screen. Read the frames; `shoot.mjs` captures with reduced motion, so it never shows a reveal that failed.
 
-`<skill>` is the folder that contains this file. The scripts need Node 18+; `shoot.mjs` needs Playwright or a local Chrome (see `scripts/README.md`).
+`<skill>` is the folder that contains this file. The scripts need Node 18+; `shoot.mjs` and `check.mjs` need Playwright or a local Chrome (see `scripts/README.md`).
 
 ## Audit
 
@@ -108,7 +109,7 @@ Useful searches: `rg -l "DESIGN.md|tokens|theme" -g '!node_modules'`, `rg -n ":r
 5. **Direction.** Write the five lines (product, character, world, moments, signature) and the system choices they imply, inside the conventions of the niche. Save them as `DESIGN.md` at the project root (format in `references/direction.md`; if Node is available, `npx -y @google/design.md lint DESIGN.md` also checks contrast). For a landing page, build and render the first screen with real or placeholder photos (`references/visuals.md`), at 1440, 2560 and 390. Stop for confirmation on the render.
 6. **Plan.** Tokens tuned from `references/tokens.md`, a layout sketch (ASCII is enough) with alignment stated, and the moment. Then the de-default check: imagine a similar prompt from someone else; if you would land on the same page, change that part and say what you changed.
 7. **Build** with real content, in the project's stack, with all states (loading, empty, error, success, disabled, focus) and both themes if the product has them. Respect the quality floor in `references/interaction.md` and the richness floor of the niche.
-8. **Review.** Render, run `scan.mjs`, walk `references/tells.md`, try the worst-case data from `references/robustness.md`, gate the motion. Then compare the full page with the references side by side: if it is sparser, add what is missing before removing anything. Finally remove one accessory: the one thing that is decoration rather than design.
+8. **Review.** Render, run `scan.mjs` and `check.mjs`, walk `references/tells.md`, try the worst-case data from `references/robustness.md`, gate the motion. Then compare the full page with the references side by side: if it is sparser, add what is missing before removing anything. Finally remove one accessory: the one thing that is decoration rather than design.
 9. Report with the create contract.
 
 ## Non-negotiables
@@ -154,9 +155,11 @@ Keep reports short. The screen is the deliverable.
 |---|---|
 | `scripts/scan.mjs <path> [--json]` | Static scan for code-visible tells, from `scripts/rules.json`. Zero dependencies. |
 | `scripts/shoot.mjs <url> [--out dir] [--full] [--only desktop,wide,phone] [--theme light,dark]` | Screenshots for judging a running product at 1440, 2560 and 390. Uses Playwright, or a local Chrome if Playwright is missing. |
+| `scripts/check.mjs <url> [--frames dir] [--skip ...]` | The floor in a real browser: islands at 2560, overflow, JS off, reduced motion, hidden reveals, focus, anchors; motion-on frames per screen. |
 | `scripts/contrast.mjs <fg> <bg>` or `--css <file>` | WCAG contrast for color pairs or the custom properties in a CSS file. |
 | `assets/phone-frame.html`, `assets/browser-frame.html` | Device frames for real screenshots in landing pages and decks. |
 | `examples/slop-dashboard.html` | A deliberately sloppy screen to try the skill and the scanner on. |
+| `examples/showcase-studio.html` | One finished Showcase-tier page (a fictional architecture studio; grotesk with an italic serif, section-drawing levels as the idea, sticky index, pinned process, title-block footer). It passes `check.mjs` at 390, 1440 and 2560. Read it for the finish and for how the floor is built (`html.js` gates, inline fallbacks, reduced motion), not for its choices. |
 | `examples/landing-personal-service.html` | One finished personal-brand service page (a fictional psychologist; sans, caramel, shaped frame). Read it for the level of finish, not for its choices: the axes to choose from are in `references/niche-personal-service.md`. It predates the wide-screen rules: at 2560 its hero is an island, so do not copy its container widths. |
 
 Image generation is optional. If your environment has an image tool (fal, Replicate, OpenAI images or a design tool, usually through MCP), `references/visuals.md` says when and how to use it. Without one, use open-license photos as marked placeholders in drafts (`references/visuals.md` says how to find them from an agent), and write the prompt for the final image in the report.

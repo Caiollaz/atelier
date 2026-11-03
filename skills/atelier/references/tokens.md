@@ -179,6 +179,7 @@ Use five sizes or fewer on one screen, far enough apart to read as different (a 
 - Reading measure 45 to 75 characters: `max-width: 65ch` on paragraphs.
 - `text-wrap: balance` on headings, `text-wrap: pretty` on paragraphs.
 - Numbers that update or align use `font-variant-numeric: tabular-nums`, one format and one precision per context (money with 0 or 2 decimals, never mixed).
+- Look at tabular figures in the chosen family before using them widely. In some families (Schibsted Grotesk is one) `tnum` also widens commas, periods and colons, so `934,00` renders as `934 , 00` and `18:52` as `18 : 52`. Apply it to elements that hold digits alone (a counter, a table column), never to an address, an email or a sentence.
 - Sentence case for headings, labels and buttons. All caps only for very short labels where the system uses it deliberately.
 - No text under 12px in apps, nothing under 11px anywhere; nothing under 13px for anything people read on landing pages.
 - Typographic details: curly quotes, the real ellipsis `…`, en dash for ranges, a non-breaking space between a number and its unit (`10&nbsp;MB`).

@@ -1,6 +1,6 @@
 # atelier scripts
 
-Three small tools the skill uses to see and measure a product. They need Node 18 or newer. `scan.mjs` and `contrast.mjs` have no dependencies; `shoot.mjs` needs Playwright or a local Chrome.
+Four small tools the skill uses to see and measure a product. They need Node 18 or newer. `scan.mjs` and `contrast.mjs` have no dependencies; `shoot.mjs` and `check.mjs` need Playwright or a local Chrome.
 
 ## scan.mjs
 
@@ -42,6 +42,24 @@ If Playwright is installed but its browser is not, the script falls back to a lo
 
 The script looks for Playwright next to itself and in the current project, so running it from inside a project that already depends on Playwright needs no extra install.
 
+## check.mjs
+
+Checks the floor a page must hold, in a real browser, and reports what to look at. It always exits 0.
+
+```bash
+node check.mjs http://localhost:4321 --frames shots/frames   # all checks, plus one motion-on frame per screen
+node check.mjs ./index.html --skip nojs,reduced               # skip some: wide, nojs, reduced, motion, keys
+```
+
+- **Islands at 2560**: on each screen, the share of the width painted by text, media and rules, and whether a photo, art or a field that stands apart from the page (1.25:1 or more) meets a viewport edge. A screen under 65% with nothing at an edge is listed. Fixed layers and sticky bars do not count; a sticky stage does.
+- **Sideways overflow** at 390, 1440 and 2560.
+- **JavaScript off** and **motion on**: content that stays hidden (opacity, visibility or a closed `clip-path`) in the middle of a screen after scrolling to it.
+- **Reduced motion**: a smooth-scroll library still active, or animations that loop, run over 200ms or follow the scroll.
+- **Keyboard**: the first eight Tab stops show a focus ring; an in-page anchor from the nav lands near the top; Page Down scrolls.
+- **Console errors and failed requests** at 1440.
+
+`--frames` saves JPEGs at 390, 1440 and 2560 with motion on. Use them to judge reveals and pinned sections: `shoot.mjs` captures with reduced motion, and a full-page capture leaves scroll-driven sections at their start state. `check.mjs` shares the browser setup of `shoot.mjs` (`browser.mjs`).
+
 ## contrast.mjs
 
 WCAG 2 contrast for a pair of colors, or for the custom properties in a CSS file.
@@ -53,4 +71,4 @@ node contrast.mjs --css src/styles/tokens.css           # guesses text and surfa
 node contrast.mjs --css tokens.css --pairs "--text-muted:--card,--on-primary:--primary"
 ```
 
-It reads `:root`, `.dark`, `[data-theme=dark]` and `prefers-color-scheme: dark` blocks, resolves `var()` references, and accepts hex, `rgb()`, `hsl()` and `oklch()`. Body text needs 4.5:1; large text and UI glyphs need 3:1.
+Token names are guessed in English (`--text`, `--surface`, `--muted`); for other names, list the pairs with `--pairs`. It reads `:root`, `.dark`, `[data-theme=dark]` and `prefers-color-scheme: dark` blocks, resolves `var()` references, and accepts hex, `rgb()`, `hsl()` and `oklch()`. Body text needs 4.5:1; large text and UI glyphs need 3:1.

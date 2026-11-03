@@ -4,10 +4,9 @@
 // Desktop 1440x900 @2x; wide 2560x1440 @1x (a 2K monitor, where centered islands show); phone 390x844 @3x with an iPhone user agent (many sites serve the desktop layout otherwise).
 // Needs Playwright (npm i -D playwright && npx playwright install chromium) or a local Chrome, Chromium or Edge.
 
-import { existsSync, mkdirSync, statSync } from 'node:fs';
-import { createRequire } from 'node:module';
+import { mkdirSync, statSync } from 'node:fs';
 import { join, resolve } from 'node:path';
-import { pathToFileURL } from 'node:url';
+import { VIEWPORTS, launch, toUrl } from './browser.mjs';
 
 const args = process.argv.slice(2);
 const opt = (name, fallback) => {
@@ -21,65 +20,16 @@ if (!input) {
   process.exit(2);
 }
 
-const url = /^[a-z]+:\/\//i.test(input) ? input : existsSync(input) && statSync(input).isFile() ? pathToFileURL(resolve(input)).href : `http://${input}`;
+const url = toUrl(input);
 const outDir = resolve(opt('out', 'atelier-shots'));
 const full = args.includes('--full');
 const only = opt('only', 'desktop,wide,phone').split(',');
 const themes = opt('theme', 'light,dark').split(',');
 const extraWait = Number(opt('wait', 800));
 
-const IPHONE_UA = 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.5 Mobile/15E148 Safari/604.1';
-const VIEWPORTS = {
-  desktop: { viewport: { width: 1440, height: 900 }, deviceScaleFactor: 2 },
-  wide: { viewport: { width: 2560, height: 1440 }, deviceScaleFactor: 1 },
-  phone: { viewport: { width: 390, height: 844 }, deviceScaleFactor: 3, isMobile: true, hasTouch: true, userAgent: IPHONE_UA },
-};
 const CONSENT = /^(accept|accept all|agree|i agree|allow|allow all|ok|okay|got it|continue|aceitar|aceito|aceitar todos|concordo|entendi|ok, entendi|aceptar|acepto|accepter|tout accepter|akzeptieren|alle akzeptieren|zustimmen|accetta|accetto)$/i;
 
-async function loadPlaywright() {
-  for (const name of ['playwright', 'playwright-core']) {
-    try { return await import(name); } catch {}
-    try { return createRequire(join(process.cwd(), 'package.json'))(name); } catch {}
-  }
-  return null;
-}
-
-function findBrowser() {
-  if (process.env.CHROME_PATH && existsSync(process.env.CHROME_PATH)) return process.env.CHROME_PATH;
-  const pf = process.env.PROGRAMFILES || 'C:\\Program Files';
-  const pf86 = process.env['PROGRAMFILES(X86)'] || 'C:\\Program Files (x86)';
-  const local = process.env.LOCALAPPDATA || '';
-  const candidates = [
-    '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
-    '/Applications/Chromium.app/Contents/MacOS/Chromium',
-    '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge',
-    '/Applications/Brave Browser.app/Contents/MacOS/Brave Browser',
-    '/usr/bin/google-chrome', '/usr/bin/google-chrome-stable', '/usr/bin/chromium', '/usr/bin/chromium-browser',
-    '/usr/bin/microsoft-edge', '/usr/bin/brave-browser', '/snap/bin/chromium',
-    join(pf, 'Google\\Chrome\\Application\\chrome.exe'), join(pf86, 'Google\\Chrome\\Application\\chrome.exe'),
-    join(local, 'Google\\Chrome\\Application\\chrome.exe'), join(pf86, 'Microsoft\\Edge\\Application\\msedge.exe'),
-    join(pf, 'Microsoft\\Edge\\Application\\msedge.exe'),
-  ];
-  return candidates.find((p) => p && existsSync(p)) || null;
-}
-
-const pw = await loadPlaywright();
-if (!pw) {
-  console.error('atelier shoot: Playwright is not installed.\n  npm i -D playwright && npx playwright install chromium\n(or run this from a project that already has it)');
-  process.exit(1);
-}
-const { chromium } = pw;
-let browser;
-try {
-  browser = await chromium.launch();
-} catch {
-  const exe = findBrowser();
-  if (!exe) {
-    console.error('atelier shoot: no browser found. Run `npx playwright install chromium`, or set CHROME_PATH to a Chrome, Chromium or Edge binary.');
-    process.exit(1);
-  }
-  browser = await chromium.launch({ executablePath: exe });
-}
+const browser = await launch('shoot');
 
 mkdirSync(outDir, { recursive: true });
 let host;

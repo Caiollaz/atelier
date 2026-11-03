@@ -1,0 +1,769 @@
+<!doctype html>
+<!--
+  Atelier Araucária: a fictional studio. atelier example of the Showcase tier.
+  PHOTOS: all are Unsplash placeholders (Unsplash license), not the studio's work. Replace them with real photos.
+    hero ........ photo-1512972972907-6d71529c5e92
+    luz ......... photo-1529047033375-f402d3da24ca
+    obra 01 ..... photo-1660140901060-23468f94d8bb
+    obra 02 ..... photo-1666532937489-331f2f8f4668
+    obra 03 ..... photo-1553487164-47dd19cf0a72
+    obra 04 ..... photo-1505569546356-cee51978f134
+    obra 05 ..... photo-1584247791865-0723a4c4b35a
+    passo 01 .... photo-1601059683522-02ae0eeff25c
+    passo 02 .... photo-1598367815092-a2c0cbc1ea3d
+    passo 03 .... photo-1631454965644-00510875561f
+    passo 04 .... photo-1591638212063-c2f69701a931
+    araucárias .. photo-1601968856011-5f328798cd97
+    pinho ....... photo-1760237655540-8197ef24838b
+    sócia ....... photo-1639087603990-35efeed3766d
+    sócio ....... photo-1556474835-b0f3ac40d4d1
+  FICTIONAL: partner names, CAU registry numbers, projects, areas, years, address, email and phone.
+-->
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Atelier Araucária · Arquitetura e interiores em Curitiba</title>
+<meta name="description" content="Estúdio de arquitetura e interiores em Curitiba. Casas, apartamentos e reformas de casas antigas, com pinho-de-araucária de demolição.">
+<meta name="theme-color" content="#eeece6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@1,6..96,400&family=Schibsted+Grotesk:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --papel: #eeece6;
+  --papel-2: #e2dfd6;
+  --tinta: #1b1a17;
+  --tinta-2: #46433c;
+  --tinta-3: #625e55;
+  --linha: rgba(27, 26, 23, 0.14);
+  --pinhao: #8a3a1c;
+  --basalto: #1b1a17;
+  --sobre-basalto: #eeece6;
+  --sobre-basalto-2: #b4afa3;
+  --linha-basalto: rgba(238, 236, 230, 0.16);
+
+  --sans: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --serif: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+
+  --fs-display: clamp(64px, 13vw, 360px);
+  --fs-h2: clamp(40px, 6vw, 168px);
+  --fs-obra: clamp(30px, 4.2vw, 116px);
+  --fs-frase: clamp(28px, 3.3vw, 88px);
+  --fs-lead: clamp(18px, 0.95rem + 0.35vw, 22px);
+  --fs-corpo: clamp(16px, 0.9rem + 0.2vw, 19px);
+  --fs-rotulo: clamp(12px, 0.5vw + 5px, 14px);
+
+  --margem: clamp(20px, 2.5vw, 64px);
+  --vao: clamp(16px, 1.6vw, 40px);
+  --secao: clamp(96px, 10vw, 240px);
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-mask: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  scroll-padding-top: 72px;
+}
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--sans);
+  font-size: var(--fs-corpo);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; }
+button, a { touch-action: manipulation; }
+:focus-visible { outline: 2px solid var(--pinhao); outline-offset: 3px; }
+.faixa-escura :focus-visible { outline-color: var(--sobre-basalto); }
+p { margin: 0; text-wrap: pretty; }
+h1, h2, h3 { margin: 0; font-weight: 500; text-wrap: balance; }
+em.e {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--pinhao);
+  letter-spacing: -0.02em;
+}
+.faixa-escura em.e { color: #d9a27f; }
+.pular {
+  position: absolute; left: var(--margem); top: -100px; z-index: 100;
+  background: var(--tinta); color: var(--papel); padding: 12px 16px; text-decoration: none;
+}
+.pular:focus { top: 12px; }
+
+/* Marca de nível: triângulo meio cheio, como no corte */
+.nivel {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: var(--fs-rotulo); font-weight: 500; line-height: 1.3;
+  color: var(--tinta-2);
+}
+.nivel svg { width: 14px; height: 12px; color: var(--pinhao); flex: none; }
+.faixa-escura .nivel { color: var(--sobre-basalto-2); }
+.faixa-escura .nivel svg { color: #d9a27f; }
+.nivel b { font-weight: 500; color: var(--tinta); }
+.faixa-escura .nivel b { color: var(--sobre-basalto); }
+
+.rotulo { font-size: var(--fs-rotulo); font-weight: 500; color: var(--tinta-3); line-height: 1.35; }
+.grade {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--vao);
+  padding-inline: var(--margem);
+}
+
+/* ---------- Topo ---------- */
+.topo {
+  position: absolute; inset: 0 0 auto 0; z-index: 20;
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--vao);
+  align-items: center; padding: 20px var(--margem);
+  font-size: var(--fs-rotulo); font-weight: 500;
+}
+.marca { grid-column: 1 / 4; text-decoration: none; display: inline-flex; gap: 10px; align-items: center; min-height: 44px; }
+.marca svg { width: 18px; height: 22px; }
+.topo nav { grid-column: 5 / 10; display: flex; gap: clamp(16px, 2vw, 44px); }
+.topo nav a, .topo .cta-topo { text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
+.topo .lugar { grid-column: 10 / 12; color: var(--tinta-3); }
+.topo .cta-topo { grid-column: 12 / 13; justify-self: end; }
+.topo a { background-image: linear-gradient(currentColor, currentColor); background-size: 0% 1px; background-repeat: no-repeat; background-position: 0 calc(50% + 0.8em); transition: background-size 220ms var(--ease-out); }
+
+/* ---------- Hero ---------- */
+.hero { position: relative; padding-top: clamp(96px, 9vw, 200px); }
+.hero h1 {
+  grid-column: 1 / -1;
+  font-size: var(--fs-display);
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+  font-weight: 500;
+  margin-left: -0.04em;
+}
+.hero h1 .l { display: block; overflow: clip; padding-bottom: 0.06em; }
+.hero h1 .l > span { display: inline-block; }
+.hero h1 .l2 { padding-left: 24%; }
+.hero h1 em.e { letter-spacing: -0.035em; }
+.hero-base {
+  grid-column: 1 / -1;
+  display: grid; grid-template-columns: subgrid;
+  border-top: 1px solid var(--linha);
+  margin-top: clamp(28px, 3vw, 64px);
+  padding-top: 20px;
+  row-gap: 20px;
+}
+.hero-base .nivel { grid-column: 1 / 4; align-self: start; }
+.hero-base .lead { grid-column: 4 / 9; font-size: var(--fs-lead); line-height: 1.45; max-width: 40ch; color: var(--tinta-2); }
+.hero-base .acoes { grid-column: 9 / 13; display: flex; gap: 28px; align-items: center; justify-self: end; flex-wrap: wrap; }
+.botao {
+  display: inline-flex; align-items: center; gap: 14px;
+  min-height: 52px; padding: 0 24px;
+  background: var(--tinta); color: var(--papel);
+  border-radius: 2px; text-decoration: none; font-weight: 500; font-size: 16px;
+  transition: background-color 160ms ease, transform 140ms var(--ease-out);
+}
+.botao svg { width: 16px; height: 16px; }
+.botao:active { transform: scale(0.97); }
+.link {
+  font-weight: 500; font-size: 16px; text-decoration: underline; text-decoration-thickness: 1px;
+  text-underline-offset: 6px; min-height: 44px; display: inline-flex; align-items: center;
+  transition: text-decoration-color 160ms ease;
+}
+.hero-foto {
+  margin: clamp(32px, 3.5vw, 72px) 0 0;
+  height: min(78svh, 1200px);
+  overflow: clip;
+  position: relative;
+}
+.hero-foto img { width: 100%; height: 118%; object-fit: cover; object-position: 50% 88%; }
+.foto { filter: saturate(0.82) contrast(1.03) sepia(0.06); }
+.legenda {
+  font-size: var(--fs-rotulo); color: var(--tinta-3); line-height: 1.35;
+  display: flex; justify-content: space-between; gap: 16px; padding: 10px var(--margem) 0;
+}
+
+/* ---------- Estúdio / manifesto ---------- */
+.secao { padding-block: var(--secao); }
+.cabeca { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; align-items: baseline; margin-bottom: clamp(40px, 5vw, 120px); }
+.cabeca .nivel { grid-column: 1 / 4; }
+/* atelier-ok: tight-small */
+.cabeca h2 { grid-column: 4 / 13; font-size: var(--fs-h2); line-height: 0.95; letter-spacing: -0.04em; }
+.frase {
+  grid-column: 1 / -1;
+  font-size: clamp(30px, 3.9vw, 104px); line-height: 1.06; letter-spacing: -0.03em;
+  text-indent: 25%;
+  max-width: 33ch;
+  margin-left: 0;
+}
+.frase .mini {
+  display: inline-block; width: 2.6em; height: 0.82em; vertical-align: -0.06em;
+  overflow: clip; margin-inline: 0.12em;
+}
+.frase .mini img { width: 100%; height: 100%; object-fit: cover; }
+.linhas { grid-column: 1 / -1; margin-top: clamp(56px, 6vw, 140px); }
+.linha-row {
+  display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--vao);
+  border-top: 1px solid var(--linha); padding-block: 24px 28px;
+}
+.linha-row:last-child { border-bottom: 1px solid var(--linha); }
+.linha-row h3 { grid-column: 1 / 4; font-size: var(--fs-lead); font-weight: 500; letter-spacing: -0.01em; }
+.linha-row p { grid-column: 4 / 10; max-width: 52ch; color: var(--tinta-2); }
+.linha-row .rotulo { grid-column: 10 / 13; justify-self: end; text-align: right; }
+
+/* ---------- Obras (índice com item ativo) ---------- */
+.obras { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; }
+.lista { grid-column: 1 / 8; list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--linha); }
+.obra { border-bottom: 1px solid var(--linha); padding-block: clamp(20px, 2vw, 40px); display: grid; grid-template-columns: 3.2em 1fr auto; column-gap: 16px; align-items: baseline; }
+.obra .n { font-size: var(--fs-rotulo); font-weight: 500; font-variant-numeric: tabular-nums; color: var(--tinta-3); }
+.obra h3 { font-size: var(--fs-obra); line-height: 1; letter-spacing: -0.035em; font-weight: 500; }
+.obra .meta { font-size: var(--fs-rotulo); color: var(--tinta-3); text-align: right; line-height: 1.5; }
+.obra .desc { grid-column: 2 / 4; margin-top: 12px; color: var(--tinta-2); max-width: 52ch; }
+.obra .inline { grid-column: 1 / -1; margin-top: 20px; aspect-ratio: 4 / 3; overflow: clip; }
+.obra .inline img { width: 100%; height: 100%; object-fit: cover; }
+.palco { display: none; }
+
+/* ---------- Processo (mídia fixa + contador) ---------- */
+.campo-2 { background: var(--papel-2); }
+.processo { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; }
+.passos { grid-column: 1 / -1; list-style: none; margin: 0; padding: 0; }
+.passo { border-top: 1px solid var(--linha); padding-block: 28px 40px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--vao); }
+/* atelier-ok: tight-small */
+.passo .n { grid-column: 1 / 3; font-size: var(--fs-h2); line-height: 0.9; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; color: var(--tinta-3); font-weight: 400; }
+.passo .texto { grid-column: 3 / 9; }
+.passo h3 { font-size: clamp(26px, 2.4vw, 64px); letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 16px; }
+.passo p { color: var(--tinta-2); max-width: 46ch; }
+.passo .prazo { margin-top: 16px; }
+.passo .inline { grid-column: 9 / 13; aspect-ratio: 4 / 5; overflow: clip; }
+.passo .inline img { width: 100%; height: 100%; object-fit: cover; }
+.fixo { display: none; }
+
+/* ---------- Madeira (faixa escura) ---------- */
+.faixa-escura { background: var(--basalto); color: var(--sobre-basalto); position: relative; }
+.faixa-escura .rotulo { color: var(--sobre-basalto-2); }
+.madeira-foto { position: relative; height: min(92svh, 1300px); overflow: clip; }
+.madeira-foto img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; filter: saturate(0.55) contrast(1.05) brightness(0.8); }
+.madeira-foto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(27,26,23,0.1) 20%, rgba(27,26,23,0.6) 55%, rgba(27,26,23,0.94)); }
+.madeira-titulo { position: absolute; inset: auto 0 0 0; z-index: 2; padding-bottom: clamp(32px, 4vw, 96px); align-items: end; }
+.madeira-titulo .nivel { grid-column: 1 / 4; align-self: end; }
+/* atelier-ok: tight-small */
+.madeira-titulo h2 { grid-column: 4 / 13; font-size: var(--fs-h2); line-height: 0.95; letter-spacing: -0.04em; }
+.madeira-corpo { padding-block: clamp(56px, 6vw, 144px) var(--secao); row-gap: 48px; }
+.madeira-corpo .texto { grid-column: 4 / 9; font-size: var(--fs-lead); line-height: 1.5; color: var(--sobre-basalto); max-width: 44ch; }
+.madeira-corpo .texto p + p { margin-top: 1em; color: var(--sobre-basalto-2); font-size: var(--fs-corpo); }
+.madeira-corpo figure { grid-column: 10 / 13; margin: 0; }
+.madeira-corpo figure .moldura { aspect-ratio: 3 / 4; overflow: clip; }
+.madeira-corpo figure img { width: 100%; height: 100%; object-fit: cover; }
+.madeira-corpo figure figcaption { margin-top: 10px; }
+.madeira-corpo .dados { grid-column: 4 / 13; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--vao); border-top: 1px solid var(--linha-basalto); padding-top: 24px; }
+.madeira-corpo .dados div { display: grid; gap: 8px; }
+.madeira-corpo .dados dt { font-size: var(--fs-rotulo); color: var(--sobre-basalto-2); font-weight: 500; }
+.madeira-corpo .dados dd { margin: 0; }
+
+/* ---------- Pessoas ---------- */
+.pessoas { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; row-gap: 48px; }
+.pessoa { margin: 0; }
+.pessoa .moldura { aspect-ratio: 4 / 5; overflow: clip; }
+.pessoa .moldura img { width: 100%; height: 100%; object-fit: cover; }
+.pessoa figcaption { margin-top: 16px; display: grid; gap: 4px; }
+.pessoa figcaption strong { font-size: var(--fs-lead); font-weight: 500; letter-spacing: -0.01em; }
+.p1 { grid-column: 1 / 5; }
+.p2 { grid-column: 5 / 9; margin-top: clamp(0px, 10vw, 280px); }
+.pessoas .sobre { grid-column: 10 / 13; align-self: center; display: grid; gap: 1em; color: var(--tinta-2); }
+
+/* ---------- Contato ---------- */
+.contato { border-top: 1px solid var(--linha); }
+.contato .cabeca h2 { font-size: clamp(40px, 5.2vw, 148px); }
+.contato-grade { grid-column: 4 / 13; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--vao); row-gap: 32px; align-items: start; }
+.contato-grade .lead { grid-column: 1 / 3; font-size: var(--fs-lead); line-height: 1.45; color: var(--tinta-2); max-width: 40ch; }
+.contato-grade .acoes { grid-column: 3 / 4; justify-self: start; }
+.contato-grade dl { grid-column: 1 / -1; margin: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); column-gap: var(--vao); border-top: 1px solid var(--linha); padding-top: 24px; }
+.contato-grade dl div { display: grid; gap: 6px; align-content: start; }
+.contato-grade dt { font-size: var(--fs-rotulo); color: var(--tinta-3); font-weight: 500; }
+.contato-grade dd { margin: 0; }
+.contato-grade dd a { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; display: inline-block; padding-block: 10px; margin-block: -10px; }
+
+/* ---------- Rodapé com carimbo ---------- */
+.rodape { background: var(--basalto); color: var(--sobre-basalto); padding-top: clamp(48px, 5vw, 120px); overflow: clip; }
+.palavra {
+  font-size: calc((100vw - 2 * var(--margem)) / 7.1);
+  line-height: 0.82; letter-spacing: -0.05em; font-weight: 500;
+  padding-inline: var(--margem); margin-left: -0.05em; white-space: nowrap;
+}
+.palavra em.e { color: #d9a27f; letter-spacing: -0.04em; }
+.carimbo {
+  margin: clamp(32px, 3vw, 64px) var(--margem) 0;
+  display: grid; grid-template-columns: repeat(6, minmax(0, 1fr));
+  border: 1px solid var(--linha-basalto); border-bottom: 0;
+}
+.carimbo div { padding: 12px 16px 20px; border-right: 1px solid var(--linha-basalto); display: grid; gap: 4px; }
+.carimbo div:last-child { border-right: 0; }
+.carimbo dt { font-size: var(--fs-rotulo); color: var(--sobre-basalto-2); font-weight: 500; }
+.carimbo dd { margin: 0; font-size: var(--fs-rotulo); line-height: 1.45; }
+
+/* Marcador de nível fixo */
+/* Fica na margem lateral, em pé, e inverte sobre a faixa escura */
+.cota {
+  position: fixed; left: calc(var(--margem) / 2 - 8px); bottom: 24px; z-index: 30; margin: 0;
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  color: #eeece6; mix-blend-mode: difference;
+  display: none;
+}
+.cota svg, .cota b { color: inherit; }
+.cota svg { transform: rotate(90deg); }
+
+/* Grão */
+.grao {
+  position: fixed; inset: 0; pointer-events: none; z-index: 60; opacity: 0.07; mix-blend-mode: multiply;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Hover só com ponteiro real ---------- */
+@media (hover: hover) and (pointer: fine) {
+  .topo a:hover { background-size: 100% 1px; }
+  .botao:hover { background-color: var(--pinhao); }
+  .link:hover { text-decoration-color: var(--pinhao); }
+  .contato-grade dd a:hover { text-decoration-color: var(--pinhao); }
+}
+
+/* ---------- Desktop: palco das obras e do processo (só com JS) ---------- */
+@media (min-width: 1024px) {
+  .cota { display: inline-flex; }
+  html.js .obras .lista { grid-column: 1 / 7; }
+  html.js .obra { cursor: default; }
+  html.js .obra .inline { display: none; }
+  html.js .obra h3, html.js .obra .desc { transition: opacity 260ms ease, color 260ms ease; }
+  html.js .obra:not(.ativa) h3 { opacity: 0.36; }
+  html.js .obra:not(.ativa) .desc { opacity: 0.5; }
+  html.js .obra.ativa .n { color: var(--pinhao); }
+  html.js .palco {
+    display: block; grid-column: 7 / 13;
+    position: sticky; top: 12svh; height: 76svh; align-self: start;
+  }
+  html.js .palco figure { position: absolute; inset: 0; margin: 0; opacity: 0; transition: opacity 420ms ease; }
+  html.js .palco figure.ativa { opacity: 1; }
+  html.js .palco img { width: 100%; height: calc(100% - 34px); object-fit: cover; }
+  html.js .palco figcaption { margin-top: 12px; display: flex; justify-content: space-between; }
+
+  html.js .processo .passos { grid-column: 7 / 13; }
+  html.js .passo h3 { font-size: clamp(30px, 3vw, 84px); }
+  html.js .passo { grid-template-columns: repeat(6, minmax(0, 1fr)); min-height: 72svh; align-content: start; }
+  html.js .passo .n { grid-column: 1 / 2; font-size: var(--fs-rotulo); line-height: 1.6; color: var(--tinta-3); font-weight: 500; }
+  html.js .passo .texto { grid-column: 2 / 7; transition: opacity 260ms ease; }
+  html.js .passo:not(.ativo) .texto { opacity: 0.4; }
+  html.js .passo .inline { display: none; }
+  html.js .fixo {
+    display: grid; grid-column: 1 / 7; grid-template-rows: auto 1fr auto;
+    position: sticky; top: 10svh; height: 80svh; align-self: start; gap: 16px;
+  }
+  html.js .contador { font-size: clamp(64px, 8vw, 220px); line-height: 0.85; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; font-weight: 400; }
+  html.js .contador span { color: var(--tinta-3); }
+  html.js .fixo .quadros { position: relative; overflow: clip; }
+  html.js .fixo .quadros img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 420ms ease; }
+  html.js .fixo .quadros img.ativa { opacity: 1; }
+  html.js .progresso { height: 2px; background: var(--linha); position: relative; }
+  html.js .progresso i { position: absolute; inset: 0; background: var(--tinta); transform-origin: left; transform: scaleX(0.25); transition: transform 420ms var(--ease-out); }
+}
+
+/* ---------- Tablet e celular ---------- */
+@media (max-width: 1023px) {
+  .topo nav, .topo .lugar { display: none; }
+  .marca { grid-column: 1 / 9; }
+  .topo .cta-topo { grid-column: 9 / 13; }
+  .hero h1 .l2 { padding-left: 12%; }
+  .hero-base .nivel { grid-column: 1 / -1; }
+  .hero-base .lead { grid-column: 1 / -1; }
+  .hero-base .acoes { grid-column: 1 / -1; justify-self: start; }
+  .hero-foto { height: 62svh; }
+  .cabeca .nivel, .cabeca h2 { grid-column: 1 / -1; }
+  .cabeca { row-gap: 20px; }
+  .frase { text-indent: 12%; }
+  .linha-row h3 { grid-column: 1 / -1; margin-bottom: 8px; }
+  .linha-row p { grid-column: 1 / -1; }
+  .linha-row .rotulo { grid-column: 1 / -1; justify-self: start; text-align: left; margin-top: 10px; }
+  .lista { grid-column: 1 / -1; }
+  .obra { grid-template-columns: 2.4em 1fr; }
+  .obra .meta { grid-column: 2 / 3; text-align: left; margin-top: 8px; }
+  .obra .desc { grid-column: 2 / 3; }
+  .passo .n { grid-column: 1 / -1; font-size: clamp(48px, 14vw, 96px); margin-bottom: 12px; }
+  .passo .texto { grid-column: 1 / -1; }
+  .passo .inline { grid-column: 1 / -1; margin-top: 24px; aspect-ratio: 4 / 3; }
+  .madeira-titulo .nivel, .madeira-titulo h2 { grid-column: 1 / -1; }
+  .madeira-titulo { row-gap: 16px; }
+  .madeira-corpo .texto, .madeira-corpo .dados { grid-column: 1 / -1; }
+  .madeira-corpo figure { grid-column: 1 / 9; }
+  .madeira-corpo .dados { grid-template-columns: 1fr; row-gap: 20px; }
+  .p1 { grid-column: 1 / 9; }
+  .p2 { grid-column: 5 / 13; margin-top: 0; }
+  .pessoas .sobre { grid-column: 1 / -1; }
+  .contato-grade { grid-column: 1 / -1; grid-template-columns: 1fr; }
+  .contato-grade .lead, .contato-grade .acoes, .contato-grade dl { grid-column: 1 / -1; }
+  .contato-grade dl { grid-template-columns: 1fr; row-gap: 20px; }
+  .carimbo { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .carimbo div { border-bottom: 1px solid var(--linha-basalto); }
+  .carimbo div:nth-child(2n) { border-right: 0; }
+}
+
+/* ---------- Coreografia: só com JS, com suporte e com movimento bem-vindo ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .hero h1 .l > span { animation: sobe 950ms var(--ease-mask) both; }
+  html.js .hero h1 .l2 > span { animation-delay: 90ms; }
+  html.js .hero-base { animation: aparece 700ms var(--ease-out) 260ms both; }
+}
+@keyframes sobe { from { transform: translateY(105%); } to { transform: translateY(0); } }
+@keyframes aparece { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    html.js .hero-foto { animation: abre linear both; animation-timeline: view(); animation-range: entry 40% cover 55%; }
+    html.js .hero-foto img { animation: desce linear both; animation-timeline: view(); animation-range: cover 0% cover 100%; }
+    html.js .corte { animation: corte linear both; animation-timeline: view(); animation-range: entry 5% cover 40%; }
+    html.js .surge { animation: surge linear both; animation-timeline: view(); animation-range: entry 10% cover 30%; }
+    html.js .madeira-foto img { animation: assenta linear both; animation-timeline: view(); animation-range: entry 0% exit 0%; }
+  }
+}
+@keyframes abre { from { clip-path: inset(0 var(--margem) 0 var(--margem)); } to { clip-path: inset(0); } }
+@keyframes desce { from { transform: translateY(-12%); } to { transform: translateY(0); } }
+@keyframes corte { from { clip-path: inset(0 0 100% 0); } to { clip-path: inset(0); } }
+@keyframes surge { from { clip-path: inset(0 0 100% 0); transform: translateY(0.25em); } to { clip-path: inset(-0.2em 0 -0.3em 0); transform: none; } }
+@keyframes assenta { from { transform: scale(1.12); } to { transform: scale(1); } }
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .palco figure, html.js .fixo .quadros img, html.js .progresso i { transition-duration: 180ms; }
+}
+</style>
+</head>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
+<div class="grao" aria-hidden="true"></div>
+
+<header class="topo">
+  <a class="marca" href="#topo" aria-label="Atelier Araucária, início">
+    <svg viewBox="0 0 18 22" aria-hidden="true"><path d="M9 1v20M2 6c2.5 1.6 4.8 1.6 7 0 2.2 1.6 4.5 1.6 7 0M1 11c3 1.9 5.6 1.9 8 0 2.4 1.9 5 1.9 8 0M2 16c2.5 1.6 4.8 1.6 7 0 2.2 1.6 4.5 1.6 7 0" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    Atelier Araucária
+  </a>
+  <nav aria-label="Seções">
+    <a href="#obras">Obras</a>
+    <a href="#processo">Processo</a>
+    <a href="#madeira">Madeira</a>
+    <a href="#estudio">Estúdio</a>
+  </nav>
+  <span class="lugar">Curitiba <span data-relogio></span></span>
+  <a class="cta-topo" href="#contato">Contato</a>
+</header>
+
+<main id="conteudo">
+  <section class="hero" id="topo" data-nivel="934,00" data-nome="Térreo">
+    <div class="grade">
+      <h1>
+        <span class="l l1"><span>Atelier</span></span>
+        <span class="l l2"><span><em class="e">Araucária</em></span></span>
+      </h1>
+      <div class="hero-base">
+        <span class="nivel"><svg viewBox="0 0 14 12" aria-hidden="true"><path d="M1 1h12L7 11z" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M1 1h6v10z" fill="currentColor"/></svg><b>934,00</b> Curitiba, ao nível do estúdio</span>
+        <p class="lead">Estúdio de arquitetura e interiores em Curitiba. Casas, apartamentos e reformas de casas antigas, do levantamento à última peça de marcenaria.</p>
+        <div class="acoes">
+          <a class="botao" href="#contato">Agendar uma visita
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+          <a class="link" href="#obras">Ver obras</a>
+        </div>
+      </div>
+    </div>
+    <figure class="hero-foto" style="margin-bottom:0">
+      <img class="foto" src="https://images.unsplash.com/photo-1512972972907-6d71529c5e92?auto=format&fit=crop&w=2400&h=1500&q=70" width="2400" height="1500" fetchpriority="high" alt="Sala de piso de madeira com luz baixa entrando pela janela e um banco baixo junto à parede">
+    </figure>
+    <p class="legenda"><span>Foto provisória (Unsplash). Trocar por obra do estúdio.</span></p>
+  </section>
+
+  <section class="secao" id="estudio-luz" data-nivel="930,40" data-nome="Luz">
+    <div class="grade">
+      <div class="cabeca" style="margin-bottom:clamp(32px,4vw,96px)">
+        <span class="nivel"><svg viewBox="0 0 14 12" aria-hidden="true"><path d="M1 1h12L7 11z" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M1 1h6v10z" fill="currentColor"/></svg><b>930,40</b> Luz</span>
+      </div>
+      <h2 class="frase surge">Curitiba tem inverno comprido, céu baixo e um sol que entra de lado. Por isso cada projeto começa pela <span class="mini" aria-hidden="true"><img class="foto" src="https://images.unsplash.com/photo-1529047033375-f402d3da24ca?auto=format&fit=crop&w=360&h=120&q=70" width="360" height="120" alt="" loading="lazy"></span><em class="e">luz</em>, e só depois pela parede</h2>
+      <div class="linhas">
+        <div class="linha-row">
+          <h3>Casas</h3>
+          <p>Casas novas em terreno urbano e na Região Metropolitana, implantadas a partir do caminho do sol em cada estação.</p>
+          <span class="rotulo">120–400 m²</span>
+        </div>
+        <div class="linha-row">
+          <h3>Interiores</h3>
+          <p>Apartamentos e salas comerciais, com marcenaria desenhada no estúdio e acompanhada na oficina.</p>
+          <span class="rotulo">Projeto e execução</span>
+        </div>
+        <div class="linha-row">
+          <h3>Reformas</h3>
+          <p>Casas de madeira e sobrados antigos de Curitiba, mantendo a estrutura e o que a casa já tem de bom.</p>
+          <span class="rotulo">Levantamento e restauro</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao" id="obras" data-nivel="926,80" data-nome="Obras" style="padding-top:0">
+    <div class="grade">
+      <div class="cabeca">
+        <span class="nivel"><svg viewBox="0 0 14 12" aria-hidden="true"><path d="M1 1h12L7 11z" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M1 1h6v10z" fill="currentColor"/></svg><b>926,80</b> Obras</span>
+        <h2 class="surge">Cinco obras <em class="e">recentes</em></h2>
+      </div>
+      <div class="obras">
+        <ol class="lista">
+          <li class="obra ativa" tabindex="0" data-i="0">
+            <span class="n">01</span>
+            <h3>Casa Mercês</h3>
+            <span class="meta">Residência<br>2025 · 286 m²</span>
+            <p class="desc">Beiral de 1,80 m: o sol baixo do inverno chega ao fundo da sala, o de verão fica no telhado.</p>
+            <div class="inline corte"><img class="foto" src="https://images.unsplash.com/photo-1660140901060-23468f94d8bb?auto=format&fit=crop&w=1200&h=900&q=70" width="1200" height="900" loading="lazy" alt="Beiral de madeira escura de uma casa contra o céu e a copa das árvores"></div>
+          </li>
+          <li class="obra" tabindex="0" data-i="1">
+            <span class="n">02</span>
+            <h3>Apartamento Batel</h3>
+            <span class="meta">Interiores<br>2024 · 142 m²</span>
+            <p class="desc">Sala e cozinha abertas para a janela de canto; estantes em pinho de demolição.</p>
+            <div class="inline corte"><img class="foto" src="https://images.unsplash.com/photo-1666532937489-331f2f8f4668?auto=format&fit=crop&w=1200&h=900&q=70" width="1200" height="900" loading="lazy" alt="Sala de apartamento com janelões de esquadria escura, sofá e luz de fim de tarde"></div>
+          </li>
+          <li class="obra" tabindex="0" data-i="2">
+            <span class="n">03</span>
+            <h3>Café Trajano</h3>
+            <span class="meta">Comercial<br>2024 · 96 m²</span>
+            <p class="desc">Ripado de pinho do piso ao forro e mesas comunitárias para 34 lugares.</p>
+            <div class="inline corte"><img class="foto" src="https://images.unsplash.com/photo-1553487164-47dd19cf0a72?auto=format&fit=crop&w=1200&h=900&q=70" width="1200" height="900" loading="lazy" alt="Salão estreito revestido de ripas de madeira clara com mesas e bancos em fila"></div>
+          </li>
+          <li class="obra" tabindex="0" data-i="3">
+            <span class="n">04</span>
+            <h3>Sobrado Bom Retiro</h3>
+            <span class="meta">Reforma e restauro<br>2023 · 210 m²</span>
+            <p class="desc">Estrutura de 1938 mantida; escada nova em aço com degraus da madeira retirada da própria casa.</p>
+            <div class="inline corte"><img class="foto" src="https://images.unsplash.com/photo-1505569546356-cee51978f134?auto=format&fit=crop&w=1200&h=900&q=70" width="1200" height="900" loading="lazy" alt="Escada com degraus de madeira e estrutura escura vista de baixo"></div>
+          </li>
+          <li class="obra" tabindex="0" data-i="4">
+            <span class="n">05</span>
+            <h3>Casa Ahú</h3>
+            <span class="meta">Residência<br>2022 · 318 m²</span>
+            <p class="desc">Escada helicoidal em compensado curvado, desenhada e montada com a marcenaria parceira.</p>
+            <div class="inline corte"><img class="foto" src="https://images.unsplash.com/photo-1584247791865-0723a4c4b35a?auto=format&fit=crop&w=1200&h=900&q=70" width="1200" height="900" loading="lazy" alt="Escada curva em madeira clara sob uma claraboia"></div>
+          </li>
+        </ol>
+        <div class="palco" aria-hidden="true">
+          <figure class="ativa"><img class="foto" src="https://images.unsplash.com/photo-1660140901060-23468f94d8bb?auto=format&fit=crop&w=1600&h=1800&q=70" width="1600" height="1800" loading="lazy" alt=""><figcaption class="rotulo"><span>01 · Casa Mercês</span><span>Mercês, Curitiba</span></figcaption></figure>
+          <figure><img class="foto" src="https://images.unsplash.com/photo-1666532937489-331f2f8f4668?auto=format&fit=crop&w=1600&h=1800&q=70" width="1600" height="1800" loading="lazy" alt=""><figcaption class="rotulo"><span>02 · Apartamento Batel</span><span>Batel, Curitiba</span></figcaption></figure>
+          <figure><img class="foto" src="https://images.unsplash.com/photo-1553487164-47dd19cf0a72?auto=format&fit=crop&w=1600&h=1800&q=70" width="1600" height="1800" loading="lazy" alt=""><figcaption class="rotulo"><span>03 · Café Trajano</span><span>São Francisco, Curitiba</span></figcaption></figure>
+          <figure><img class="foto" src="https://images.unsplash.com/photo-1505569546356-cee51978f134?auto=format&fit=crop&w=1600&h=1800&q=70" width="1600" height="1800" loading="lazy" alt=""><figcaption class="rotulo"><span>04 · Sobrado Bom Retiro</span><span>Bom Retiro, Curitiba</span></figcaption></figure>
+          <figure><img class="foto" src="https://images.unsplash.com/photo-1584247791865-0723a4c4b35a?auto=format&fit=crop&w=1600&h=1800&q=70" width="1600" height="1800" loading="lazy" alt=""><figcaption class="rotulo"><span>05 · Casa Ahú</span><span>Ahú, Curitiba</span></figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao campo-2" id="processo" data-nivel="923,20" data-nome="Processo">
+    <div class="grade">
+      <div class="cabeca">
+        <span class="nivel"><svg viewBox="0 0 14 12" aria-hidden="true"><path d="M1 1h12L7 11z" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M1 1h6v10z" fill="currentColor"/></svg><b>923,20</b> Processo</span>
+        <h2 class="surge">Do terreno <em class="e">à chave</em></h2>
+      </div>
+      <div class="processo">
+        <div class="fixo" aria-hidden="true">
+          <p class="contador"><b data-passo>01</b> <span>: 04</span></p>
+          <div class="quadros">
+            <img class="foto ativa" src="https://images.unsplash.com/photo-1601059683522-02ae0eeff25c?auto=format&fit=crop&w=1400&h=1400&q=70" loading="lazy" alt="">
+            <img class="foto" src="https://images.unsplash.com/photo-1598367815092-a2c0cbc1ea3d?auto=format&fit=crop&w=1400&h=1400&q=70" loading="lazy" alt="">
+            <img class="foto" src="https://images.unsplash.com/photo-1631454965644-00510875561f?auto=format&fit=crop&w=1400&h=1400&q=70" loading="lazy" alt="">
+            <img class="foto" src="https://images.unsplash.com/photo-1591638212063-c2f69701a931?auto=format&fit=crop&w=1400&h=1400&q=70" loading="lazy" alt="">
+          </div>
+          <div class="progresso"><i></i></div>
+        </div>
+        <ol class="passos">
+          <li class="passo ativo">
+            <span class="n">01</span>
+            <div class="texto">
+              <h3>Escuta e levantamento</h3>
+              <p>Visitamos o lugar em dois horários para ver de onde vem a luz, medimos tudo e ouvimos como a casa é usada no dia a dia.</p>
+              <p class="prazo rotulo">2 a 3 semanas</p>
+            </div>
+            <div class="inline"><img class="foto" src="https://images.unsplash.com/photo-1601059683522-02ae0eeff25c?auto=format&fit=crop&w=1000&h=750&q=70" width="1000" height="750" loading="lazy" alt="Cortina clara filtrando a luz sobre uma banqueta de madeira"></div>
+          </li>
+          <li class="passo">
+            <span class="n">02</span>
+            <div class="texto">
+              <h3>Estudo preliminar</h3>
+              <p>Croquis, plantas e uma maquete de estudo. Ajustamos com você até o desenho fechar, antes de detalhar qualquer coisa.</p>
+              <p class="prazo rotulo">4 a 6 semanas</p>
+            </div>
+            <div class="inline"><img class="foto" src="https://images.unsplash.com/photo-1598367815092-a2c0cbc1ea3d?auto=format&fit=crop&w=1000&h=750&q=70" width="1000" height="750" loading="lazy" alt="Pessoa desenhando à mão numa prancheta com régua e esquadros"></div>
+          </li>
+          <li class="passo">
+            <span class="n">03</span>
+            <div class="texto">
+              <h3>Projeto executivo</h3>
+              <p>Detalhamos cada encontro: esquadrias, elétrica, marcenaria e o caderno de acabamentos, pronto para orçar com três empreiteiras.</p>
+              <p class="prazo rotulo">6 a 10 semanas</p>
+            </div>
+            <div class="inline"><img class="foto" src="https://images.unsplash.com/photo-1631454965644-00510875561f?auto=format&fit=crop&w=1000&h=750&q=70" width="1000" height="750" loading="lazy" alt="Maquete de madeira de uma casa com telhado inclinado sobre fundo escuro"></div>
+          </li>
+          <li class="passo">
+            <span class="n">04</span>
+            <div class="texto">
+              <h3>Obra acompanhada</h3>
+              <p>Visita semanal à obra, conferência das peças na oficina e entrega com o manual da casa: materiais, fornecedores e manutenção.</p>
+              <p class="prazo rotulo">Durante toda a obra</p>
+            </div>
+            <div class="inline"><img class="foto" src="https://images.unsplash.com/photo-1591638212063-c2f69701a931?auto=format&fit=crop&w=1000&h=750&q=70" width="1000" height="750" loading="lazy" alt="Degraus de madeira encaixados numa parede branca"></div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="faixa-escura" id="madeira" data-nivel="919,60" data-nome="Madeira">
+    <div class="madeira-foto">
+      <img src="https://images.unsplash.com/photo-1601968856011-5f328798cd97?auto=format&fit=crop&w=2400&h=1500&q=70" width="2400" height="1500" loading="lazy" alt="Araucárias altas sobre a mata, com a copa em forma de taça">
+      <div class="grade madeira-titulo">
+        <span class="nivel"><svg viewBox="0 0 14 12" aria-hidden="true"><path d="M1 1h12L7 11z" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M1 1h6v10z" fill="currentColor"/></svg><b>919,60</b> Madeira</span>
+        <h2 class="surge">Pinho que já <em class="e">foi casa</em></h2>
+      </div>
+    </div>
+    <div class="grade madeira-corpo">
+      <div class="texto">
+        <p>A araucária é espécie ameaçada e o corte da mata nativa é proibido. O pinho-do-paraná que usamos em pisos, forros e marcenaria vem de casas demolidas em Curitiba e na região.</p>
+        <p>Cada lote é seco, aplainado e catalogado antes de voltar para uma obra, com a casa de origem anotada na ficha.</p>
+      </div>
+      <figure>
+        <div class="moldura corte"><img class="foto" src="https://images.unsplash.com/photo-1760237655540-8197ef24838b?auto=format&fit=crop&w=900&h=1200&q=70" width="900" height="1200" loading="lazy" alt="Tábuas de madeira clara montadas em espinha de peixe, vistas de perto"></div>
+        <figcaption class="rotulo">Piso em espinha com tábuas de demolição. Foto provisória.</figcaption>
+      </figure>
+      <dl class="dados">
+        <div><dt>Origem</dt><dd>Demolições em Curitiba e Região Metropolitana</dd></div>
+        <div><dt>Uso</dt><dd>Pisos, forros, escadas e marcenaria</dd></div>
+        <div><dt>Antes da obra</dt><dd>Secagem, plaina e ficha por lote</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="secao" id="estudio" data-nivel="916,00" data-nome="Estúdio">
+    <div class="grade">
+      <div class="cabeca">
+        <span class="nivel"><svg viewBox="0 0 14 12" aria-hidden="true"><path d="M1 1h12L7 11z" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M1 1h6v10z" fill="currentColor"/></svg><b>916,00</b> Estúdio</span>
+        <h2 class="surge">Quem <em class="e">desenha</em></h2>
+      </div>
+      <div class="pessoas">
+        <figure class="pessoa p1">
+          <div class="moldura corte"><img class="foto" src="https://images.unsplash.com/photo-1639087603990-35efeed3766d?auto=format&fit=crop&w=1000&h=1250&q=70" width="1000" height="1250" loading="lazy" alt="Arquiteta de capacete branco sentada numa obra, conferindo o celular"></div>
+          <figcaption><strong>Marta Zielinski</strong><span class="rotulo">Sócia, arquiteta e urbanista · CAU A000000-0</span><span class="rotulo">Casas e reformas</span></figcaption>
+        </figure>
+        <figure class="pessoa p2">
+          <div class="moldura corte"><img class="foto" src="https://images.unsplash.com/photo-1556474835-b0f3ac40d4d1?auto=format&fit=crop&w=1000&h=1250&q=70" width="1000" height="1250" loading="lazy" alt="Arquiteto de blusa escura olhando para a câmera"></div>
+          <figcaption><strong>Rafael Okumura</strong><span class="rotulo">Sócio, arquiteto e urbanista · CAU A000000-0</span><span class="rotulo">Interiores e marcenaria</span></figcaption>
+        </figure>
+        <div class="sobre">
+          <p>Somos seis pessoas numa sala do Alto da Glória, com uma marcenaria parceira em São José dos Pinhais.</p>
+          <p>Cada projeto tem um dos sócios como responsável, do primeiro croqui à entrega das chaves.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="secao contato" id="contato" data-nivel="912,40" data-nome="Contato">
+    <div class="grade">
+      <div class="cabeca">
+        <span class="nivel"><svg viewBox="0 0 14 12" aria-hidden="true"><path d="M1 1h12L7 11z" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M1 1h6v10z" fill="currentColor"/></svg><b>912,40</b> Contato</span>
+        <h2 class="surge">Conte o terreno, a planta ou a casa <em class="e">que já existe</em></h2>
+      </div>
+      <div class="contato-grade">
+        <p class="lead">Respondemos em até dois dias úteis com uma data para a primeira conversa, no estúdio ou no lugar da obra.</p>
+        <div class="acoes"><a class="botao" href="mailto:contato@atelieraraucaria.com.br?subject=Visita%20ao%20est%C3%BAdio">Agendar uma visita
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a></div>
+        <dl>
+          <div><dt>E-mail</dt><dd><a href="mailto:contato@atelieraraucaria.com.br">contato@atelieraraucaria.com.br</a></dd></div>
+          <div><dt>Telefone e WhatsApp</dt><dd><a href="https://wa.me/5541990000000">(41) 99000-0000</a></dd></div>
+          <div><dt>Estúdio</dt><dd>Alto da Glória, Curitiba – PR<br>Seg a sex, 9h–18h, com hora marcada</dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="rodape">
+  <p class="palavra" aria-hidden="true">Atelier <em class="e">Araucária</em></p>
+  <dl class="carimbo">
+    <div><dt>Estúdio</dt><dd>Atelier Araucária<br>Arquitetura e interiores</dd></div>
+    <div><dt>Local</dt><dd>Curitiba – PR<br>25°25′S 49°16′W</dd></div>
+    <div><dt>Cota</dt><dd>934,00 m<br>acima do mar</dd></div>
+    <div><dt>Prancha</dt><dd>Única<br>Escala 1:1</dd></div>
+    <div><dt>Fotos</dt><dd>Provisórias, Unsplash</dd></div>
+    <div><dt>Data</dt><dd>2026<br>Estúdio fictício</dd></div>
+  </dl>
+</footer>
+
+<p class="cota nivel" aria-hidden="true"><svg viewBox="0 0 14 12"><path d="M1 1h12L7 11z" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="M1 1h6v10z" fill="currentColor"/></svg><b data-cota>934,00</b> <span data-cota-nome>Térreo</span></p>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+<script>
+(() => {
+  const raiz = document.documentElement;
+  raiz.classList.add('js');
+  const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Rolagem suave só quando movimento é bem-vindo; âncoras e teclado seguem nativos
+  if (!reduz && window.Lenis) {
+    const lenis = new Lenis({ lerp: 0.1, syncTouch: false, anchors: true });
+    const raf = (t) => { lenis.raf(t); requestAnimationFrame(raf); };
+    requestAnimationFrame(raf);
+  }
+
+  // Hora de Curitiba no topo
+  const relogio = document.querySelector('[data-relogio]');
+  const hora = new Intl.DateTimeFormat('pt-BR', { hour: '2-digit', minute: '2-digit', timeZone: 'America/Sao_Paulo' });
+  const tique = () => { relogio.textContent = hora.format(new Date()); };
+  tique(); setInterval(tique, 20000);
+
+  // Item ativo por posição na tela (faixa central de 10%)
+  const observa = (els, ativa) => {
+    const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) ativa(els.indexOf(e.target)); }), { rootMargin: '-45% 0px -45% 0px' });
+    els.forEach((el) => io.observe(el));
+  };
+
+  // Obras: lista e palco
+  const obras = [...document.querySelectorAll('.obra')];
+  const palco = [...document.querySelectorAll('.palco figure')];
+  const ativaObra = (i) => {
+    obras.forEach((el, j) => el.classList.toggle('ativa', i === j));
+    palco.forEach((el, j) => el.classList.toggle('ativa', i === j));
+  };
+  observa(obras, ativaObra);
+  obras.forEach((el, i) => {
+    el.addEventListener('pointerenter', () => ativaObra(i));
+    el.addEventListener('focus', () => ativaObra(i));
+  });
+
+  // Processo: contador, quadro e progresso
+  const passos = [...document.querySelectorAll('.passo')];
+  const quadros = [...document.querySelectorAll('.fixo .quadros img')];
+  const numero = document.querySelector('[data-passo]');
+  const barra = document.querySelector('.progresso i');
+  observa(passos, (i) => {
+    passos.forEach((el, j) => el.classList.toggle('ativo', i === j));
+    quadros.forEach((el, j) => el.classList.toggle('ativa', i === j));
+    numero.textContent = String(i + 1).padStart(2, '0');
+    barra.style.transform = `scaleX(${(i + 1) / passos.length})`;
+  });
+
+  // Marcador de nível: a cota da seção em que o leitor está
+  const secoes = [...document.querySelectorAll('[data-nivel]')];
+  const cota = document.querySelector('[data-cota]');
+  const cotaNome = document.querySelector('[data-cota-nome]');
+  observa(secoes, (i) => {
+    cota.textContent = secoes[i].dataset.nivel;
+    cotaNome.textContent = secoes[i].dataset.nome;
+  });
+})();
+</script>
+</body>
+</html>

@@ -14,7 +14,7 @@ Write one line before the direction: "Niche: personal-brand service. Richness: h
 | **Info product and launch** | Course, mentorship, ebook, event, community | The author and the transformation | High, long page | Section 4 |
 | **Editorial and portfolio** | Writer, studio, magazine, case studies | The work | Medium, type-led | Section 4 |
 
-When in doubt between two, the one where a person or a place is what the buyer chooses wins the richer playbook. Then pick the craft tier (`showcase.md`): Marketing for most pages, Showcase when the page has to stand next to Awwwards Sites of the Day or the user asks for that level.
+When in doubt between two, the one where a person or a place is what the buyer chooses wins the richer playbook. Architects, designers and photographers can sit in either: a solo practice sold by the person's face is personal-brand; a studio with partners and an index of work is editorial and portfolio, where the work leads and the personal-service devices (arch frame, seal, floating booking button, pill buttons) do not belong. Then pick the craft tier (`showcase.md`): Marketing for most pages, Showcase when the page has to stand next to Awwwards Sites of the Day or the user asks for that level.
 
 ## 2. Calibrate with real references
 

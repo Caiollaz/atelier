@@ -91,7 +91,7 @@ document.documentElement.classList.add('js');
 
 - The first screen is a composition, not a header: the display type, one image or video field and the structure lines. It fills 100svh at 1440 and at 2560.
 - In this tier the display keeps scaling with `vw` up to 2560 (a 120px headline at 1440 is about 200px at 2560). Body copy still stops near 18 to 20px; labels grow from 12 to 14px.
-- Margins of 20 to 40px with full-width grids are normal here; the 1320px text column of `layout.md` applies to reading text only.
+- Margins of 20 to 40px with full-width grids are normal here; the reading measure of `layout.md` (45 to 75 characters) applies to reading text only.
 - Break the grid once per section at most: an image that crosses a column line, a word that runs past the margin, a counter in the gutter.
 - Scale contrast is the drama: a 200px word next to a 13px label, a full-bleed video next to a 360px portrait.
 
@@ -140,10 +140,25 @@ Seen on Sites of the Day and still forbidden here:
 
 ## 8. Review against the bar
 
-1. Find three current Sites of the Day close to the subject (`awwwards.com/websites/sites_of_the_day/`, each site page has the real URL behind "Visit"), and two or three Behance projects of the niche.
-2. Capture each at 1440 and 2560 and while scrolling (frames every 0.8 to 1 screen). Capture your page the same way.
-3. Put them side by side. Ask, section by section: is there an idea; is the type doing the work; is the structure visible; is the image treated; does the scroll tell the story in order. Fix the weakest section first.
-4. Check the floor (section 6) with JS off, reduced motion on, keyboard only and at 390.
+1. Find three current Sites of the Day close to the subject. Category pages list them (`awwwards.com/websites/architecture/?award=sites_of_the_day`, and the same path for other categories); each site page has the real URL behind "Visit". Add two or three Behance projects of the niche.
+2. Capture each at 1440 and 2560 and while scrolling (frames every 0.8 to 1 screen). Capture your page the same way with `node scripts/check.mjs <page> --frames <dir>`: motion on, one frame per screen. A full-page capture leaves scroll-driven sections at their start state, so it cannot judge them.
+3. Put them side by side on one contact sheet. Ask, section by section: is there an idea; is the type doing the work; is the structure visible; is the image treated; does the scroll tell the story in order. Fix the weakest section first.
+4. Check the floor (section 6): `check.mjs` reports JS off, reduced motion, reveals left hidden, focus, anchors, Page Down, sideways overflow and islands at 2560. Measure text over images on the pixels: hide the text, screenshot its box, and take the contrast of the lightest pixel against the text color.
+
+## 9. Patterns that held up
+
+From a studio page built at this tier and approved at 1440, 2560 and 390 (`examples/showcase-studio.html`):
+
+| Pattern | Build |
+|---|---|
+| The idea taken from the trade's own notation | A studio's section drawing: each section labelled with a level mark and its height, counting down from the city's altitude; a bakery's proofing times; a clinic's appointment card. The notation becomes the section labels and one live readout |
+| Index with a sticky stage | List of large names on the left (inactive at about 36% opacity), a sticky image on the right that crossfades. Active item from an IntersectionObserver band (`rootMargin: '-45% 0px -45% 0px'`), plus pointer and focus. Without JS and on phones, each item carries its own inline image; the stage exists only under `html.js` from 1024 |
+| Pinned sequence without a scroll track | A sticky media column with the counter (`01 : 04`) and a progress hairline beside steps of about 72svh each. Native scroll, anchors and Page Down keep working; nothing to hijack |
+| Hero frame that opens | The photo starts inset by the page margin and opens to full bleed: `clip-path: inset(0 var(--margin))` to `inset(0)` on `animation-timeline: view()` |
+| Statement with an image inside the line | A small photo about 2.6em by 0.82em set in the text of a hanging-indent statement, `aria-hidden` |
+| Margin readout | The current section or level set vertically in the gutter (`writing-mode: vertical-rl`, `mix-blend-mode: difference`), so it never covers content and reads on light and dark bands; `aria-hidden` |
+| Wordmark edge to edge | `font-size: calc((100vw - 2 * var(--margin)) / N)` with `white-space: nowrap`, N measured once for the name and the faces (7.1 for a 17-letter name in a grotesk plus an italic serif) |
+| A title block as the footer | The drawing's title block (studio, place, coordinates, sheet, scale, date) as a hairline grid under the wordmark |
 
 ## Checklist
 
@@ -153,7 +168,7 @@ Seen on Sites of the Day and still forbidden here:
 - [ ] Visible structure: hairlines, indexes, labels; the grid broken once on purpose.
 - [ ] Imagery treated in one way across the page.
 - [ ] One motion idea; one reveal or one scrub per section; one pinned sequence at most.
-- [ ] The floor holds: no JS, reduced motion, keyboard, contrast over media, no preloader gate, no hijack.
+- [ ] The floor holds: no JS, reduced motion, keyboard, contrast over media, no preloader gate, no hijack (`scripts/check.mjs` clean).
 - [ ] Compared side by side with three Sites of the Day at 1440 and 2560.
 
 *Original to atelier, from a study of public Awwwards Sites of the Day and SaaS landing pages. See NOTICE.md.*

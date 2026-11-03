@@ -76,10 +76,11 @@ skills/atelier/
     library.md             galleries, exemplary products, design systems, guidance sources
   scripts/
     scan.mjs               static scan for code-visible tells (zero dependencies)
-    shoot.mjs              desktop and phone screenshots, light and dark
+    shoot.mjs              desktop, wide (2560) and phone screenshots, light and dark
+    check.mjs              the floor in a browser: islands at 2560, no JS, reduced motion, keyboard
     contrast.mjs           WCAG contrast for pairs or CSS custom properties
   assets/                  phone and browser frames for real screenshots
-  examples/                a sloppy dashboard to try it on, and a service landing page as the quality bar
+  examples/                a sloppy dashboard to try it on; a service landing page and a showcase studio page as the quality bar
 ```
 
 Try it on the example:

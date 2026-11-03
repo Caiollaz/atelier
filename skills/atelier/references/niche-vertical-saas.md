@@ -80,7 +80,7 @@ One strong field change in the page: a dark band, or an inset dark panel with a 
 - Two voices, sometimes three: a grotesk or serif display; a mono for labels, indexes, captions and data; optionally a serif as a third voice for a subhead or captions.
 - Labels in mono or small caps at 11 to 13px with a hairline, used as a system; not on every button.
 - Palette families seen: ink on white with one accent (Linear, Attio); warm paper `#faf7f2` with purple ink (Tines); cream `#f9ead6` with brown ink and a rust serif (Fibery); ink-dark `#0e1116` with one green (Oxide); near-black with metallic greys (Resend); full-color photography with a cream serif (Oscar). Multi-hue color appears only in treated imagery (photo, dither, canvas), never as a CSS gradient on chrome.
-- At 2560: text 1230 to 1390 wide, product stage 1320 to 1450, display fixed or grown at most 1.25 times. The width is carried by a full-bleed field, photo or brand art. A column on white with nothing full-bleed reads as an island (`layout.md`, wide screens). Never leave a dead band of empty field under the hero.
+- At 2560: a page grid of 1680 to 1760 with the nav on it, reading text at its measure on the grid's left line, the product stage as wide as the grid, display grown about 1.25 times. Galleries show top SaaS pages at 1230 to 1450 with a strong field carrying the rest (a dark band, photography, brand art to the edge); copied without the field, those numbers read as islands on a 2K monitor (`layout.md`, wide screens). Run `scripts/check.mjs`. Never leave a dead band of empty field under the hero.
 
 ## 7. Slop that appears in this market and stays out
 
