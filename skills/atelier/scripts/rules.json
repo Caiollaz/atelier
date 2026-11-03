@@ -1,0 +1,439 @@
+{
+  "version": 1,
+  "rules": [
+    {
+      "id": "center-heavy",
+      "family": "Composition",
+      "title": "Most text in the file is centered",
+      "fix": "Left-align long text; center only one or two short lines",
+      "severity": "polish",
+      "ext": "any",
+      "kind": "custom"
+    },
+    {
+      "id": "hue-gradient",
+      "family": "Color",
+      "title": "Hue-to-hue gradient (purple to blue and friends)",
+      "fix": "One neutral surface; the accent only where it means something",
+      "severity": "off",
+      "ext": "any",
+      "kind": "custom"
+    },
+    {
+      "id": "gradient-text",
+      "family": "Color",
+      "title": "Gradient text",
+      "fix": "Solid primary text color",
+      "severity": "off",
+      "ext": "any",
+      "patterns": [
+        {
+          "source": "background-clip\\s*:\\s*text|\\bbg-clip-text\\b|-webkit-text-fill-color\\s*:\\s*transparent",
+          "flags": "gi"
+        }
+      ]
+    },
+    {
+      "id": "color-glow",
+      "family": "Color",
+      "title": "Colored glow or colored shadow",
+      "fix": "Remove; depth from surface steps, hairlines or neutral layered shadows",
+      "severity": "off",
+      "ext": "any",
+      "kind": "custom"
+    },
+    {
+      "id": "blob",
+      "family": "Color",
+      "title": "Blurred blob or wash behind content",
+      "fix": "Remove; a plain background or one real visual",
+      "severity": "off",
+      "ext": "any",
+      "patterns": [
+        {
+          "source": "\\bblur-(?:2xl|3xl)\\b|\\bblur-\\[(?:[3-9]\\d|\\d{3,})px\\]|filter\\s*:\\s*blur\\(\\s*(?:[3-9]\\d|\\d{3,})px",
+          "flags": "gi"
+        }
+      ]
+    },
+    {
+      "id": "default-indigo",
+      "family": "Color",
+      "title": "Default indigo or violet accent",
+      "fix": "Take the accent from the product's world (tokens.md)",
+      "severity": "polish",
+      "ext": "any",
+      "patterns": [
+        {
+          "source": "\\b(?:bg|text|from|via|to|border|ring|fill|stroke|outline|decoration|shadow)-(?:indigo|violet|purple)-[3-7]00\\b|#(?:6366f1|4f46e5|8b5cf6|7c3aed|a855f7|9333ea|6d28d9|818cf8|a78bfa)\\b",
+          "flags": "gi"
+        }
+      ]
+    },
+    {
+      "id": "glass",
+      "family": "Color",
+      "title": "Glass blur on surfaces",
+      "fix": "Opaque raised surface with a hairline; blur only for real overlays",
+      "severity": "polish",
+      "ext": "any",
+      "patterns": [
+        {
+          "source": "backdrop-filter\\s*:\\s*blur|\\bbackdrop-blur(?:-(?:sm|md|lg|xl|2xl|3xl|\\[[^\\]]+\\]))?\\b",
+          "flags": "gi"
+        }
+      ]
+    },
+    {
+      "id": "heavy-weight",
+      "family": "Type",
+      "title": "Weight 800 or 900",
+      "fix": "400 to 600 and size for hierarchy, unless the face is a chosen heavy display face",
+      "severity": "polish",
+      "ext": "any",
+      "patterns": [
+        {
+          "source": "font-weight\\s*:\\s*(?:800|900)\\b|\\bfont-(?:extrabold|black)\\b|fontWeight\\s*:\\s*['\"]?(?:800|900)\\b",
+          "flags": "gi"
+        }
+      ]
+    },
+    {
+      "id": "tracked-caps",
+      "family": "Type",
+      "title": "Uppercase label with wide tracking",
+      "fix": "Sentence case; caps only where they carry information",
+      "severity": "polish",
+      "ext": "any",
+      "kind": "custom"
+    },
+    {
+      "id": "tight-small",
+      "family": "Type",
+      "title": "Negative tracking on small text",
+      "fix": "Zero or slightly positive tracking under 16px",
+      "severity": "polish",
+      "ext": "any",
+      "kind": "custom"
+    },
+    {
+      "id": "default-font",
+      "family": "Type",
+      "title": "Default font family (confirm it was chosen)",
+      "fix": "Choose a family for the character (tokens.md); keep it if it was a real choice",
+      "severity": "polish",
+      "ext": "any",
+      "kind": "custom"
+    },
+    {
+      "id": "emoji",
+      "family": "Icons",
+      "title": "Emoji used in the interface",
+      "fix": "One line-icon set, or nothing",
+      "severity": "off",
+      "ext": "code",
+      "kind": "custom"
+    },
+    {
+      "id": "sparkles",
+      "family": "Icons",
+      "title": "Sparkles for AI",
+      "fix": "Remove, or a plain icon only where it explains something",
+      "severity": "polish",
+      "ext": "code",
+      "patterns": [
+        {
+          "source": "✨|\\bSparkles(?:Icon)?\\b",
+          "flags": "gu"
+        }
+      ]
+    },
+    {
+      "id": "off-grid",
+      "family": "Spacing",
+      "title": "Spacing value off the 4px grid",
+      "fix": "A step from the spacing scale (tokens.md)",
+      "severity": "polish",
+      "ext": "any",
+      "kind": "custom"
+    },
+    {
+      "id": "greeting",
+      "family": "Copy",
+      "title": "Greeting headline",
+      "fix": "Name the page or the period",
+      "severity": "off",
+      "ext": "code",
+      "patterns": [
+        {
+          "source": "(?:Welcome back|Hey there|Hi there|Good (?:morning|afternoon|evening)|Bem[- ]vind[oa] de volta|Olá de novo)[^<>\"'`\\n]{0,40}(?:!|\\u{1F44B})",
+          "flags": "giu"
+        }
+      ]
+    },
+    {
+      "id": "exclaim",
+      "family": "Copy",
+      "title": "Exclamation mark in UI copy",
+      "fix": "A plain statement",
+      "severity": "polish",
+      "ext": "code",
+      "patterns": [
+        {
+          "source": ">[^<>{}=\\n]*\\p{L}!{1,3}\\s*<|[\"'`][^\"'`\\n<>]*\\p{L}\\s?!{1,3}[\"'`]",
+          "flags": "gu"
+        }
+      ]
+    },
+    {
+      "id": "hype",
+      "family": "Copy",
+      "title": "Hype word",
+      "fix": "Say what the thing actually does, with the product's nouns",
+      "severity": "off",
+      "ext": "code",
+      "patterns": [
+        {
+          "source": "\\b(?:supercharge[ds]?|turbocharge[ds]?|unleash(?:es|ed)?|unlock (?:the|your)|elevate (?:your|the)|empower(?:s|ing)?|revolutioni[sz]e[ds]?|game[- ]chang(?:er|ing)|seamless(?:ly)?|effortless(?:ly)?|cutting[- ]edge|next[- ]gen(?:eration)?|world[- ]class|best[- ]in[- ]class|all[- ]in[- ]one|blazing(?:ly)?[- ]fast|lightning[- ]fast|AI[- ]powered|reimagined)\\b",
+          "flags": "gi"
+        }
+      ]
+    },
+    {
+      "id": "wordy-placeholder",
+      "family": "Copy",
+      "title": "Wordy placeholder",
+      "fix": "A short label like \"Search\"",
+      "severity": "polish",
+      "ext": "code",
+      "patterns": [
+        {
+          "source": "placeholder\\s*=\\s*\\{?[\"'`](?:Search|Type|Enter|Ask|Find)[^\"'`]*(?:anything|everything|here)[^\"'`]*[\"'`]",
+          "flags": "gi"
+        }
+      ]
+    },
+    {
+      "id": "fake-data",
+      "family": "Copy",
+      "title": "Fake-looking data",
+      "fix": "Plausible, varied values (robustness.md)",
+      "severity": "off",
+      "ext": "code",
+      "patterns": [
+        {
+          "source": "\\$123,456|\\[X\\]|lorem ipsum|\\bJohn Doe\\b|\\bJane Doe\\b|@acme\\.com\\b|\\bAcme (?:Inc|Corp)\\b|123 Main St",
+          "flags": "gi"
+        }
+      ]
+    },
+    {
+      "id": "oops",
+      "family": "Copy",
+      "title": "Apologetic or vague error",
+      "fix": "What happened and the way out",
+      "severity": "polish",
+      "ext": "code",
+      "patterns": [
+        {
+          "source": "\\b(?:Oops|Uh[- ]oh|Whoops)\\b",
+          "flags": "gi"
+        }
+      ]
+    },
+    {
+      "id": "accent-rail",
+      "family": "Components",
+      "title": "Colored side stripe (accent rail)",
+      "fix": "Remove; separate by surface step, spacing and type",
+      "severity": "off",
+      "ext": "any",
+      "patterns": [
+        {
+          "source": "border-left(?:-width)?\\s*:\\s*(?:[3-9]|\\d{2})px|border-inline-start(?:-width)?\\s*:\\s*(?:[3-9]|\\d{2})px|\\bborder-l-(?:4|8|\\[(?:[3-9]|\\d{2})px\\])\\b|\\bborder-s-(?:4|8)\\b|box-shadow\\s*:\\s*inset\\s+(?:[3-9]|\\d{2})px\\s+0\\s+0",
+          "flags": "gi"
+        }
+      ]
+    },
+    {
+      "id": "radius-monotone",
+      "family": "Components",
+      "title": "One large radius on everything",
+      "fix": "Radius by size, nested radius = outer minus padding",
+      "severity": "polish",
+      "ext": "any",
+      "kind": "custom"
+    },
+    {
+      "id": "badge-noise",
+      "family": "Components",
+      "title": "New, Beta or PRO badge noise",
+      "fix": "Remove, or one quiet text badge where true",
+      "severity": "polish",
+      "ext": "code",
+      "patterns": [
+        {
+          "source": "(?:New|NEW|Beta|BETA|PRO|Pro|Hot|HOT)\\s*(?:✨|\\u{1F680}|\\u{1F525})|(?:✨|\\u{1F680}|\\u{1F525})\\s*(?:New|NEW|Beta|BETA|PRO)\\b|>\\s*(?:PRO|NEW|BETA|HOT)\\s*<",
+          "flags": "gu"
+        }
+      ]
+    },
+    {
+      "id": "transition-all",
+      "family": "Motion",
+      "title": "transition: all",
+      "fix": "Name the properties (transform, opacity, color)",
+      "severity": "off",
+      "ext": "any",
+      "patterns": [
+        {
+          "source": "transition(?:-property)?\\s*:\\s*['\"]?all\\b|\\btransition-all\\b",
+          "flags": "gi"
+        }
+      ]
+    },
+    {
+      "id": "scale-zero",
+      "family": "Motion",
+      "title": "Entrance from scale 0",
+      "fix": "Start at scale 0.95 with opacity 0",
+      "severity": "off",
+      "ext": "any",
+      "patterns": [
+        {
+          "source": "scale\\(\\s*0\\s*(?:,\\s*0\\s*)?\\)|\\bscale-0\\b|\\bscale\\s*:\\s*0\\s*[,}]",
+          "flags": "g"
+        }
+      ]
+    },
+    {
+      "id": "ease-in",
+      "family": "Motion",
+      "title": "ease-in on UI",
+      "fix": "--ease-out for enter and exit (motion.md)",
+      "severity": "off",
+      "ext": "any",
+      "patterns": [
+        {
+          "source": "\\bease-in\\b(?!-)|['\"]easeIn['\"]|Easing\\.in\\(",
+          "flags": "g"
+        }
+      ]
+    },
+    {
+      "id": "infinite-loop",
+      "family": "Motion",
+      "title": "Looping animation",
+      "fix": "Static; loop only real loaders and live indicators",
+      "severity": "polish",
+      "ext": "any",
+      "patterns": [
+        {
+          "source": "\\banimate-(?:pulse|ping|bounce)\\b|animation[^;{}\\n]*\\binfinite\\b|repeat\\s*:\\s*Infinity",
+          "flags": "g"
+        }
+      ]
+    },
+    {
+      "id": "hover-scale",
+      "family": "Motion",
+      "title": "Hover scale or lift",
+      "fix": "A color or surface step on hover; press scale on buttons",
+      "severity": "polish",
+      "ext": "any",
+      "kind": "custom"
+    },
+    {
+      "id": "ungated-hover",
+      "family": "Motion",
+      "title": "Hover not gated to real pointers",
+      "fix": "Wrap in @media (hover: hover) and (pointer: fine)",
+      "severity": "polish",
+      "ext": "any",
+      "kind": "custom"
+    },
+    {
+      "id": "slow-ui",
+      "family": "Motion",
+      "title": "Slow duration (500ms or more)",
+      "fix": "150 to 250ms for UI, up to 400ms for large panels (motion.md)",
+      "severity": "polish",
+      "ext": "any",
+      "patterns": [
+        {
+          "source": "\\bduration-(?:[5-9]\\d\\d|[1-9]\\d{3})\\b|transition[^;{}\\n]*\\b(?:[5-9]\\d\\d|[1-9]\\d{3})ms|transition-duration\\s*:\\s*(?:[5-9]\\d\\d|[1-9]\\d{3})ms|transition[^;{}\\n]*[\\s:,](?:0?\\.[5-9]\\d*|[1-9](?:\\.\\d+)?)s\\b",
+          "flags": "g"
+        }
+      ]
+    },
+    {
+      "id": "layout-transition",
+      "family": "Motion",
+      "title": "Transition on a layout property",
+      "fix": "Animate transform and opacity instead",
+      "severity": "polish",
+      "ext": "any",
+      "patterns": [
+        {
+          "source": "transition(?:-property)?\\s*:[^;{}\\n]*(?:^|[\\s,:])(?:width|height|max-height|top|left|right|bottom|margin(?:-\\w+)?|padding(?:-\\w+)?)\\b|\\btransition-\\[(?:width|height|max-height|margin|padding|top|left)",
+          "flags": "g"
+        }
+      ]
+    },
+    {
+      "id": "no-reduced-motion",
+      "family": "Motion",
+      "title": "Motion with no reduced-motion handling",
+      "fix": "Gentler variant: keep opacity, drop movement",
+      "severity": "off",
+      "ext": "any",
+      "kind": "custom"
+    },
+    {
+      "id": "vh-unit",
+      "family": "Mobile",
+      "title": "100vh or h-screen",
+      "fix": "100dvh for app shells, 100svh for heroes",
+      "severity": "polish",
+      "ext": "any",
+      "patterns": [
+        {
+          "source": "\\b100vh\\b|\\b(?:min-|max-)?h-screen\\b",
+          "flags": "g"
+        }
+      ]
+    },
+    {
+      "id": "small-input",
+      "family": "Mobile",
+      "title": "Input text under 16px",
+      "fix": "16px on inputs so iOS does not zoom",
+      "severity": "off",
+      "ext": "any",
+      "kind": "custom"
+    },
+    {
+      "id": "no-zoom",
+      "family": "Mobile",
+      "title": "Zoom disabled",
+      "fix": "Allow zoom; fix the 16px input cause",
+      "severity": "broken",
+      "ext": "any",
+      "patterns": [
+        {
+          "source": "user-scalable\\s*=\\s*(?:no|0)|maximum-scale\\s*=\\s*1(?:\\.0)?\\b|userScalable\\s*:\\s*false|maximumScale\\s*:\\s*1\\b",
+          "flags": "gi"
+        }
+      ]
+    },
+    {
+      "id": "no-focus",
+      "family": "Accessibility",
+      "title": "Focus outline removed without a replacement",
+      "fix": "A visible :focus-visible ring",
+      "severity": "broken",
+      "ext": "any",
+      "kind": "custom"
+    }
+  ]
+}

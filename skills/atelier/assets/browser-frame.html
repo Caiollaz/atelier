@@ -1,0 +1,60 @@
+<!doctype html>
+<!--
+  Browser frame: a neutral desktop browser window (grey dots, URL pill, title bar).
+  Puts a real screenshot (capture at 1440x900, DPR 2) inside the window, cropped from the top.
+
+  Query params:
+    img    path to the screenshot, relative to this file or an absolute file:/// URL
+    url    text shown in the URL pill (default example.com)
+    theme  light or dark title bar (default light); match the page in the screenshot
+
+  Render to a transparent PNG (3040x2072):
+    google-chrome --headless=new --disable-gpu --hide-scrollbars --screenshot=browser.png \
+      --window-size=1520,1036 --force-device-scale-factor=2 --default-background-color=00000000 \
+      --virtual-time-budget=2000 "file:///abs/path/browser-frame.html?img=shot.png&url=example.com&theme=light"
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Browser frame</title>
+<style>
+html, body { margin: 0; background: transparent; }
+body { width: 1520px; height: 1036px; position: relative; overflow: hidden; }
+.win {
+  --win: #fff; --bar: #f2f2f2; --line: #dadada; --dot: #c9c9c9; --pill: #fff; --text: #333;
+  position: absolute; left: 40px; top: 30px; width: 1440px; height: 956px; border-radius: 18px; overflow: hidden;
+  background: var(--win);
+  box-shadow: 0 30px 70px rgba(0,0,0,.26), 0 6px 16px rgba(0,0,0,.14), 0 0 0 1.5px rgba(0,0,0,.16);
+}
+.win.dark {
+  --win: #1c1c1e; --bar: #2a2a2c; --line: #3a3a3c; --dot: #4a4a4d; --pill: #1c1c1e; --text: #d8d8da;
+  box-shadow: 0 30px 70px rgba(0,0,0,.34), 0 6px 16px rgba(0,0,0,.18), 0 0 0 1.5px rgba(0,0,0,.4);
+}
+.bar { height: 56px; background: var(--bar); border-bottom: 1px solid var(--line); display: flex; align-items: center; padding: 0 22px; gap: 9px; box-sizing: border-box; }
+.dot { width: 13px; height: 13px; border-radius: 50%; background: var(--dot); flex-shrink: 0; }
+.url {
+  margin: 0 auto; width: 560px; height: 34px; border-radius: 9px; background: var(--pill); border: 1px solid var(--line);
+  font: 600 15px/32px system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--text);
+  text-align: center; box-sizing: border-box; padding: 0 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.sp { width: 57px; flex-shrink: 0; } /* balances the three dots so the URL pill sits at the true center */
+img.shot { display: block; width: 1440px; height: 900px; object-fit: cover; object-position: top; }
+</style>
+</head>
+<body>
+<div class="win" id="win">
+  <div class="bar">
+    <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+    <div class="url" id="url">example.com</div>
+    <span class="sp"></span>
+  </div>
+  <img class="shot" id="shot" alt="">
+</div>
+<script>
+  const q = new URLSearchParams(location.search);
+  if (q.get('img')) document.getElementById('shot').src = q.get('img');
+  if (q.get('url')) document.getElementById('url').textContent = q.get('url');
+  if (q.get('theme') === 'dark') document.getElementById('win').classList.add('dark');
+</script>
+</body>
+</html>

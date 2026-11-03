@@ -1,0 +1,4 @@
+interface:
+  display_name: "Atelier"
+  short_description: "Audit, refine or create interfaces that read as designed, not AI-generated"
+  default_prompt: "Use $atelier to audit this screen and tell me what makes it look generated."

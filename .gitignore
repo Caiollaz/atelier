@@ -1,0 +1,4 @@
+node_modules/
+atelier-shots/
+.DS_Store
+*.log
