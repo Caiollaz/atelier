@@ -57,6 +57,7 @@ skills/atelier/
   SKILL.md                 modes, operating rules, passes, non-negotiables, output contracts
   references/
     direction.md           surfaces, the five direction lines, the idea, DESIGN.md
+    niches.md              market calibration: richness floor, references, conventions, service playbook
     audit.md               how to look, score, grade and report
     tells.md               the catalog of AI tells, with detection and fix
     tokens.md              spacing, color ramps, type, radius, depth, icons, buttons
@@ -75,7 +76,7 @@ skills/atelier/
     shoot.mjs              desktop and phone screenshots, light and dark
     contrast.mjs           WCAG contrast for pairs or CSS custom properties
   assets/                  phone and browser frames for real screenshots
-  examples/                a deliberately sloppy dashboard to try it on
+  examples/                a sloppy dashboard to try it on, and a service landing page as the quality bar
 ```
 
 Try it on the example:

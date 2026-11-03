@@ -2,7 +2,7 @@
 
 Read this in every audit and in the final review of every refine or create. It is the catalog of signs that a screen was generated rather than designed, grouped by family, each with how to spot it and what to do instead.
 
-Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `scripts/rules.json`). Everything else needs eyes on the rendered screen. A tell is a reason to look closer, not an automatic verdict: a brand that deliberately uses one of these, sparingly and with a reason, is making a choice. Note it and move on.
+Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `scripts/rules.json`). Everything else needs eyes on the rendered screen. A tell is a reason to look closer, not an automatic verdict: a brand that deliberately uses one of these, sparingly and with a reason, is making a choice. Note it and move on. Marketing pages for people and places have their own conventions (photos in most sections, emphasized phrases in headlines, warm palettes, pill buttons, brand seals): `niches.md` section 3 lists them and when they stop being right. The hard tells in the checklist below hold in every niche.
 
 ## How to use this file
 
@@ -25,7 +25,7 @@ Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `sc
 | Icon topper on every heading | A rounded square with an icon above each section title | Remove; use icons only where they help scanning |
 | Monument stat | Huge numbers with tiny labels used as decoration in a hero | Numbers only where the number is the message, with a comparison |
 | Narrow app | An app squeezed into a centered column with empty sides | App shell fills the viewport; content fluid with a sensible max width |
-| A visual on every section | Every band has an illustration, image or glow | One visual where it helps, usually only in the hero |
+| A visual on every section | Every band has an illustration, image or glow that says nothing about the product | One visual where it helps, usually only in the hero. Not a tell on personal-brand, local business and launch pages, where photos of the person, the place or the work carry each section (`niches.md`) |
 
 ## 2. Color and surfaces
 
@@ -40,7 +40,7 @@ Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `sc
 | Five lavenders | Many near-identical tints of one hue for text and surfaces | Three text roles (primary, secondary, muted) from one neutral ramp |
 | Everything highlighted, nothing leads | Accent on headings, icons, borders, badges and buttons at once | One accent, used once or twice per screen |
 | Glass cards with a white inner highlight and a colored shadow | `backdrop-filter` on content cards with no layering reason `scan:glass` | Plain raised surface with a hairline. Blur only for real overlays (sheets, nav over content) |
-| Cream background, high-contrast serif and terracotta accent, used for everything | Background near #F4F1EA, accent near #D97757, serif headlines | Fine when the world calls for paper and ink; a tell when it is the default |
+| Cream background, high-contrast serif and terracotta accent, used for everything | Background near #F4F1EA, accent near #D97757, serif headlines | Fine when the world calls for paper and ink, and the expected family for therapy, wellness, beauty and craft (`niches.md`); a tell when it is the default for a software product |
 | Near-black page with one acid green or vermilion accent, used for everything | Dark page, one neon accent on every interactive element | Choose the accent from the world; keep it rare |
 | Broadsheet look as a costume | Hairline rules, zero radius, dense newspaper columns on a product that is not editorial | Use editorial structure only for editorial products |
 
@@ -51,7 +51,7 @@ Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `sc
 | Headings at weight 800 or 900 as a reflex | `font-weight: 800/900`, `font-extrabold`, `font-black` `scan:heavy-weight` | 400 to 600 and size for hierarchy, unless the typeface is a heavy display face chosen on purpose |
 | Uppercase tracked labels everywhere (`NAVIGATION`, `PAID THIS MONTH`) | `text-transform: uppercase` with wide `letter-spacing`, `uppercase tracking-widest` `scan:tracked-caps` | Sentence case. Keep caps only where they carry information, sparingly |
 | Eyebrow above every heading | A small label sitting over each section title saying what the title already says | Remove it; the heading is enough |
-| One word accented in a headline | A span in a headline with italic, a gradient or the accent color | Treat the whole headline; or emphasize nothing |
+| One word accented in a headline | A span in a headline with italic, a gradient or the accent color, used once or differently in each heading | Treat the whole headline; or emphasize nothing. On marketing pages for people and places, one emphasis system (weight 600 plus the accent) applied to every headline is a convention, not a tell (`niches.md`) |
 | Too many sizes and weights | Six or more sizes and four weights on one screen | A few steps from the scale; weights 400 and 500, 600 for rare emphasis |
 | Mixed number formats | `$48,210` next to `$124,860.40`, `07`, proportional digits jumping in tables | One format; `font-variant-numeric: tabular-nums` |
 | Negative tracking on small text | `tracking-tight` or negative `letter-spacing` under 16px `scan:tight-small` | Zero or slightly positive below 16px; tighten only display sizes |
@@ -122,7 +122,7 @@ Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `sc
 
 | Tell | How to spot it | Fix |
 |---|---|---|
-| Pill badge above the headline (`✨ Introducing X 2.0`) | Visual | Remove, or a quiet text link if it is real news |
+| Pill badge above the headline (`✨ Introducing X 2.0`) | Visual | Remove, or a quiet text link if it is real news. A plain section name in a pill, the same on every section, is fine on niche pages (`niches.md`) |
 | Gradient or shimmer on the headline | `scan:gradient-text` | Solid text |
 | Three or more buttons, or chips and avatars stacked under the buttons | Count | One primary, at most one secondary |
 | Floating blobs, orbs, grids or glowing lines behind the hero | Visual | Plain background, one real product visual or one scene from the world |
@@ -184,6 +184,7 @@ These are not slop. They are what a cleaned-up screen falls back to when nobody 
 | A hero visual that is an empty box or a generic picture | A coded preview of the real product, or one image from the world |
 | Every product you touch gets the same layout, type and palette | Let the direction decide; vary on purpose |
 | Clean but anonymous | Add the signature: one small detail only this product would have, used consistently (`direction.md`) |
+| Polite and sparse: every tell removed, but the page is emptier than any page in its market (no photos, no brand devices, one field color) | Name the niche, look at its references and meet its richness floor (`niches.md`) |
 
 ## Checklist
 

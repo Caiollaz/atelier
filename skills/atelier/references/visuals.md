@@ -17,13 +17,13 @@ A physical thing the product deals with (a payment card, a receipt, a ticket, a 
 
 ## 2. The order of preference
 
-1. **The product itself.** A coded preview of the one moment that proves the headline: a scheduler shows one week with a booked slot; a code review tool shows one diff with one comment; a habit app shows one streak card. Use the project's own components, or careful HTML in the new palette, with plausible data. Frame it as a window or a device only if that helps it read.
+1. **The product itself.** For a person-led service (therapist, doctor, lawyer, coach), the product is the person: their portrait leads the hero, and photos of them and their space carry the page (`niches.md`). For software, a coded preview of the one moment that proves the headline: a scheduler shows one week with a booked slot; a code review tool shows one diff with one comment; a habit app shows one streak card. Use the project's own components, or careful HTML in the new palette, with plausible data. Frame it as a window or a device only if that helps it read.
 2. **Assets the client owns:** product photography, screenshots, team and place photos.
 3. **A generated image** from the world (section 4), when a tool is available.
 4. **Real pictures from open collections** (Openverse, Wikimedia Commons, museum open-access programs, Unsplash) with the license respected and the credit recorded. A found picture is never presented as the client's own.
 5. **Type and color alone.** A confident typographic hero is better than a generic picture.
 
-One visual where it helps, usually only in the hero. A visual on every section is a tell.
+One visual where it helps, usually only in the hero, for product pages. A visual on every section is a tell there; on personal-brand, local business and launch pages it is the expected bar (`niches.md`).
 
 ## 3. Write the scene as one sentence
 
@@ -63,8 +63,18 @@ Look for an image tool among the tools you have: an MCP server or CLI for fal, R
 
 **Without a tool:**
 1. Say so before the visuals pass and offer to connect one.
-2. If the user skips it, build what you can in code, and leave an **empty slot** for the rest: a plain surface step of the exact size, with the layout's radius and no text inside, so nothing unfinished can ship by accident.
+2. If the user skips it, build what you can in code. In a draft or mock without client assets, fill the slots with **open-license photos as marked placeholders** (next section): a page with empty boxes cannot be judged, and the user will judge it. Mark them in a comment at the top of the file and list them in the report as photos to replace. Leave an **empty slot** (a plain surface step of the exact size, with the layout's radius and no text inside) only when the user rules out stock.
 3. Put the prompt in the report (not on the page), with the kind of service that can generate it and the file name to save it under.
+
+### Open-license photos from an agent
+
+- Unsplash pages, its search and its `/napi` API refuse scripted requests (401, browser check), in `curl` and in headless browsers. The image CDN does not: `https://images.unsplash.com/photo-<id>` serves any public photo by its id.
+- Get ids from a web search restricted to `unsplash.com` (the result pages show them in the image URLs), from ids you already know, or from the user. Download candidates at small size, put them on one contact sheet and look before choosing.
+- Contact sheet: a page that inlines each image as a `data:` URI, rendered with Playwright. `file://` images do not load in a page created with `setContent`.
+- Size and crop on the URL (imgix): `?w=920&h=1150&fit=crop&crop=faces&q=75`. For a tighter crop of the same photo, use a focal point and zoom: `&crop=focalpoint&fp-x=.53&fp-y=.3&fp-z=1.7`. One portrait gives the hero, an avatar and an About crop.
+- One person per page: never mix two models as the same professional. When only one photo of the person exists, complete with photos of the space and objects (an armchair, a plant, a desk), never with another face.
+- `plus.unsplash.com` images are paid; skip them. Record the photo ids in the comment so the user can find them.
+- Openverse and Wikimedia Commons have open APIs that work from scripts, with the license in the response.
 
 ### Prompt recipe
 
@@ -185,7 +195,8 @@ For very large canvases, pre-render each tinted glyph once into an atlas canvas 
 - [ ] Filler removed; every remaining visual says something true about the product.
 - [ ] Apps and dashboards use the product itself, not generated art.
 - [ ] Scene written as one sentence; one style for the whole page.
-- [ ] Generation confirmed with the user, run once, saved to assets; or an empty slot plus a prompt in the report.
+- [ ] Generation confirmed with the user, run once, saved to assets; or open-license placeholders marked in the file and listed in the report; or an empty slot plus a prompt when stock is ruled out.
+- [ ] Person-led services: the person's portrait leads, one person only.
 - [ ] Edges blended into the page; alt text written; dimensions fixed; no parallax.
 - [ ] Screenshots are real, in the right state, framed with the asset files.
 - [ ] Effects only on the main visual, with the performance rules.

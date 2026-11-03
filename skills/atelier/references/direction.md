@@ -155,7 +155,7 @@ Rules for the file:
 
 ## 6. Confirm
 
-Show the surface line, the five lines, the implied system and the sketch. In a refine, show the audit with it. Then stop and wait for a yes, because changing the direction later means redoing everything. Skip the wait only when the user said to just do it.
+Show the surface line, the niche line, the five lines, the implied system and the sketch. In a refine, show the audit with it. For a landing page, also build the first screen with its photos (real or marked placeholders), screenshot it at desktop and phone width and show the images: a direction approved as text can still be rejected on sight, and the first screen is where it shows. Then stop and wait for a yes, because changing the direction later means redoing everything. Skip the wait only when the user said to just do it.
 
 ## Checklist
 

@@ -119,7 +119,8 @@ In a split hero, center the text vertically against the visual; if the visual is
 
 - Each section makes one claim with proof. Delete sections with no claim.
 - Vary compositions: a full-bleed image band, a split with text, a table or comparison, a single large quote, a product detail at full width. Not a card grid in every section.
-- One visual per section at most, and usually far fewer. The product itself is the best picture.
+- One visual per section at most. For product pages, usually far fewer: the product itself is the best picture. For personal-brand, local business and launch pages, every section has one visual anchor (a photo, numbered cards, image cards, a mosaic, a colored band); the richness floor is in `niches.md`.
+- Alternate the fields: page color, a tinted field, one dark brand band. A page that stays on one background from top to bottom reads as a document.
 - Proof is real: named customers with permission, numbers with sources, quotes with names. Otherwise leave it out or mark samples as samples.
 - Pricing is a Compare surface inside the page: aligned rows, the differences visible, one recommended plan.
 - The footer is a designed close (the name, the next step, the few links that matter), not a sitemap dump.

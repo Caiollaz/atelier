@@ -31,6 +31,7 @@ This file is for contributors (people and agents) who edit the skill. It is not 
 - **Inter and system-ui** are a tell only as an unchosen default. Chosen for a precise or technical character, they are fine.
 - **Near-black and near-white**: prefer tinted neutrals from a ramp over pure #000 and #fff. This is not a tell.
 - **Hero**: only on Decide and Learn surfaces (landing, docs, marketing). Dashboards, tools, settings and admin screens get no hero.
+- **Niche conventions**: the soft tells are defaults to avoid when nobody chose them. On marketing pages for people and places, the conventions listed in `references/niches.md` section 3 (photos in most sections, one headline emphasis system, warm palettes, section pills, pill buttons, brand seals, a floating booking button) are correct when applied on purpose and consistently. The hard tells below never get an exception. Every file that mentions one of these soft tells points to `niches.md` for the exception.
 - **Big number**: fine when the number is the message (a KPI, a results slide). A tell when it is decoration ("monument stat").
 - **Hard tells from the author** (always flag): colored side stripe on cards or callouts (accent rail, `border-left` highlight), emoji as section markers or icons, everything centered, giant hero on non-marketing screens, purple to blue gradients, the same large radius on everything.
 - **Contrast**: body text at least 4.5:1, large text and UI glyphs at least 3:1. Muted text is for meta and captions only and must still reach 4.5:1 on the surface it sits on.
