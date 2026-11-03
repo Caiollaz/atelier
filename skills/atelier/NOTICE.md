@@ -62,6 +62,10 @@ https://vercel.com/design/guidelines. Individual guidelines are cited and paraph
 
 Apple Human Interface Guidelines, Android accessibility guidance, WCAG 2.2, APCA, Practical Typography, Every Layout, Utopia, Radix Colors, Laws of UX, Nielsen Norman Group, Rauno Freiberg's "Invisible Details of Interaction Design", Josh W. Comeau's "Designing Beautiful Shadows" and Refactoring UI are cited as references in `library.md`. No text from them is reproduced beyond short paraphrases.
 
+## Market studies
+
+`niches.md`, `niche-personal-service.md` and `niche-vertical-saas.md` summarize patterns observed in public Behance projects (landing pages for psychologists, psychiatrists and healthtech products), studied as references. No layout, copy, image or identity from them is reproduced.
+
 ## Fonts and trademarks
 
 atelier ships no fonts. Typeface and product names are trademarks of their owners and appear only as references.

@@ -2,7 +2,7 @@
 
 Read this in every audit and in the final review of every refine or create. It is the catalog of signs that a screen was generated rather than designed, grouped by family, each with how to spot it and what to do instead.
 
-Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `scripts/rules.json`). Everything else needs eyes on the rendered screen. A tell is a reason to look closer, not an automatic verdict: a brand that deliberately uses one of these, sparingly and with a reason, is making a choice. Note it and move on. Marketing pages for people and places have their own conventions (photos in most sections, emphasized phrases in headlines, warm palettes, pill buttons, brand seals): `niches.md` section 3 lists them and when they stop being right. The hard tells in the checklist below hold in every niche.
+Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `scripts/rules.json`). Everything else needs eyes on the rendered screen. A tell is a reason to look closer, not an automatic verdict: a brand that deliberately uses one of these, sparingly and with a reason, is making a choice. Note it and move on. Marketing pages follow their niche, and rich niches have their own conventions (photos or product views in most sections, one emphasized phrase per headline, tinted palettes, pill buttons, brand seals): `niches.md` section 3 lists them and when they stop being right. The hard tells in the checklist below hold in every niche.
 
 ## How to use this file
 
@@ -25,7 +25,7 @@ Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `sc
 | Icon topper on every heading | A rounded square with an icon above each section title | Remove; use icons only where they help scanning |
 | Monument stat | Huge numbers with tiny labels used as decoration in a hero | Numbers only where the number is the message, with a comparison |
 | Narrow app | An app squeezed into a centered column with empty sides | App shell fills the viewport; content fluid with a sensible max width |
-| A visual on every section | Every band has an illustration, image or glow that says nothing about the product | One visual where it helps, usually only in the hero. Not a tell on personal-brand, local business and launch pages, where photos of the person, the place or the work carry each section (`niches.md`) |
+| A visual on every section | Every band has an illustration, image or glow that says nothing about the product | One visual where it helps, usually only in the hero. Not a tell on personal-brand, local business, launch and vertical SaaS pages, where photos of the person, the place or the work, or views of the real product, carry each section (`niches.md`) |
 
 ## 2. Color and surfaces
 
@@ -51,7 +51,7 @@ Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `sc
 | Headings at weight 800 or 900 as a reflex | `font-weight: 800/900`, `font-extrabold`, `font-black` `scan:heavy-weight` | 400 to 600 and size for hierarchy, unless the typeface is a heavy display face chosen on purpose |
 | Uppercase tracked labels everywhere (`NAVIGATION`, `PAID THIS MONTH`) | `text-transform: uppercase` with wide `letter-spacing`, `uppercase tracking-widest` `scan:tracked-caps` | Sentence case. Keep caps only where they carry information, sparingly |
 | Eyebrow above every heading | A small label sitting over each section title saying what the title already says | Remove it; the heading is enough |
-| One word accented in a headline | A span in a headline with italic, a gradient or the accent color, used once or differently in each heading | Treat the whole headline; or emphasize nothing. On marketing pages for people and places, one emphasis system (weight 600 plus the accent) applied to every headline is a convention, not a tell (`niches.md`) |
+| One word accented in a headline | A span in a headline with italic, a gradient or the accent color, used once or differently in each heading | Treat the whole headline; or emphasize nothing. On marketing pages in rich niches, one emphasis system (an italic serif phrase, weight 600 in the accent, or two tones by line) applied to every headline is a convention, not a tell (`niches.md` section 3) |
 | Too many sizes and weights | Six or more sizes and four weights on one screen | A few steps from the scale; weights 400 and 500, 600 for rare emphasis |
 | Mixed number formats | `$48,210` next to `$124,860.40`, `07`, proportional digits jumping in tables | One format; `font-variant-numeric: tabular-nums` |
 | Negative tracking on small text | `tracking-tight` or negative `letter-spacing` under 16px `scan:tight-small` | Zero or slightly positive below 16px; tighten only display sizes |

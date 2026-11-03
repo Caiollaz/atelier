@@ -111,15 +111,15 @@ Start from the argument and the idea (`direction.md`), not from a section templa
 | **Asymmetric split**: text on one side, one solid visual of at least half the width on the other | Most products; the visual is the product preview or an object |
 | **Text over a large product view**: short headline above, the real interface large below | Tools whose product is the best argument |
 | **Type only**: a large statement and the action, nothing else | Strong copy and a confident brand; short pages |
-| **Stacked and centered** | Only for a very short hero with no visual. Long headlines never center |
+| **Stacked and centered** | Only for a very short hero with no visual, or for vertical SaaS with a large product view below that anchors it (`niche-vertical-saas.md`). Long headlines never center |
 
-In a split hero, center the text vertically against the visual; if the visual is much taller, shorten it. Prefer one solid visual over floating cards or tilted devices next to the text.
+In a split hero, center the text vertically against the visual; if the visual is much taller, shorten it. Prefer one solid visual over floating cards or tilted devices next to the text. Chips orbiting a real product view are a vertical SaaS convention (`niches.md` section 3).
 
 ### After the hero
 
 - Each section makes one claim with proof. Delete sections with no claim.
 - Vary compositions: a full-bleed image band, a split with text, a table or comparison, a single large quote, a product detail at full width. Not a card grid in every section.
-- One visual per section at most. For product pages, usually far fewer: the product itself is the best picture. For personal-brand, local business and launch pages, every section has one visual anchor (a photo, numbered cards, image cards, a mosaic, a colored band); the richness floor is in `niches.md`.
+- One visual per section at most. For product pages, usually far fewer: the product itself is the best picture. For personal-brand, local business and launch pages, every section has one visual anchor (a photo, numbered cards, image cards, a mosaic, a colored band); the richness floor is in the niche playbooks (`niches.md`).
 - Alternate the fields: page color, a tinted field, one dark brand band. A page that stays on one background from top to bottom reads as a document.
 - Proof is real: named customers with permission, numbers with sources, quotes with names. Otherwise leave it out or mark samples as samples.
 - Pricing is a Compare surface inside the page: aligned rows, the differences visible, one recommended plan.

@@ -14,7 +14,7 @@ Always reply in the language the user writes in. The files of this skill are in 
 
 - **It belongs to this product.** Swap the product name for a competitor's: if the screen still fits, it is a template. Push copy, visual and signature until it doesn't.
 - **It meets its market's bar.** A psychologist's landing page is judged against other psychologists' pages, not against a SaaS dashboard. Name the niche and match the richness it expects (`references/niches.md`): a page that is clean but sparse for its market is unfinished.
-- **Quiet chrome, one bright moment, in apps and tools.** Navigation, buttons, borders and labels stay calm in tinted neutrals and one accent. The richness (color, material, detail) goes into one or two moments of content: a chart drawn with care, a real object, the product itself. Marketing pages for people and places follow their niche playbook instead.
+- **Quiet chrome, one bright moment, in apps and tools.** Navigation, buttons, borders and labels stay calm in tinted neutrals and one accent. The richness (color, material, detail) goes into one or two moments of content: a chart drawn with care, a real object, the product itself. Marketing pages follow their niche playbook instead (`references/niches.md`).
 - **Every value is a decision.** Sizes, gaps, colors, radii and durations come from a small scale. Nothing is "whatever looked fine".
 - **Real content.** Plausible data, real names, real screenshots. Never invented metrics, testimonials, logos or features.
 - **Motion earns its place.** Fast, purposeful, interruptible, and absent where people repeat an action all day.
@@ -104,7 +104,7 @@ Useful searches: `rg -l "DESIGN.md|tokens|theme" -g '!node_modules'`, `rg -n ":r
 1. **Brief.** What it is, for whom, the one job of this screen, the surface, hard constraints (brand, stack, content). If the brief does not name the subject, propose one in a sentence and confirm. Ask at most three focused questions, and only when the answer changes the result; otherwise state your assumption and go.
 2. **Recon** if there is a project. Existing tokens and components win.
 3. **Surface.** Name exactly one (`references/direction.md`). A hero belongs only to Decide and Learn surfaces.
-4. **Niche.** For marketing pages, name the niche and its richness, and look at two or three real references from that market, or the ones the user sent (`references/niches.md`). The references set the quality bar; the direction makes the page this product's own.
+4. **Niche.** For marketing pages, name the niche and its richness, and look at three or four real references from that market, or the ones the user sent (`references/niches.md`), then read the niche playbook it points to. The references set the quality bar; the direction makes the page this product's own.
 5. **Direction.** Write the five lines (product, character, world, moments, signature) and the system choices they imply, inside the conventions of the niche. Save them as `DESIGN.md` at the project root (format in `references/direction.md`; if Node is available, `npx -y @google/design.md lint DESIGN.md` also checks contrast). For a landing page, build and render the first screen with real or placeholder photos (`references/visuals.md`). Stop for confirmation on the render.
 6. **Plan.** Tokens tuned from `references/tokens.md`, a layout sketch (ASCII is enough) with alignment stated, and the moment. Then the de-default check: imagine a similar prompt from someone else; if you would land on the same page, change that part and say what you changed.
 7. **Build** with real content, in the project's stack, with all states (loading, empty, error, success, disabled, focus) and both themes if the product has them. Respect the quality floor in `references/interaction.md` and the richness floor of the niche.
@@ -157,7 +157,7 @@ Keep reports short. The screen is the deliverable.
 | `scripts/contrast.mjs <fg> <bg>` or `--css <file>` | WCAG contrast for color pairs or the custom properties in a CSS file. |
 | `assets/phone-frame.html`, `assets/browser-frame.html` | Device frames for real screenshots in landing pages and decks. |
 | `examples/slop-dashboard.html` | A deliberately sloppy screen to try the skill and the scanner on. |
-| `examples/landing-personal-service.html` | The quality bar for a personal-brand service landing page (a fictional psychologist). Read it before building one. |
+| `examples/landing-personal-service.html` | One finished personal-brand service page (a fictional psychologist; sans, caramel, shaped frame). Read it for the level of finish, not for its choices: the axes to choose from are in `references/niche-personal-service.md`. |
 
 Image generation is optional. If your environment has an image tool (fal, Replicate, OpenAI images or a design tool, usually through MCP), `references/visuals.md` says when and how to use it. Without one, use open-license photos as marked placeholders in drafts (`references/visuals.md` says how to find them from an agent), and write the prompt for the final image in the report.
 
@@ -166,7 +166,9 @@ Image generation is optional. If your environment has an image tool (fal, Replic
 | File | Read when |
 |---|---|
 | `references/direction.md` | Starting any refine or create: surfaces, the five direction lines, `DESIGN.md` format |
-| `references/niches.md` | Any marketing page: the niche, its richness floor, references, conventions that are not tells, the personal-brand service playbook |
+| `references/niches.md` | Any marketing page: the niche, its richness, how to study references, conventions that are not tells |
+| `references/niche-personal-service.md` | A page that sells a person: hero variants, type options, palette families, section recipe, council rules, market slop |
+| `references/niche-vertical-saas.md` | Software for a profession or industry (clinics, health, legal): hero, sections, devices, palettes, market slop |
 | `references/audit.md` | Judging existing UI: scoring, grading, report details |
 | `references/tells.md` | Every audit and every final review: the complete catalog of AI tells with detection and fix |
 | `references/tokens.md` | Choosing or fixing spacing, color, type, radius, depth, icons, buttons |

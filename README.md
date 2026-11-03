@@ -57,7 +57,9 @@ skills/atelier/
   SKILL.md                 modes, operating rules, passes, non-negotiables, output contracts
   references/
     direction.md           surfaces, the five direction lines, the idea, DESIGN.md
-    niches.md              market calibration: richness floor, references, conventions, service playbook
+    niches.md              market calibration: niches, references, conventions that are not tells
+    niche-personal-service.md  playbook for psychologists, doctors, lawyers, coaches
+    niche-vertical-saas.md     playbook for clinic, health and other vertical software
     audit.md               how to look, score, grade and report
     tells.md               the catalog of AI tells, with detection and fix
     tokens.md              spacing, color ramps, type, radius, depth, icons, buttons

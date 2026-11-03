@@ -23,7 +23,7 @@ A physical thing the product deals with (a payment card, a receipt, a ticket, a 
 4. **Real pictures from open collections** (Openverse, Wikimedia Commons, museum open-access programs, Unsplash) with the license respected and the credit recorded. A found picture is never presented as the client's own.
 5. **Type and color alone.** A confident typographic hero is better than a generic picture.
 
-One visual where it helps, usually only in the hero, for product pages. A visual on every section is a tell there; on personal-brand, local business and launch pages it is the expected bar (`niches.md`).
+One visual where it helps, usually only in the hero, for developer products. A visual on every section is a tell there; on personal-brand, local business and launch pages it is the expected bar (`niches.md`).
 
 ## 3. Write the scene as one sentence
 
