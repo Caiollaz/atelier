@@ -1,5 +1,7 @@
 # Notices and attributions
 
+This file ships inside the skill folder so the credits travel with every install. Keep it, with `LICENSE` (CC BY 4.0, for the text) and `LICENSE-CODE` (MIT, for the scripts and code samples), when you copy, share or adapt atelier. atelier itself is by Caio Labella, https://github.com/Caiollaz/atelier.
+
 atelier is an original synthesis. Its references and scripts were written for this project, but they adapt ideas, rules and values from the works below. Where a source's license requires it, its copyright notice is reproduced here. Changes: material was rewritten, merged, reorganized and, where sources disagreed, reconciled into one set of house rules; values were checked and some were corrected (for example, muted text colors were adjusted to meet WCAG contrast).
 
 ## unslop

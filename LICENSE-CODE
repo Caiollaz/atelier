@@ -20,6 +20,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-This license covers the scripts in skills/atelier/scripts, the HTML assets and
+This license covers the scripts in skills/atelier/scripts (or scripts/ when the skill is installed on its own), the HTML assets and
 examples, and code samples inside the reference files. The written text is
 licensed under CC BY 4.0 (see LICENSE).

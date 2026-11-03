@@ -100,7 +100,7 @@ atelier é uma skill de design para agentes de código. Ela audita produtos que 
 
 ## Credits
 
-atelier stands on the work of others, adapted and rewritten. Full attributions and licenses are in [NOTICE.md](NOTICE.md).
+atelier stands on the work of others, adapted and rewritten. Full attributions and licenses are in [NOTICE.md](skills/atelier/NOTICE.md), which ships inside the skill folder so the credits travel with every install.
 
 - [unslop](https://heydamir.design/unslop) by Damir Sokolovsky ([@heydamir](https://x.com/heydamir)), CC BY 4.0
 - [Emil Kowalski's skills](https://github.com/emilkowalski/skills), MIT
@@ -112,4 +112,4 @@ atelier stands on the work of others, adapted and rewritten. Full attributions a
 
 ## License
 
-Text and references: [CC BY 4.0](LICENSE). Scripts and code samples: [MIT](LICENSE-CODE).
+Text and references: [CC BY 4.0](LICENSE). Scripts and code samples: [MIT](LICENSE-CODE). Both files are also copied into `skills/atelier/`.
