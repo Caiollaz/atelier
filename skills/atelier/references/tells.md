@@ -18,7 +18,9 @@ Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `sc
 | Wrong surface: a marketing hero on a dashboard, settings page, admin or tool | A big headline block and centered call to action above the actual work | Name the surface (`direction.md`); tools open on their content |
 | Hero plus three feature cards as the default page | Headline, subhead, two buttons, then a row of three equal icon cards | Re-compose around the one moment that proves the headline; vary sizes |
 | Everything centered | Most text blocks centered, columns stacked down the middle, `text-align: center` everywhere `scan:center-heavy` | Left-align long text; asymmetric split or text over a large product view |
-| Giant hero with nothing in it | A viewport-tall hero whose only content is a headline and buttons | Shorter hero, or one real visual; let the product view start in the first screen |
+| Giant hero with nothing in it | A viewport-tall hero whose only content is a headline and buttons | Shorter hero, or one real visual; let the product view start in the first screen. A type-only hero is fine when the type is the image (display at showcase scale, `showcase.md`) |
+| Dead band under the hero | Hundreds of pixels of empty field between the hero and the next section, worst at 2560 | Let the product or the next section start inside the first screen |
+| The visible display is not the `h1` | The big headline is a `div`; the `h1` is a small label or missing | The display headline is the `h1` |
 | Equal cards side by side, each with the same chart or layout | Three or four identical cards in a row | One main element, smaller supporting ones of a different kind |
 | Bento grid as a reflex | A mosaic of rounded tiles with mixed sizes and no reason for the mosaic | A layout that follows the content's order and importance |
 | Feature tiles: icon, bold title, vague line, times three | Repeated blocks with the same structure and no real content | Fewer features, concrete copy, show the product doing the thing |
@@ -125,7 +127,8 @@ Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `sc
 | Pill badge above the headline (`✨ Introducing X 2.0`) | Visual | Remove, or a quiet text link if it is real news. A plain section name in a pill, the same on every section, is fine on niche pages (`niches.md`) |
 | Gradient or shimmer on the headline | `scan:gradient-text` | Solid text |
 | Three or more buttons, or chips and avatars stacked under the buttons | Count | One primary, at most one secondary |
-| Floating blobs, orbs, grids or glowing lines behind the hero | Visual | Plain background, one real product visual or one scene from the world |
+| Floating blobs, orbs, grids or glowing lines behind the hero | Visual | Plain background, one real product visual or one scene from the world. A structural grid or a generative field drawn from the product (dot matrix, ASCII, line figures) is a brand world, not a blob (`niche-vertical-saas.md`) |
+| A modal, email gate or consent box over the first screen | Visual | The first screen and the demo work at once; consent as a small bar |
 | Stock robots, glowing brains, circuit lines, holograms for AI | Visual | Show what the AI actually produces |
 | Text, fake buttons or a fake logo baked into an image | Visual | Real text in the page; images without text |
 | Image with a hard edge or a different black than the page | Visual | Match the page color; mask the edges |
@@ -141,11 +144,11 @@ Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `sc
 | Looping motion on things that are not live | `animate-pulse`, `animate-ping`, `animate-bounce`, `infinite` on decorative elements, breathing glows, shimmer on headings `scan:infinite-loop` | Static. Loop only real loaders and live indicators |
 | Hover scale or lift on cards | `hover:scale-*`, `:hover { transform: scale` on cards `scan:hover-scale` | A color or surface step on hover; a press scale on buttons |
 | Ungated hover | `:hover` rules outside `@media (hover: hover) and (pointer: fine)` `scan:ungated-hover` | Gate them; Tailwind v4 `hover:` is gated by default |
-| Everything flies in on load or on scroll | Scroll-reveal on every section, cards entering from different sides | At most one short entrance of the main content, small stagger |
+| Everything flies in on load or on scroll | Scroll-reveal on every section, cards entering from different sides | At most one short entrance of the main content, small stagger. Showcase tier: one motion idea, one reveal per section, never body text (`showcase.md`) |
 | Animation on keyboard actions or the command palette | Motion on things opened by shortcuts | None |
 | Durations over 300ms on small UI | `duration-500`, `500ms` on buttons, menus, tooltips `scan:slow-ui` | 150 to 250ms (`motion.md`) |
 | Animating layout properties | `transition` on `width`, `height`, `top`, `left`, `margin`, `padding` `scan:layout-transition` | `transform` and `opacity` |
-| Parallax and floating loops | Visual | Static layout |
+| Parallax and floating loops | Visual | Static layout. Showcase tier: parallax of at most 15% on images only, never on text, off under reduced motion |
 | No reduced-motion handling | No `prefers-reduced-motion` anywhere while things move `scan:no-reduced-motion` | Gentler variant: keep opacity, drop movement |
 
 ## 10. Mobile and robustness

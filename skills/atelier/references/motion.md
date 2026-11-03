@@ -15,7 +15,8 @@ Animating something that should not move is the worse failure; zero lines of mot
 | Name the purpose in one word | If you cannot name it, do not build it | Feedback, spatial consistency, state, preventing a jarring change, explanation (marketing and onboarding), delight (rare tier only) |
 | Functional data does not move for style | Motion on what the user reads hinders reading | Charts, tables, numbers: animate only a real change in value on user action, never on every mount or refresh |
 | Entrances are for content the user asked for and waits on | A list scrolled past all day should already be there | No entrance on frequent lists |
-| Marketing gets more latitude | The visitor is learning, not working | One hero entrance and explanatory motion; still no reveal on every section |
+| Marketing gets more latitude | The visitor is learning, not working | One hero entrance and explanatory motion inside the content (a product that types, a view that cycles); still no reveal on every section |
+| Showcase pages choreograph the scroll | The page is the experience (portfolio, brand, launch) | One reveal or one scrub per section, one pinned sequence, smooth scroll; only with the floor of `showcase.md` |
 
 ## Tool ladder
 
@@ -28,6 +29,9 @@ Stop at the first rung that fits.
 | CSS animation | Predetermined motion that must stay smooth while the page is busy |
 | WAAPI `element.animate()` | Programmatic motion with CSS performance, no library |
 | Motion library | Springs, shared layout, exit of unmounted components, gesture-driven values |
+| CSS scroll-driven animation (`animation-timeline: view()` or `scroll()`) | Showcase tier: reveals, scale and progress tied to scroll, under `@supports` and `prefers-reduced-motion: no-preference` |
+| IntersectionObserver | Showcase and Marketing: the active item of an index, the step of a pinned sequence, pausing video offscreen |
+| Lenis, GSAP ScrollTrigger from a pinned CDN version | Showcase tier only: smooth scroll, pinning and scrubbing that CSS cannot do yet. Off under reduced motion |
 
 CSS can run off the main thread; JS motion drops frames only when the page is busy during it, which is rare, so JS is fine for interruptible, gesture-driven work. Do not install a library for a fade. Extend existing tokens; a parallel motion system is a defect. A toast, drawer or menu is a component: use the project's library, not a hand-rolled div.
 
@@ -94,7 +98,7 @@ Store curves and durations as tokens. One curve per purpose, never one curve for
 | Asymmetric timing where the user decides | Slow on the deliberate phase, snappy on the response | Hold-to-confirm: press 2s `linear`, release 200ms `--ease-out` |
 | Animate a modal's backdrop opacity with the modal | They read as one surface | Same duration and curve |
 | Stagger groups 30 to 80ms between items | Longer feels slow, shorter reads as simultaneous | At most 6 items; stagger never blocks interaction |
-| At most one orchestrated entrance on load | Restraint | Main content fades and rises 6 to 12px |
+| At most one orchestrated entrance on load (Product and Marketing tiers) | Restraint | Main content fades and rises 6 to 12px. Showcase: one reveal per section, 600 to 1200ms, `cubic-bezier(0.16, 1, 0.3, 1)` (`showcase.md`) |
 | Tooltips: delay the first, then instant | The delay prevents accidents; after that, waiting slows the toolbar | `data-instant` sets `transition-duration: 0ms` |
 | Toasts are uninvited | Quieter than motion the user asked for | Enter from their edge; tune opacity and height in stacks by eye, recheck the next day |
 
@@ -273,7 +277,7 @@ Never ship:
 - [ ] Animated blur at 20px or more; `will-change` without a measured reason.
 - [ ] Ungated `:hover`; cards that scale or lift.
 - [ ] No reduced-motion variant, or one that removes all feedback.
-- [ ] Everything entering at once, more than one orchestrated entrance, or scroll reveal on every section.
+- [ ] Everything entering at once, more than one orchestrated entrance, or scroll reveal on every section (outside the Showcase tier; inside it, more than one reveal per section or more than one pinned sequence).
 - [ ] Spring bounce on simple UI; bounce without momentum.
 - [ ] Spinner or shimmer on work that resolves under 300ms.
 - [ ] Hand-typed curves that almost match the tokens.

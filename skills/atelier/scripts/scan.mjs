@@ -77,11 +77,26 @@ const snippetAt = (text, index) => {
   return line.length > 90 ? line.slice(0, 87) + '...' : line;
 };
 const seen = new Set();
+// A deliberate choice is marked in the source with a comment on the same line or the line above:
+// `/* atelier-ok: tracked-caps, infinite-loop */`. It silences those rule ids at that spot only.
+const rawLines = new Map();
+let silenced = 0;
+function marcado(id, file, line) {
+  if (!line) return false;
+  if (!rawLines.has(file)) rawLines.set(file, readFileSync(file, 'utf8').split('\n'));
+  const lines = rawLines.get(file);
+  // the line itself, the line above, or the first line inside a CSS rule (hits point at the selector)
+  return [lines[line - 1], lines[line - 2], lines[line]].some((l) => {
+    const m = l && /atelier-ok:\s*([\w\s,-]+)/.exec(l);
+    return Boolean(m) && m[1].split(/[\s,]+/).includes(id);
+  });
+}
 function add(id, file, text, index, note) {
   if (!byId[id]) return;
   const key = `${id}|${file}|${text == null ? note : lineAt(text, index)}`;
   if (seen.has(key)) return;
   seen.add(key);
+  if (text != null && marcado(id, file, lineAt(text, index))) { silenced++; return; }
   findings.push({ id, file: rel(file), line: text == null ? 0 : lineAt(text, index), snippet: note || (text == null ? '' : snippetAt(text, index)) });
 }
 
@@ -426,4 +441,5 @@ const sev = { broken: 0, off: 0, polish: 0 };
 const fam = {};
 for (const f of findings) { sev[byId[f.id].severity]++; fam[byId[f.id].family] = (fam[byId[f.id].family] || 0) + 1; }
 console.log(`\n${findings.length} hits: ${sev.broken} broken, ${sev.off} off, ${sev.polish} polish. By family: ${Object.entries(fam).map(([k, v]) => `${k} ${v}`).join(', ')}.`);
+if (silenced) console.log(`${silenced} hit(s) marked deliberate with atelier-ok comments and not listed.`);
 console.log('Heuristic: confirm each hit on the rendered screen; a deliberate, consistent brand choice is not a tell.');

@@ -119,7 +119,7 @@ In a split hero, center the text vertically against the visual; if the visual is
 
 - Each section makes one claim with proof. Delete sections with no claim.
 - Vary compositions: a full-bleed image band, a split with text, a table or comparison, a single large quote, a product detail at full width. Not a card grid in every section.
-- One visual per section at most. For product pages, usually far fewer: the product itself is the best picture. For personal-brand, local business and launch pages, every section has one visual anchor (a photo, numbered cards, image cards, a mosaic, a colored band); the richness floor is in the niche playbooks (`niches.md`).
+- One visual per section at most, and every section of a marketing page has one visual anchor. On software pages it is the product shown working or the brand world (`niche-vertical-saas.md`). For personal-brand, local business and launch pages, every section has one visual anchor (a photo, numbered cards, image cards, a mosaic, a colored band); the richness floor is in the niche playbooks (`niches.md`).
 - Alternate the fields: page color, a tinted field, one dark brand band. A page that stays on one background from top to bottom reads as a document.
 - Proof is real: named customers with permission, numbers with sources, quotes with names. Otherwise leave it out or mark samples as samples.
 - Pricing is a Compare surface inside the page: aligned rows, the differences visible, one recommended plan.
@@ -162,18 +162,18 @@ In a split hero, center the text vertically against the visual; if the visual is
 
 Many buyers and most designers look at a 2K or 4K monitor. A page designed at 1440 and centered becomes an island at 2560: a 1200px column of small type with empty bands on both sides and a first screen that fills half the height. `scripts/shoot.mjs` captures 2560x1440 by default; judge that capture as seriously as the phone.
 
-What well-made sites do at 2560 (measured on incident.io, Parloa, AccessGrid, Raycast, Polar):
+What well-made sites do at 2560 (measured on twenty-four SaaS pages and fourteen Awwwards Sites of the Day):
 
 | Layer | Width at 2560 | How |
 |---|---|---|
 | Text column (headline, paragraphs, nav content) | 1200 to 1320, centered | `max-width` on the text container; the measure stays readable |
-| Visual stage (product view, hero image, bento) | 1600 to 1760 | A second, wider container: `width: min(100% - 2 * gutter, 1760px)`. The product is wider than the headline above it |
+| Visual stage (product view, hero image, bento) | 1320 to 1760 | A second, wider container: `width: min(100% - 2 * gutter, 1760px)`. The product is at least as wide as the headline above it. Most top SaaS keep the stage near 1450 and let the field carry the rest |
 | Fields (section backgrounds, bands, full-bleed photos, art) | 100% of the viewport | Backgrounds, photos and dark bands run edge to edge; a tinted field behind the stage can stop at about 1800 with a large radius |
 | Structure (grid lines, borders of a framed column) | Edge to edge, or framing the column down the page | Thin lines that continue past the column make the sides intentional |
 
 Rules:
 - The first screen is composed for 2560x1440 too: the hero fills the viewport height (`min-height: min(100svh, 1100px)` or content that reaches it) and the product or the main visual is visible in it. A hero that ends at 600px on a 1440px tall screen is a half-empty page.
-- Type keeps growing until about 1920 and then stops: `clamp()` with the preferred value in `vw` and a max reached near 1920 (hero about 72 to 88px, section titles 48 to 56px, body 18px).
+- Display type by tier (`showcase.md`): Marketing keeps the 1440 value or grows at most 1.25 times at 2560 (a hero of 64 to 160px at 1440); Showcase keeps scaling with `vw` to 2560. Body stops near 18 to 20px; labels grow from 12 to 14px. The field, not stretched type, carries the width in Marketing.
 - Every section has either a full-bleed field or a stage wider than the text. A page where every section is a 1200px column on the same background fails at 2560 even if it is good at 1440.
 - Phone first is not an excuse: the 390, the 1440 and the 2560 are three compositions.
 

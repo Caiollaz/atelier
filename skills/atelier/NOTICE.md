@@ -64,7 +64,7 @@ Apple Human Interface Guidelines, Android accessibility guidance, WCAG 2.2, APCA
 
 ## Market studies
 
-`niches.md`, `niche-personal-service.md` and `niche-vertical-saas.md` summarize patterns observed in public Behance projects (landing pages for psychologists, psychiatrists and healthtech products), studied as references. No layout, copy, image or identity from them is reproduced.
+`niches.md`, `niche-personal-service.md`, `niche-vertical-saas.md` and `showcase.md` summarize patterns observed in public Behance projects (landing pages for psychologists, psychiatrists and healthtech products), public SaaS landing pages featured on saaslandingpage.com, and Awwwards Sites of the Day, studied as references at 1440 and 2560. No layout, copy, image or identity from them is reproduced; site names appear only as references.
 
 ## Fonts and trademarks
 

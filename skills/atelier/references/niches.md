@@ -8,14 +8,13 @@ Write one line before the direction: "Niche: personal-brand service. Richness: h
 
 | Niche | Examples | The visual is | Richness | Playbook |
 |---|---|---|---|---|
-| **Developer product** | Developer tools, infrastructure, APIs | The product, as a coded preview or real screenshot | Restrained: one moment, quiet chrome | The rest of this skill as written |
-| **Vertical SaaS** | Clinic management, healthtech, compliance, legal, accounting, real estate software | The real product in most sections, framed, with chips | Medium-high | `niche-vertical-saas.md` |
+| **SaaS and software** | Developer tools, APIs, infrastructure, vertical SaaS (clinic management, healthtech, legal, accounting, real estate), B2B and consumer apps | The product shown working, plus one brand world | High: quiet chrome, rich product, showcase-scale type in the hero | `niche-vertical-saas.md` |
 | **Personal-brand service** | Psychologist, psychiatrist, nutritionist, doctor, dentist, lawyer, coach, trainer, photographer, architect | The person: portraits, at work, their space | High | `niche-personal-service.md` |
 | **Local business** | Restaurant, bakery, salon, clinic, gym, shop, hotel | The place and what it makes | High | Section 4 |
 | **Info product and launch** | Course, mentorship, ebook, event, community | The author and the transformation | High, long page | Section 4 |
 | **Editorial and portfolio** | Writer, studio, magazine, case studies | The work | Medium, type-led | Section 4 |
 
-When in doubt between two, the one where a person or a place is what the buyer chooses wins the richer playbook.
+When in doubt between two, the one where a person or a place is what the buyer chooses wins the richer playbook. Then pick the craft tier (`showcase.md`): Marketing for most pages, Showcase when the page has to stand next to Awwwards Sites of the Day or the user asks for that level.
 
 ## 2. Calibrate with real references
 
@@ -45,7 +44,7 @@ The soft tells in `tells.md` are defaults to avoid when nobody chose them. In th
 | Chips orbiting a product view | Floating cards next to the text | Three to six, one style, feature names | Chips with fake numbers, or as decoration with no product |
 | A floating WhatsApp or booking button | Extra buttons | Local services where that channel is how people book, especially in Brazil | It covers the primary action or a form; keep it 56 to 60px, 20px from the bottom right |
 
-Note in the report which conventions you used. `scan.mjs` flags some of them (pills, seal rotation, caps, the sticky nav blur) as polish: list them as deliberate.
+Note in the report which conventions you used. `scan.mjs` flags some of them (pills, seal rotation, caps, the sticky nav blur) as polish: mark each deliberate one in the source with `/* atelier-ok: <rule-id> */` on the line, the line above or the first line of the CSS rule, so the next scan shows only real findings. Never mark a hard tell.
 
 ## 4. Other niches in short
 

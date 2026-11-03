@@ -59,7 +59,8 @@ skills/atelier/
     direction.md           surfaces, the five direction lines, the idea, DESIGN.md
     niches.md              market calibration: niches, references, conventions that are not tells
     niche-personal-service.md  playbook for psychologists, doctors, lawyers, coaches
-    niche-vertical-saas.md     playbook for clinic, health and other vertical software
+    niche-vertical-saas.md     playbook for software pages: brand world, product as illustration
+    showcase.md            craft tiers and the Awwwards-level toolkit with its floor
     audit.md               how to look, score, grade and report
     tells.md               the catalog of AI tells, with detection and fix
     tokens.md              spacing, color ramps, type, radius, depth, icons, buttons

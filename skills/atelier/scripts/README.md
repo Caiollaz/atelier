@@ -29,6 +29,8 @@ node shoot.mjs ./index.html --only phone --theme dark
 
 Files are written as `<host>-<viewport>-<theme>.png` in `./atelier-shots` by default. If light and dark come out the same, it says the page probably has no dark theme.
 
+In `scan.mjs`, a deliberate choice is marked in the source with a comment on the same line, the line above or the first line inside the CSS rule: `/* atelier-ok: tracked-caps, infinite-loop */`. Those rule ids are silenced at that spot only, and the summary says how many hits were marked.
+
 Setup, once per machine or project:
 
 ```bash

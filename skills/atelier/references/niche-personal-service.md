@@ -6,9 +6,11 @@ Read this when the page sells a person: psychologist, psychiatrist, therapist, n
 
 People choose a therapist, a doctor or a lawyer by trusting a person. The face, the voice in first person and the space are the argument. A page without the person in the first screen fails, however clean. Prefer three or more photos of the same person to any stock picture; a page with four portraits and no stock reads more trustworthy than one with a dozen stock scenes.
 
+Start from what the professional already publishes. Their Instagram is usually the richest source: real portraits, the office, the brand they already use (colors, type, stickers, graphic devices), the registry number and the audience in the bio, where they work. Read it first (`visuals.md`, assets the client owns), download what you will use, and let the page look like the same person the patient follows.
+
 ## 2. Choose the hero
 
-All four work. Pick by the photos you have and the character.
+All five work. Pick by the photos you have, the character and the tier (`showcase.md`).
 
 | Variant | What it is | Needs |
 |---|---|---|
@@ -16,6 +18,7 @@ All four work. Pick by the photos you have and the character.
 | **Shaped frame** | Portrait in an arch (top radius half the width) or a 16 to 20px rectangle, with an offset outline 20px away or a tinted block behind | Any portrait |
 | **Photo card with caption** | Portrait in a rounded card; a white strip under it with the name and the registry | Any portrait |
 | **Dark photo hero** | Full-bleed photo of the office with a gradient overlay in the dark brand color, the cutout person on the right, light text left | A cutout and a room photo; the strongest, and the hardest to make legible |
+| **Quiet full-bleed field** (seen on an award-winning clinic site) | A full-bleed photograph or a slow muted video of the room, the hands, window light; a name bar ("Name · Psicóloga · CRP") at mid-height that rides down and docks to the top as a solid bar; one statement in a text serif below | Good photography of the space or a short calm clip; a pause control on video. Suits the Showcase tier |
 
 Optional devices on the hero, two at most: a name chip overlapping the photo (round avatar, name, registry), a small round seal with the monogram (static, or rotating in about 24s and still under reduced motion), the giant monogram letter behind.
 
@@ -28,6 +31,7 @@ Copy in the first screen: a small line with the role and the registry ("Psicólo
 | **Serif, light** (most common) | A light display serif at 300 to 400 (Gilda Display, Cormorant, Newsreader, Fraunces at low weight) | The phrase in italic, in the accent or a second ink | A quiet sans (Figtree, Archivo, Manrope) |
 | **Serif, bookish** | A text serif at 500 to 600 (Source Serif, Newsreader, Fraunces) | Italic in the accent | A quiet sans |
 | **Sans, light** | A sans with a real 300 (Figtree, Manrope, Plus Jakarta Sans) | The phrase at 600 in the accent | The same sans |
+| **Text serif, regular** (calm, editorial) | A text serif at 400 for statements of 40 to 56px with a hanging indent of about a quarter of the column (Newsreader, Source Serif) | None, or one italic phrase | A grotesk at 15 to 16px, uppercase labels at 12 to 13px as a system |
 
 One emphasis system for every headline on the page. Two families at most, plus a script only for the monogram. The repo example (`examples/landing-personal-service.html`) uses the sans option; the serif options are more common in the market.
 
@@ -47,7 +51,7 @@ Starting points: tune toward the person (their clothes, their office, their logo
 
 ## 5. Section recipe
 
-Pick eight to eleven. Every section has one visual anchor: a portrait, icon cards, image cards, a mosaic, tiles or a field change.
+Pick eight to eleven in the Marketing tier; six to eight larger ones are enough in the Showcase tier, where each section carries more (a pinned process, a full-bleed photo band). Every section has one visual anchor: a portrait, icon cards, image cards, a mosaic, tiles or a field change. In the Showcase tier, the process can be one pinned sequence with a "n : 4" counter and a progress hairline, and the formats a two-up duotone split (`showcase.md`).
 
 | Section | Claim | Composition |
 |---|---|---|

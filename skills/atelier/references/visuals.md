@@ -18,12 +18,12 @@ A physical thing the product deals with (a payment card, a receipt, a ticket, a 
 ## 2. The order of preference
 
 1. **The product itself.** For a person-led service (therapist, doctor, lawyer, coach), the product is the person: their portrait leads the hero, and photos of them and their space carry the page (`niches.md`). For software, a coded preview of the one moment that proves the headline: a scheduler shows one week with a booked slot; a code review tool shows one diff with one comment; a habit app shows one streak card. Use the project's own components, or careful HTML in the new palette, with plausible data. Frame it as a window or a device only if that helps it read.
-2. **Assets the client owns:** product photography, screenshots, team and place photos.
+2. **Assets the client owns:** product photography, screenshots, team and place photos. Look for them where they already live before searching stock: the client's Instagram, site, Google Business profile, LinkedIn. Read a public Instagram with a scraping tool when one is available (an Apify Instagram Actor through MCP returns the bio, the profile photo and the posts) and download the images into the project at once: social CDN links expire within days. The posts also carry the brand the client already uses (palette, type, graphic devices); start the direction from it.
 3. **A generated image** from the world (section 4), when a tool is available.
 4. **Real pictures from open collections** (Openverse, Wikimedia Commons, museum open-access programs, Unsplash) with the license respected and the credit recorded. A found picture is never presented as the client's own.
 5. **Type and color alone.** A confident typographic hero is better than a generic picture.
 
-One visual where it helps, usually only in the hero, for developer products. A visual on every section is a tell there; on personal-brand, local business and launch pages it is the expected bar (`niches.md`).
+A visual on every section that says nothing about the product is a tell. On marketing pages the bar is the opposite: the product shown working, a brand world, photographs of the person or the place, in most sections (`niches.md`, `niche-vertical-saas.md`, `showcase.md`).
 
 ## 3. Write the scene as one sentence
 
