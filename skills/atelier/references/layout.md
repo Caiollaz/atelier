@@ -135,6 +135,8 @@ In a split hero, center the text vertically against the visual; if the visual is
 
 ## Decks, reports and one-pagers (Present)
 
+The build of a deck shown in a browser is in `slides.md`; diagrams are in `diagrams.md`.
+
 - One message per slide. The title is the message ("Search went from 4 filters to 1"), not the topic ("Search update").
 - A results deck has four to seven slides: cover, one per result, one summary.
 - One highlight per slide. Two big numbers means two slides. The big number is the message, so it is honest, sourced and has its comparison.

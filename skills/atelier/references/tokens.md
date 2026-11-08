@@ -4,6 +4,20 @@ Read this when you choose or repair the system: spacing, layout sizes, color, ty
 
 Write tokens as CSS custom properties (or the project's theme format) and reference them everywhere. A raw hex or a one-off pixel value inside a component is a finding.
 
+## Hierarchy before color
+
+Fix these first. Tokens cannot rescue a screen where everything competes.
+
+| Rule | Why | Value or fix |
+|---|---|---|
+| Check it in grayscale | Color used as a crutch hides a weak hierarchy | Desaturate the render or build in neutrals first; add the accent last |
+| Check it blurred | The eye sees mass before it reads | Blur the render by 8 to 12px: the primary thing must still be the first thing you find |
+| De-emphasize before emphasizing | Making the rest quieter lifts the primary without adding noise | Soften the competing text or fill before enlarging the main element |
+| Do not stack levers | Large and bold and dark at once is shouting | Pick size or weight or color; all three only for the single most important element |
+| Values lead, labels support | The data is what people came for | Smaller or lighter label, stronger value |
+| Three levels of action | Equal buttons force the reader to compare them | Filled primary, quiet secondary, text-only tertiary. A routine destructive action can stay quiet until its confirmation |
+| Start with too much space | Tight first drafts rarely get opened up | Add generously, then remove until it looks right |
+
 ## Spacing
 
 Scale (px): `4, 8, 12, 16, 20, 24, 32, 40, 48, 64, 80, 96, 128`. Everything sits on a 4px grid. Off-scale multiples of 4 (28, 56, 104) are fine when they solve a real case. A 2px step is allowed for nudges inside small controls; an odd value that optically centers something is allowed and should be rare.
@@ -259,5 +273,6 @@ The full rules are in `motion.md`. The tokens every project should have:
 - [ ] Radius by size with nested math; one posture across the product.
 - [ ] Shadows only on floating layers; none colored.
 - [ ] One icon set, one size and stroke per context.
+- [ ] Hierarchy holds in grayscale and blurred.
 
-*Adapts material from unslop by Damir Sokolovsky (CC BY 4.0), Emil Kowalski's skills (MIT) and the design-md and popular-web-designs skills (MIT). See NOTICE.md.*
+*Adapts material from unslop by Damir Sokolovsky (CC BY 4.0), Emil Kowalski's skills (MIT), the design-md and popular-web-designs skills (MIT) and wondelai's refactoring-ui skill (MIT). See NOTICE.md.*

@@ -1,6 +1,6 @@
 ---
 name: atelier
-description: "Design craft for any UI project. Audits running products and builds new interfaces from scratch so they read as designed, not AI-generated. Finds a direction from the product itself, sets the system (spacing, type, color, radius, depth, motion), fixes screens pass by pass, stress-tests them with worst-case data and reviews motion. Use when the user asks to audit, review, critique, polish, redesign or unslop a screen, to \"make it look designed\" or \"less AI\", to design or build a landing page, dashboard, app screen, form, component, deck or design system from scratch, to pick fonts, colors or animation, or when a UI shows AI tells like purple gradients, glows, gradient text, emoji icons, \"New ✨\" badges, uppercase tracked labels, colored side stripes on cards, everything centered or uneven spacing. Also in Portuguese (\"analisa essa tela\", \"melhora o design\", \"deixa com cara de produto\", \"cria uma landing\"). Works with any stack (HTML/CSS, React, Tailwind, Vue, Svelte, React Native)."
+description: "Design craft for any UI project. Audits running products and builds new interfaces from scratch so they read as designed, not AI-generated. Finds a direction from the product itself, sets the system (spacing, type, color, radius, depth, motion), fixes screens pass by pass, stress-tests them with worst-case data and reviews motion. Also builds HTML slides, architecture and flow diagrams, scroll animation with GSAP, Lottie and brand motion, WebGL shaders and Three.js scroll worlds. Use when the user asks to audit, review, critique, polish, redesign or unslop a screen, to \"make it look designed\" or \"less AI\", to design or build a landing page, dashboard, app screen, form, component, deck or design system from scratch, to pick fonts, colors or animation, or when a UI shows AI tells like purple gradients, glows, gradient text, emoji icons, \"New ✨\" badges, uppercase tracked labels, colored side stripes on cards, everything centered or uneven spacing. Also in Portuguese (\"analisa essa tela\", \"melhora o design\", \"deixa com cara de produto\", \"cria uma landing\", \"faz um diagrama\", \"monta os slides\", \"anima no scroll\"). Works with any stack (HTML/CSS, React, Tailwind, Vue, Svelte, React Native)."
 license: CC-BY-4.0 (docs), MIT (scripts)
 ---
 
@@ -39,9 +39,11 @@ Always reply in the language the user writes in. The files of this skill are in 
 | **Audit** | "review", "analisa", "what's wrong with this", a URL or screen to judge | A scored report with located findings. No edits. |
 | **Refine** | "polish", "unslop", "make it look designed", "melhora" on existing UI | Audit, direction, then fixes pass by pass, then a short report |
 | **Create** | A brief with no existing screen: landing, dashboard, app screen, component, deck, design system | Direction and `DESIGN.md`, then the built screen, then a review |
-| **Motion** | "animate", "review the animations", "remove animations", jank | Gate, then build, review, remove or fix (see `references/motion.md`, `references/native.md`) |
+| **Motion** | "animate", "review the animations", "remove animations", jank, scroll effects, shaders, 3D | Gate, then build, review, remove or fix (see `references/motion.md`, `references/motion-principles.md`, `references/scroll.md`, `references/webgl.md`, `references/native.md`) |
 | **Stress** | "break it", "test with real data", edge cases | Worst-case fixture, findings, fixes on request (see `references/robustness.md`) |
 | **Explore** | "show me options", "variations" | 3 to 5 variants on named axes with a switcher (see `references/prototype.md`) |
+| **Diagram** | "diagram", "fluxograma", architecture, sequence, data model | One self-contained HTML and SVG figure (see `references/diagrams.md`) |
+| **Slides** | A deck to show or share in a browser | Direction on rendered title slides, then the deck (see `references/slides.md`, `references/layout.md`) |
 
 If a request mixes modes, run them in this order: audit, direction, refine or create, motion, stress.
 
@@ -106,7 +108,7 @@ Useful searches: `rg -l "DESIGN.md|tokens|theme" -g '!node_modules'`, `rg -n ":r
 2. **Recon** if there is a project. Existing tokens and components win.
 3. **Surface.** Name exactly one (`references/direction.md`). A hero belongs only to Decide and Learn surfaces.
 4. **Niche and tier.** For marketing pages, name the niche and its richness, and look at three or four real references from that market, or the ones the user sent (`references/niches.md`), then read the niche playbook it points to. Then name the craft tier (`references/showcase.md`): Marketing for most pages; Showcase for portfolios, studios, brands, launches, premium services, or when the user asks for Awwwards or Behance level. In Showcase, also study three current Awwwards Sites of the Day near the subject. The references set the quality bar; the direction makes the page this product's own.
-5. **Direction.** Write the five lines (product, character, world, moments, signature) and the system choices they imply, inside the conventions of the niche. Save them as `DESIGN.md` at the project root (format in `references/direction.md`; if Node is available, `npx -y @google/design.md lint DESIGN.md` also checks contrast). For a landing page, build and render the first screen with real or placeholder photos (`references/visuals.md`), at 1440, 2560 and 390. Stop for confirmation on the render.
+5. **Direction.** Write the five lines (product, character, world, moments, signature) and the system choices they imply (three dials and one style sheet, `references/direction.md`), inside the conventions of the niche. Save them as `DESIGN.md` at the project root (format in `references/direction.md`; if Node is available, `npx -y @google/design.md lint DESIGN.md` also checks contrast). For a landing page, build and render the first screen with real or placeholder photos (`references/visuals.md`), at 1440, 2560 and 390. Stop for confirmation on the render.
 6. **Plan.** Tokens tuned from `references/tokens.md`, a layout sketch (ASCII is enough) with alignment stated, and the moment. Then the de-default check: imagine a similar prompt from someone else; if you would land on the same page, change that part and say what you changed.
 7. **Build** with real content, in the project's stack, with all states (loading, empty, error, success, disabled, focus) and both themes if the product has them. Respect the quality floor in `references/interaction.md` and the richness floor of the niche.
 8. **Review.** Render, run `scan.mjs` and `check.mjs`, walk `references/tells.md`, try the worst-case data from `references/robustness.md`, gate the motion. Then compare the full page with the references side by side: if it is sparser, add what is missing before removing anything. Finally remove one accessory: the one thing that is decoration rather than design.
@@ -181,10 +183,15 @@ Image generation is optional. If your environment has an image tool (fal, Replic
 | `references/components.md` | Building or fixing buttons, inputs, menus, dialogs, toasts, tables, cards, nav, charts; picking React libraries |
 | `references/interaction.md` | Press, hover, touch, mobile web, forms, states, accessibility floor |
 | `references/motion.md` | Any web animation: gate, easing, durations, springs, performance, review and removal |
+| `references/motion-principles.md` | Motion with character: brand moments, choreography, illustration, Lottie |
+| `references/scroll.md` | GSAP ScrollTrigger, pinned and horizontal sequences, Lenis |
+| `references/webgl.md` | Live shaders, Three.js, a world the page travels through |
 | `references/native.md` | React Native or Expo motion and touch |
 | `references/robustness.md` | Stress-testing with worst-case data |
 | `references/visuals.md` | Hero visuals, images, generated art, device frames, code effects |
+| `references/diagrams.md` | Architecture, flow, sequence, state and other explanatory diagrams |
+| `references/slides.md` | The build of an HTML deck: fixed stage, navigation, PDF |
 | `references/prototype.md` | Exploring variants |
 | `references/library.md` | Finding references: galleries, exemplary products, design systems to learn from |
 
-*atelier adapts material from unslop by Damir Sokolovsky (CC BY 4.0), Emil Kowalski's skills (MIT), claude-design by BadTechBandit (MIT), design-md and popular-web-designs from the Hermes Agent project and VoltAgent (MIT), and frontend-design by Anthropic (Apache 2.0). See NOTICE.md.*
+*atelier adapts material from unslop by Damir Sokolovsky (CC BY 4.0), Emil Kowalski's skills (MIT), claude-design by BadTechBandit (MIT), design-md and popular-web-designs from the Hermes Agent project and VoltAgent (MIT), frontend-design by Anthropic (Apache 2.0), and the skills listed in NOTICE.md for scroll, motion, shaders, diagrams and slides (MIT). See NOTICE.md.*

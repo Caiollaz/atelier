@@ -50,6 +50,33 @@ Keep a real brand: a logo file, a color or a typeface that is not slop. Build ar
 
 If an example happens to fit your product, write your own anyway.
 
+### Set three dials
+
+Numbers stop a brief from drifting to the same middle every time. Use them in the plan and let them drive layout, motion and density. Each is 1 to 10.
+
+| Surface or brief | Variance | Motion | Density |
+|---|---|---|---|
+| Monitor, Operate | 1 to 2 | 1 to 2 | 7 to 9 |
+| Configure, regulated, public sector | 1 to 2 | 1 | 4 to 6 |
+| Learn, docs, editorial | 2 to 3 | 1 to 2 | 3 to 4 |
+| Decide, software landing | 3 to 5 | 2 to 4 | 3 to 5 |
+| Personal service, premium consumer | 5 to 6 | 3 to 5 | 2 to 4 |
+| Showcase, studio, launch, event | 7 to 9 | 6 to 8 | 2 to 3 |
+| Redesign that keeps the brand | Match it | Match it | Match it |
+
+Variance runs from strict symmetry to asymmetric. Motion up to 4 means micro-interactions only; 5 to 6 adds one entrance or reveal system and one product demo; 7 and up belongs to the Showcase tier (`showcase.md`). Density above 7 drops card boxes for hairlines and tabular figures.
+
+### Write one style sheet
+
+A page assembled from blocks that each look fine still reads as assembled. Before code, write five to eight lines and save them in `DESIGN.md`: surfaces, edges (border and radius), depth (one kind only: flat, soft shadow or hard offset), type roles, the accent and where it goes, allowed effects, motion character.
+
+- Build a small kit first (section header, card, button set, call-to-action band, form field) and assemble every page from it, including help, legal and changelog pages.
+- A foreign element is a defect: a soft glow in a flat system, glass beside hard shadows, a 3D toy in a sober product.
+- One background family for the whole site. One contrasting band only with a reason.
+- If the product has a strong color of its own, the accent is that color or one chosen to sit with it.
+
+When you study references (`niches.md`), name one as the lead and open the real site. Read its computed font family and sizes, line heights, container width and grid, section spacing, radius, button height and padding, and hover timing. Use those values to calibrate the quality bar, never to clone the identity.
+
 ## 3. The idea (landing pages and anything people read)
 
 A landing page needs an idea, not only good manners. Removing tells without adding substance produces an empty page that is polite and forgettable.

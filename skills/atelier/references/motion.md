@@ -18,6 +18,8 @@ Animating something that should not move is the worse failure; zero lines of mot
 | Marketing gets more latitude | The visitor is learning, not working | One hero entrance and explanatory motion inside the content (a product that types, a view that cycles); still no reveal on every section |
 | Showcase pages choreograph the scroll | The page is the experience (portfolio, brand, launch) | One reveal or one scrub per section, one pinned sequence, smooth scroll; only with the floor of `showcase.md` |
 
+For what motion should feel like (character, choreography, Lottie), see `motion-principles.md`.
+
 ## Tool ladder
 
 Stop at the first rung that fits.
@@ -31,7 +33,7 @@ Stop at the first rung that fits.
 | Motion library | Springs, shared layout, exit of unmounted components, gesture-driven values |
 | CSS scroll-driven animation (`animation-timeline: view()` or `scroll()`) | Showcase tier: reveals, scale and progress tied to scroll, under `@supports` and `prefers-reduced-motion: no-preference` |
 | IntersectionObserver | Showcase and Marketing: the active item of an index, the step of a pinned sequence, pausing video offscreen |
-| Lenis, GSAP ScrollTrigger from a pinned CDN version | Showcase tier only: smooth scroll, pinning and scrubbing that CSS cannot do yet. Off under reduced motion |
+| Lenis, GSAP ScrollTrigger from a pinned CDN version | Showcase tier only: smooth scroll, pinning and scrubbing that CSS cannot do yet. Off under reduced motion. Build in `scroll.md` |
 
 CSS can run off the main thread; JS motion drops frames only when the page is busy during it, which is rare, so JS is fine for interruptible, gesture-driven work. Do not install a library for a fade. Extend existing tokens; a parallel motion system is a defect. A toast, drawer or menu is a component: use the project's library, not a hand-rolled div.
 

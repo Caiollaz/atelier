@@ -146,6 +146,22 @@ Check `package.json` first. If the project already has a library for the job, us
 
 For Vue, Svelte, Solid or Angular, use the equivalent primitives (Reka UI or Radix Vue, Bits UI or Melt UI, Kobalte, Angular CDK) and the same rule: accessible primitives first, project choices before yours.
 
+## Details that are easy to miss
+
+| Rule | Why | Value or fix |
+|---|---|---|
+| Submit stays enabled until the request starts | A disabled button cannot explain what is missing | Validate on submit, focus the first error; spinner and busy state only during the request |
+| Optimistic updates when success is likely | The interface feels instant | Update now, reconcile on response, roll back with a visible error or undo |
+| Skip link to main content | Keyboard users otherwise tab through the whole nav | First focusable element, visible on focus |
+| `translate="no"` on brand names and code tokens | Browser translation garbles them | Product names, commands, identifiers |
+| `fetchpriority="high"` on the main image | It is usually the largest paint | Only one per page; `loading="lazy"` below the fold |
+| Preconnect and preload what the first paint needs | Fonts and CDNs otherwise queue late | `<link rel="preconnect">` for the asset host, `rel="preload" as="font"` for the one or two critical fonts |
+| Tooltips: skip the delay on the next one | Once one is open the person is exploring | Keep the delay for the first; adjacent tooltips open immediately with no animation |
+| SVG transforms | `transform-origin` otherwise uses the whole canvas | Transform a `<g>` with `transform-box: fill-box; transform-origin: center` |
+| Autoplay over 5 seconds beside other content | Required for attention and for WCAG | A visible pause or stop control |
+| Comparison slider | Two images need one honest divider | Clip the top image with `clip-path: inset(0 calc(100% - var(--x)) 0 0)`, drag with pointer capture, arrow keys move it |
+| Drag: ignore extra fingers | A second touch makes the element jump | Track the first `pointerId`, ignore the rest until it ends |
+
 ## Checklist
 
 - [ ] Existing components reused; no parallel button, modal or table.

@@ -33,7 +33,7 @@ A page that has 2 to 7 but not 1 looks like a template with effects. A page with
 
 ## 3. The toolkit
 
-Everything below works in plain HTML, CSS and a little JavaScript. Only real 3D needs WebGL; none of the clinic, studio or SaaS pages studied needed it.
+Everything below works in plain HTML, CSS and a little JavaScript. Only real 3D needs WebGL (`webgl.md`); none of the clinic, studio or SaaS pages studied needed it. When a pinned timeline goes beyond sticky and an observer, the build is in `scroll.md`.
 
 | Technique | Seen on | Values | Build |
 |---|---|---|---|

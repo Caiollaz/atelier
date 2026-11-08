@@ -25,6 +25,18 @@ A physical thing the product deals with (a payment card, a receipt, a ticket, a 
 
 A visual on every section that says nothing about the product is a tell. On marketing pages the bar is the opposite: the product shown working, a brand world, photographs of the person or the place, in most sections (`niches.md`, `niche-vertical-saas.md`, `showcase.md`).
 
+### Five checks before an image stays
+
+Reject a candidate that fails any of these, however good it looks alone. No image beats a wrong image: an empty slot, type, the product or a quiet background are all acceptable answers.
+
+| Check | Passes when |
+|---|---|
+| Subject | It shows the product's domain, or an abstraction the genre accepts |
+| Medium | One medium per page: photo, flat vector, 3D render or line art. Mixing them is the most common failure |
+| Mood | Energy, temperature and era match the copy |
+| Scale | It holds its slot. A small spot illustration cannot carry a hero; objects in one row share one optical size |
+| Palette | It sits with the page's single accent, and its backdrop does not fight the page background |
+
 ## 3. Write the scene as one sentence
 
 Before generating or searching, write the scene from the direction's world and character. If you cannot say it in one sentence, it is not clear yet. Examples of the shape (write your own):
@@ -130,7 +142,7 @@ For landing pages, decks and case studies, a real screenshot beats any illustrat
 
 ## 8. Code effects
 
-Optional, only on the main visual, only when they fit the character. Never as decoration on other elements.
+Optional, only on the main visual, only when they fit the character. Never as decoration on other elements. For a live shader or a 3D scene, see `webgl.md`.
 
 | Effect | What it is | Fits |
 |---|---|---|
