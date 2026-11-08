@@ -144,6 +144,7 @@ Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `sc
 | Looping motion on things that are not live | `animate-pulse`, `animate-ping`, `animate-bounce`, `infinite` on decorative elements, breathing glows, shimmer on headings `scan:infinite-loop` | Static. Loop only real loaders and live indicators |
 | Hover scale or lift on cards | `hover:scale-*`, `:hover { transform: scale` on cards `scan:hover-scale` | A color or surface step on hover; a press scale on buttons |
 | Ungated hover | `:hover` rules outside `@media (hover: hover) and (pointer: fine)` `scan:ungated-hover` | Gate them; Tailwind v4 `hover:` is gated by default |
+| Scroll debug left on | `markers: true` in a ScrollTrigger `scan:scroll-markers` | Remove before delivery |
 | Everything flies in on load or on scroll | Scroll-reveal on every section, cards entering from different sides | At most one short entrance of the main content, small stagger. Showcase tier: one motion idea, one reveal per section, never body text (`showcase.md`) |
 | Animation on keyboard actions or the command palette | Motion on things opened by shortcuts | None |
 | Durations over 300ms on small UI | `duration-500`, `500ms` on buttons, menus, tooltips `scan:slow-ui` | 150 to 250ms (`motion.md`) |
@@ -158,6 +159,7 @@ Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `sc
 | `100vh` app shells and sheets | `100vh`, `h-screen` `scan:vh-unit` | `100dvh` for app shells and bottom UI, `100svh` for heroes |
 | Inputs under 16px | `font-size` 12 to 15px or `text-sm` on inputs `scan:small-input` | 16px on inputs (iOS zooms otherwise) |
 | Zoom disabled | `user-scalable=no`, `maximum-scale=1` `scan:no-zoom` | Allow zoom; fix the 16px input cause |
+| Paste blocked | `onPaste` with `preventDefault` `scan:paste-blocked` | Let people paste; validate after |
 | Tap flash | Grey or blue box on tap on mobile | `-webkit-tap-highlight-color: transparent` plus a real `:active` |
 | Hover-only actions | Menus or buttons that appear only on hover | Visible or reachable by tap and keyboard |
 | Kind demo data only (`Jane Doe`, 12 members) | `scan:fake-data` | Test with the worst case (`robustness.md`) |

@@ -54,6 +54,22 @@ Licensed under the Apache License, Version 2.0, http://www.apache.org/licenses/L
 
 Adapted in atelier: the de-default plan review, typographic and structural tells, motion restraint, and copy guidance.
 
+## Skills adapted for scroll, motion, graphics, diagrams, slides and hierarchy
+
+All MIT licensed, with the same terms as above. Copyright notices:
+
+- GSAP official skills, https://github.com/greensock/gsap-skills. Copyright (c) 2026 GreenSock. Adapted in `scroll.md`.
+- motion-design, https://github.com/LottieFiles/motion-design-skill. Copyright (c) 2025 LottieFiles. Adapted in `motion-principles.md`.
+- shader-dev, https://github.com/MiniMax-AI/skills. Copyright (c) 2026 MiniMax. Adapted in `webgl.md`.
+- build-threejs-scroll-worlds, https://github.com/MengTo/Skills. Copyright (c) 2026 Meng To. Adapted in `webgl.md`.
+- diagram-design, https://github.com/cathrynlavery/diagram-design. Copyright (c) 2025 Cathryn Lavery. Adapted in `diagrams.md`.
+- frontend-slides, https://github.com/zarazhangrui/frontend-slides. Copyright (c) 2025 Zara Zhang. Adapted in `slides.md`.
+- refactoring-ui, https://github.com/wondelai/skills. Copyright (c) 2025 Wondel.ai sp. z o.o. Adapted in the hierarchy section of `tokens.md`. It summarizes the book Refactoring UI by Adam Wathan and Steve Schoger.
+
+## Craftwork
+
+https://craftwork.design/skill. Its skill states no license, so no text was taken. Three ideas informed original writing in `direction.md` and `visuals.md`: measuring a lead reference on its live site, locking one style sheet, and checking every image against the page before keeping it.
+
 ## Vercel Web Interface Guidelines
 
 https://vercel.com/design/guidelines. Individual guidelines are cited and paraphrased in `library.md`, `interaction.md`, `components.md` and `copy.md`.

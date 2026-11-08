@@ -434,6 +434,34 @@
       "severity": "broken",
       "ext": "any",
       "kind": "custom"
+    },
+    {
+      "id": "paste-blocked",
+      "family": "Accessibility",
+      "title": "Paste blocked on an input",
+      "fix": "Let people paste; validate the value after",
+      "severity": "off",
+      "ext": "code",
+      "patterns": [
+        {
+          "source": "onPaste\\s*=\\s*\\{[^\\n]*preventDefault|addEventListener\\(\\s*['\"]paste['\"][^\\n]*preventDefault",
+          "flags": "gi"
+        }
+      ]
+    },
+    {
+      "id": "scroll-markers",
+      "family": "Motion",
+      "title": "ScrollTrigger markers left on",
+      "fix": "Remove markers before delivery",
+      "severity": "polish",
+      "ext": "code",
+      "patterns": [
+        {
+          "source": "\\bmarkers\\s*:\\s*true\\b",
+          "flags": "g"
+        }
+      ]
     }
   ]
 }

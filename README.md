@@ -69,6 +69,11 @@ skills/atelier/
     components.md          component craft and library picks
     interaction.md         press, hover, touch, mobile web, forms, states, accessibility
     motion.md              web motion: gate, easing, durations, springs, performance, review
+    motion-principles.md   character, choreography, classic principles, Lottie
+    scroll.md              GSAP ScrollTrigger, pinned and horizontal sequences, Lenis
+    webgl.md               live shaders, Three.js, worlds the page travels through
+    diagrams.md            architecture, flow, sequence and other explanatory diagrams
+    slides.md              HTML decks: fixed stage, navigation, PDF
     native.md              React Native and Expo motion and touch
     robustness.md          worst-case data and how to break a screen
     visuals.md             hero visuals, generated images, device frames, code effects
