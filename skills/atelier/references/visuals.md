@@ -87,6 +87,9 @@ Look for an image tool among the tools you have: an MCP server or CLI for fal, R
 - One person per page: never mix two models as the same professional. When only one photo of the person exists, complete with photos of the space and objects (an armchair, a plant, a desk), never with another face.
 - `plus.unsplash.com` images are paid; skip them. Record the photo ids in the comment so the user can find them.
 - Openverse and Wikimedia Commons have open APIs that work from scripts, with the license in the response.
+- Wikimedia Commons from a script: `api.php?action=query&generator=search&gsrnamespace=6&prop=imageinfo&iiprop=url|size|extmetadata&iiurlwidth=1280` returns a thumbnail URL and the license. Full-size originals may refuse scripted downloads; the 1280 thumbnail does not.
+- Photos from mixed sources read as one shoot when treated together: greyscale with a little contrast.
+- CC BY and CC BY-SA require credit. Keep it off the hero (footer or a credits page) and list it in the report as a launch blocker until the photos are replaced or credited.
 
 ### Prompt recipe
 

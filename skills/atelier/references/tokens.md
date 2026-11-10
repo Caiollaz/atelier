@@ -225,7 +225,7 @@ Nested radius: inner = outer minus the padding between them, never below 4. A 16
 
 ## Icons
 
-- One set: the project's own, otherwise a line set such as Lucide, Phosphor or Tabler.
+- One set: the project's own, otherwise a line set chosen for the type, such as Iconoir, Phosphor or Tabler. Lucide is what every generated UI uses; pick it only on purpose.
 - One size per context (16 in dense UI, 18 to 20 in roomier UI), one stroke (1.5), round joins if the type is soft.
 - Icons take the color of their text role, usually secondary or muted. They never carry their own colors.
 - Same icon box width in every row, 8 to 10px gap to the label.

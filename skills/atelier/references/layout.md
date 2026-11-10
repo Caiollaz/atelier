@@ -31,6 +31,7 @@ Read this when you compose a surface: an app shell, a dashboard, a landing page,
 - Top area: page title at 20 to 28px, then filters and the one primary action. Not every page needs search, bell and avatar in a bar.
 - Content fills the width with page padding; cap only very wide screens (about 1440 to 1600). Never shrink an app into a narrow centered column.
 - Use `100dvh` for the shell height, not `100vh`.
+- Keep the top bar sticky, in apps and on landing pages. Check 1024 to 1100px: a centered pill nav collides with the right-hand controls there; let it scroll or collapse earlier.
 - Phone: the sidebar becomes a 48 to 56px top bar with a menu sheet, or a bottom bar of four or five items. Never a sidebar taking a third of a phone.
 
 ## Dashboards (Monitor)
@@ -44,6 +45,7 @@ The questions first: what does this screen answer, and what is the one finding t
 - **Surfaces stay flat.** Cards separated by a surface step or a hairline. No resting shadows.
 - **Data is honest.** Totals computed from the rows shown; a fact shown twice is one variable; every relative figure names its baseline; zero prints as 0; missing data says "No data" (a muted dash is fine inside a table cell); an empty section keeps its frame.
 - **Lists in overviews** show four to six rows and a "View all", not pagination under five rows.
+- **Give charts room.** At 1440, no more than two blocks per row under the KPI band, main chart 280 to 360 tall. A row of four small cards with squeezed charts fails.
 
 ### Charts
 
@@ -67,6 +69,9 @@ The questions first: what does this screen answer, and what is the one finding t
 - Filters as visible chips or a filter bar that reflects the URL; saved views when people repeat the same filter.
 - Density: compact by default (rows 36 to 44), roomier only when rows carry two lines.
 - Keyboard paths for the frequent jobs, shown as keycaps in menus and tooltips.
+- **One header recipe for sibling list screens.** Back link, a title equal to the nav label with no subtitle (a rule that matters goes where it applies, such as the drawer that edits it), the primary action top right and only there, a labelled search field about 24rem wide, status filters as pill tabs with counts, then the content in one card. Users read a difference between siblings as a bug.
+- **Tabs keep the page width.** A `max-width` on one tab panel misaligns its actions against the other tabs.
+- **Sticky group headers in long grouped lists** (stages, chapters, categories): the number and name stay pinned under the app bar while their items scroll, and the next group pushes them away. `position: sticky; top: <app bar height>` with a surface background; no JavaScript.
 
 ## Tables
 

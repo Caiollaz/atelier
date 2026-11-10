@@ -46,6 +46,8 @@ Read this when you build or fix a component: buttons, inputs, menus, dialogs, to
 - Drag to dismiss with velocity, not only distance; rubber-band past the open position (`motion.md`).
 - Respect safe areas: `padding-bottom: calc(16px + env(safe-area-inset-bottom))`.
 - A sheet that is its own destination on mobile may be a route.
+- CRUD forms work well as drawers on child routes (`/items/new`, `/items/:id/edit`) over the list, which renders the outlet. Close, cancel and save go back in history instead of pushing the list route, and the drawer does not close while saving.
+- Content people read (notifications, activity) opens in a drawer, not a popover: room for title, detail, time and an unread dot. Clicking an item marks it read, closes the drawer and follows its link; "Mark all as read" shows only when something is unread; the trigger's accessible name carries the unread count.
 
 ## Toasts
 
@@ -128,6 +130,8 @@ Check `package.json` first. If the project already has a library for the job, us
 |---|---|---|
 | Accessible primitives (dialog, popover, menu, select, tabs) | Base UI or Radix (shadcn/ui builds on these) | A `<div>` dropdown with hand-written focus handling |
 | Command menu | cmdk | A custom modal with a filtered list |
+| Icons | Iconoir, Phosphor or Tabler, matched to the type | Lucide by reflex |
+| Date picker | react-day-picker in a popover, locale set, value as `YYYY-MM-DD` | A hand-built calendar |
 | Toasts | Sonner | A hand-rolled toast stack or a modal library |
 | One-time codes | input-otp | Six separate inputs with manual focus jumps |
 | Animation with springs, layout or exit | Motion (formerly Framer Motion) | Using it for a hover or a fade that CSS can do |
@@ -160,6 +164,7 @@ For Vue, Svelte, Solid or Angular, use the equivalent primitives (Reka UI or Rad
 | SVG transforms | `transform-origin` otherwise uses the whole canvas | Transform a `<g>` with `transform-box: fill-box; transform-origin: center` |
 | Autoplay over 5 seconds beside other content | Required for attention and for WCAG | A visible pause or stop control |
 | Comparison slider | Two images need one honest divider | Clip the top image with `clip-path: inset(0 calc(100% - var(--x)) 0 0)`, drag with pointer capture, arrow keys move it |
+| Scrollbars | The default bar is the loudest chrome on a quiet UI | Thin, transparent track, pill thumb in the strong line color that darkens on hover; `scrollbar-width: thin` and `scrollbar-color` outside WebKit |
 | Drag: ignore extra fingers | A second touch makes the element jump | Track the first `pointerId`, ignore the rest until it ends |
 
 ## Checklist
