@@ -99,6 +99,17 @@ For simple icon transitions, skip Lottie: inline SVG with CSS transitions is lig
 | Distracting | Too much moving at once | One third rule, shorter distance |
 | No personality | Every element uses a different pattern | One signature curve and one entrance |
 
+## 8. A living mascot
+
+When a product has a character, people want it to notice them. What made one feel alive without costing the app:
+
+- Behaviours: the eyes follow the pointer across the whole page (on phones, they go to the last touch, and with no input the character looks around now and then); blinks at random intervals, sometimes twice; slow breathing; a reaction to a tap (a hop with happy eyes, varied on repeated taps); sleepy after about 30 seconds without input, awake on the next one. No sound, no new copy.
+- Animate little. Rasterize the heavy layers (filters, textures, blurs) to images from the same vector and keep only the eyes as live SVG on top, in the same viewBox. At rest it must match the static art; compare the two captures.
+- One shared passive pointer listener and one `requestAnimationFrame` for every instance on the page. The loop stops when its springs settle; transforms are written through refs, never component state (zero renders while the pointer moves); everything pauses on `visibilitychange`.
+- React on `click`, not `pointerdown`, so the start of a scroll over it is not a tap. The wrapper is `pointer-events: none` except for the body's hit area, decorative (`aria-hidden`), and never covers a control.
+- Reduced motion: no breathing, hop or looking around; following the pointer may stay.
+- Where it lives: inside the product (the home header, empty states), not on the screen people operate with one hand. Public pages keep the still image, and it appears once per screen.
+
 ## Checklist
 
 - [ ] It passed the gate in `motion.md`, and the feeling and hero are named.

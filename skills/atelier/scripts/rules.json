@@ -352,7 +352,7 @@
       "id": "hover-scale",
       "family": "Motion",
       "title": "Hover scale or lift",
-      "fix": "A color or surface step on hover; press scale on buttons",
+      "fix": "A color or surface step on hover; press scale on buttons. A 1 to 2px lift is fine only on cards that already stand on a step shadow",
       "severity": "polish",
       "ext": "any",
       "kind": "custom"

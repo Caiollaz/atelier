@@ -113,7 +113,9 @@ Then the de-default check: imagine someone else giving a similar prompt. If you 
 
 ## 5. DESIGN.md
 
-Save the direction as `DESIGN.md` at the project root, so the next session (or another agent) inherits it. If the project already has one, read it first and extend it; never fork it. The format follows Google's open DESIGN.md spec: YAML front matter for the tokens that machines read, Markdown for the reasons people need.
+Save the direction as `DESIGN.md` at the project root, so the next session (or another agent) inherits it. If the project already has one, read it first and extend it; never fork it.
+
+It travels with the repository, so it must stand alone. Never point to files that are not versioned (reference images, screenshots, local scripts): describe what each reference shows and what was taken from it, with the public link to its source, and write the values (grid, scale, radii, breakpoints) in the file itself. Another computer or another agent must be able to work from it with nothing else. The same holds for every Markdown file the project keeps. The format follows Google's open DESIGN.md spec: YAML front matter for the tokens that machines read, Markdown for the reasons people need.
 
 ```markdown
 ---

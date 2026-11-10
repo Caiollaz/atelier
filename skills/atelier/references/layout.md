@@ -12,6 +12,7 @@ Read this when you compose a surface: an app shell, a dashboard, a landing page,
 - **Hierarchy you can squint at.** Two or three masses lead; the rest recede.
 - **Let the browser lay out.** Flex, grid and intrinsic sizing over JavaScript measuring. `minmax(0, 1fr)` and `min-width: 0` so text can shrink.
 - **Content defines the box.** A layout that only works with the demo copy is not done (`robustness.md`).
+- **One message centers, work aligns left.** Sign in, errors, empty states and other screens with a single message center their block in the available area. Work screens and lists align left.
 
 ## App shell
 
@@ -26,10 +27,11 @@ Read this when you compose a surface: an app shell, a dashboard, a landing page,
 +--------+-------------------------------------------+
 ```
 
-- Sidebar 224 to 280 (240 default), or an icon rail of 52 to 60 that expands. On light screens the sidebar stays light: a dark or saturated sidebar next to a light canvas is a template tell.
+- Sidebar 224 to 280 (240 default), or an icon rail of 52 to 60 that expands. On light screens the sidebar stays light: a dark or saturated sidebar next to a light canvas is a template tell. A floating sidebar (inset about 12px from the edges, canvas radius, translucent white over a warm page, no divider) blends into the page; the app's other side panels (a work panel, a long-form sheet) then share the same inset and radius.
 - Nav: wordmark or workspace switcher at the top, groups with sentence-case labels, rows 32 to 36 tall, icons 16 to 18 in the muted color. The active item is a neutral surface step (and maybe a hairline), not a colored pill with a left bar.
 - Top area: page title at 20 to 28px, then filters and the one primary action. Not every page needs search, bell and avatar in a bar.
 - Content fills the width with page padding; cap only very wide screens (about 1440 to 1600). Never shrink an app into a narrow centered column.
+- Inside the page container, work screens use the container. Editors, detail screens and the work area of a task do not sit in a 440 to 680px column on desktop; split them into areas instead (the record's fields in 4 columns on the left, its parts in 8 on the right). Reading widths stay only for prose, sheets and sign in.
 - Use `100dvh` for the shell height, not `100vh`.
 - Keep the top bar sticky, in apps and on landing pages. Check 1024 to 1100px: a centered pill nav collides with the right-hand controls there; let it scroll or collapse earlier.
 - Phone: the sidebar becomes a 48 to 56px top bar with a menu sheet, or a bottom bar of four or five items. Never a sidebar taking a third of a phone.
@@ -61,6 +63,12 @@ The questions first: what does this screen answer, and what is the one finding t
 | Comparison | Mirror the previous period in a neutral grey under or behind the current one |
 | Access | Distinguishable without color (labels, patterns or direct labels); colorblind-safe hues |
 | Motion | Charts do not redraw from zero on mount; only real value changes animate |
+
+## Detail screens
+
+- Header: title and one line of context on the left, actions on the right (`components.md`, action rows).
+- Two columns on desktop as two independent stacks (7 and 5 of 12), not one grid of cards in rows: a tall card in one row leaves a hole beside it.
+- Keep the DOM in the phone order and place the areas with grid on desktop (`col-start`, `row-start`). The keyboard's next field and the screen reader then follow what the phone shows. `order` and `display: contents` reorder only the paint.
 
 ## Operate surfaces (admin, queues, CRMs)
 
@@ -105,7 +113,8 @@ Start from the argument and the idea (`direction.md`), not from a section templa
 
 - Answers what this is, for whom and what to do next, in large type, within five seconds.
 - One `h1`. Headline in two lines or fewer at every width (about 32 characters is safe on phones). One supporting sentence (up to about 22 words). One primary action as a real button, at most one secondary.
-- Navigation: wordmark, three to five plain links, one action. Log in is a quiet text link. It takes at most a tenth of the first screen. A plain bar beats a floating glass pill.
+- Navigation: wordmark, three to five plain links to sections that exist, one action. Log in is a quiet text link or the one action. It takes at most a tenth of the first screen and stays reachable (sticky). A plain bar beats a floating glass pill; a segmented track centered in a solid bar also works (`components.md`, navigation).
+- The landing lives at the root for visitors; signed-in people get the app's home at the same URL, and an installed PWA opens straight to sign in.
 - Compose the first screen as a whole. The hero fills the viewport without a dead band; if the content is short, let the product view start low and run past the bottom edge so it invites the scroll.
 
 ### Hero compositions that work
@@ -163,7 +172,7 @@ The build of a deck shown in a browser is in `slides.md`; diagrams are in `diagr
 
 - Phone is its own composition: re-author line breaks, re-crop images to portrait, simplify dense previews (fewer rows and columns) instead of zooming out, put the visual after the actions.
 - Container queries for components that live in columns of different widths.
-- Test 320, 390, 768, 1024, 1440 and 2560, and at 200% zoom. No horizontal scroll at any width.
+- Test 320, 390, 768, 1024, 1440 and 2560, and at 200% zoom. No horizontal scroll at any width. 1024 is where boards and multi-column grids break first: with a sidebar, the content area is only about 760px.
 
 ## Wide screens (1920 to 2560 and up)
 
@@ -194,7 +203,7 @@ Apps at 2560:
 - Tables keep columns sized to their content (`width` on the short ones, one flexible column for the name or description) instead of spreading ten columns across 2300px with 300px gaps. Above about 1800, prefer adding columns that were hidden at 1440 over widening the gaps.
 - Dashboards add columns to their grids (`repeat(auto-fit, minmax(…))`) rather than stretching cards.
 - The root size may step up above 1920 (14 to 15px in dense apps, 16 to 17px on reading pages) so the interface does not look like it was zoomed out. Scale type and control heights with a variable (`font-size: calc(13px * var(--escala))`, `--escala` 1 then about 1.07 and 1.14 by width); never `zoom` on the page: it multiplies `100vh` past the window and misaligns libraries that measure the DOM (React Flow handles, Radix and Floating UI popovers).
-- Auth screens (login, sign up) are split: the form on one side, a brand or product panel on the other (a real screen of the product, a sentence, the logo). Never a 380px card alone in a 2560 field.
+- Auth screens (login, sign up) are split: the form on one side, a brand or product panel on the other (a real screen of the product, a sentence, the logo). Never a 380px card alone in a 2560 field, and never a centered card framed by borders on both sides. No marketing nav. The form can sit as a sheet with a large radius against the brand color while the other half bleeds the real product to the edge. One mascot per screen: when the message itself shows it (a success or empty state), drop it from the product panel.
 
 ## States are part of the layout
 

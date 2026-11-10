@@ -121,6 +121,8 @@ Fix with CSS or a meta tag first. Almost every item is one declaration, and none
 | Keyboard resizes the layout on Android | Matches iOS behaviour | `interactive-widget=resizes-content` in the viewport meta |
 | Capability queries, not sniffing | iPads have trackpads, laptops have touchscreens | `(hover)`, `(pointer)`, `(any-pointer)`; never user agent, `ontouchstart` or `max-width` as a touch test |
 | Hover-only actions are unreachable on touch | A menu revealed only on hover never appears | Keep the action visible, or reachable by tap and keyboard |
+| iOS Safari 26 paints the top from the page | It ignores `theme-color`, takes the color of `html`/`body` and blurs a band under the status bar | Give `body` the color of the screen's top (a screen with a white header sets the body to white while it is open), and push the first row about 12px further down in the browser only (`display-mode: browser`). It cannot be removed; installed, there is no browser bar |
+| No page scroll behind a sheet | A drag that reaches the end of the sheet moves the screen behind it | `html:has(dialog[open]) { overflow: hidden }` and `overscroll-behavior: contain` inside the sheet (`components.md`, sheets) |
 
 Test on real hardware. Sticky hover, tap delay, rubber-banding, safe areas and the keyboard do not reproduce in desktop emulation.
 
@@ -128,6 +130,8 @@ Test on real hardware. Sticky hover, tap delay, rubber-banding, safe areas and t
 2. Inspect with Safari Develop menu (iOS) or `chrome://inspect` (Android).
 3. Try an older phone, with the keyboard open, and once in landscape.
 4. If the product installs as a PWA, test standalone mode: viewport, safe areas and status bar change there.
+
+Until then, emulate honestly: in headless browsers `env(safe-area-inset-*)` is 0, so inject the insets of the target phone (62 top and 34 bottom on a recent iPhone at 402x874) as CSS variables before judging a capture. The pitfalls of headless checks are in `scripts/README.md`.
 
 ## Baseline to ship before the first component
 

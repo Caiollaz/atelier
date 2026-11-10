@@ -130,6 +130,14 @@ Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `sc
 | Inline select and button to add to a list | A picker and an "Add" button sitting under a list inside a tab | A primary button in the tab header that opens a drawer with the form |
 | Repeated identical rows | Sessions, devices or events that differ only by time | Group them with a count, the current or most relevant first; actions apply to the group |
 | Confirmation dialog for reversible actions | `confirm(` or a modal before every delete | Undo for slips; confirm only destructive, irreversible actions |
+| Hover into the color behind the card | A white card on a tinted board column hovers to the column's tint and disappears | Keep the fill; change the edge or the step (`components.md`, cards) |
+| The same illustration twice on one screen | The mascot in the side panel and again in the empty or success message | One per screen; drop it from the decorative panel |
+| A centered modal to pick one option on desktop | A select opens a dialog in the middle of the screen | A listbox anchored to the field on desktop, a bottom sheet on phones |
+| Native controls leaking through custom fields | A blue cross in a styled search field, a grey scrollbar with arrows in a styled app | Draw the clear button; thin scrollbar on desktop (`components.md`) |
+| Account and legal links loose in the app | "Sign out", "Terms" and "Privacy" at the foot of the home screen | One Menu screen, from the last nav item |
+| Marketing nav on sign-in screens | The landing's top bar above the login form | No nav; the logo links home |
+| Work screen squeezed on desktop | An editor in a 440px column inside a 1280px container, a recipe in 672px inside a wide panel | Use the container; split into areas (`layout.md`) |
+| Actions out of order | Archive between the primary and Edit; a full-width primary on a desktop detail header | Primary, edit, then destructive last; buttons sized to their label |
 
 ## 8. Landing pages and heroes
 
@@ -143,6 +151,7 @@ Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `sc
 | Stock robots, glowing brains, circuit lines, holograms for AI | Visual | Show what the AI actually produces |
 | Text, fake buttons or a fake logo baked into an image | Visual | Real text in the page; images without text |
 | Image with a hard edge or a different black than the page | Visual | Match the page color; mask the edges |
+| Docs that depend on one machine | A versioned `DESIGN.md` or README that points to `docs/references/*.png`, screenshots or scripts kept out of git | Describe each reference in the file, with its public link and what was taken from it (`direction.md`) |
 | Production notes on the page | "Example data", "provisional", photo credits over the hero, notes about what is a placeholder | Keep the page clean; license credits go in the footer or a credits page, and the report lists what must change before launch |
 | Logo wall of companies that are not customers | Visual | Remove unless real and permitted |
 
@@ -154,7 +163,7 @@ Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `sc
 | Entrance from nothing | `scale(0)`, `scale-0` as a start state `scan:scale-zero` | Start at scale 0.95 with opacity 0 |
 | `ease-in` on UI | `ease-in` without `-out` `scan:ease-in` | `--ease-out` for enter and exit (`motion.md`) |
 | Looping motion on things that are not live | `animate-pulse`, `animate-ping`, `animate-bounce`, `infinite` on decorative elements, breathing glows, shimmer on headings `scan:infinite-loop` | Static. Loop only real loaders and live indicators |
-| Hover scale or lift on cards | `hover:scale-*`, `:hover { transform: scale` on cards `scan:hover-scale` | A color or surface step on hover; a press scale on buttons |
+| Hover scale or lift on cards | `hover:scale-*`, `:hover { transform: scale` on cards `scan:hover-scale` | A color or surface step on hover; a press scale on buttons. A short lift is fine only where cards already stand on a step shadow; the scan still flags it, so confirm the shadow and move on |
 | Ungated hover | `:hover` rules outside `@media (hover: hover) and (pointer: fine)` `scan:ungated-hover` | Gate them; Tailwind v4 `hover:` is gated by default |
 | Scroll debug left on | `markers: true` in a ScrollTrigger `scan:scroll-markers` | Remove before delivery |
 | Everything flies in on load or on scroll | Scroll-reveal on every section, cards entering from different sides | At most one short entrance of the main content, small stagger. Showcase tier: one motion idea, one reveal per section, never body text (`showcase.md`) |
@@ -178,6 +187,11 @@ Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `sc
 | Squished avatars, overflowing names, `—` placeholders, `1 members`, raw `NaN` | Visual, with worst-case data | `flex-shrink: 0`, `min-width: 0`, omit missing fields, `Intl.PluralRules`, `Intl.NumberFormat` |
 | Fixed-width buttons | `width` in px on buttons | `min-width` and padding |
 | Ellipsis with no way to read the full value | `truncate` or `text-overflow: ellipsis` without a title or detail view | Tooltip or `title`, plus the full value elsewhere |
+| Active bottom-nav item spilling out of the bar | The expanded label of the last item passes the bar's edge at 360 | Five items at most; the overflow goes behind a Menu item |
+| The page scrolls behind an open sheet | Dragging inside a drawer moves the screen behind it | Lock the page while a dialog is open (`components.md`, sheets) |
+| An empty strip down the right edge | `scrollbar-gutter: stable` on `html` at all times, on screens that do not scroll | Reserve the gutter only while a dialog is open |
+| Bottom sheet under the status bar | The sheet's top passes behind the clock and the island | `max-height` that subtracts the top safe area |
+| A board squeezed at 1024 | Four kanban columns of 166px with names broken letter by letter | Two columns below about 1280; a list by due date on phones |
 
 ## 11. Accessibility
 

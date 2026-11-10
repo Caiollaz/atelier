@@ -138,7 +138,7 @@ Store curves and durations as tokens. One curve per purpose, never one curve for
 
 - Honor `prefers-reduced-motion`: fewer and gentler, not zero. Keep opacity and color changes that aid comprehension; drop movement, scale, parallax and position changes. A reduced mode that removes all feedback is a defect.
 - Gate every `:hover` with `@media (hover: hover) and (pointer: fine)`; touch fires false hovers on tap. `:active` needs no gate.
-- Cards never scale or lift on hover; use a color or surface step. Small controls may get a subtle effect.
+- Cards never scale on hover, and do not lift by default; use a color or surface step. The exception is a system whose cards already stand on a solid step shadow: there a 1 to 2px lift with a tinted step, sinking on press, reads as the same object (`components.md`, cards). Small controls may get a subtle effect.
 - Ship both with the animation, not as a follow-up. Motion: `useReducedMotion()` and swap the offset to 0.
 
 ## Recipes
@@ -224,7 +224,7 @@ Burden of proof is reversed: motion stays only if it passes the gate. Deleting e
 
 | Today | Reduced to |
 |---|---|
-| Hover with scale, lift or shadow | Color or surface only, 150ms `ease` or less |
+| Hover with scale, lift or shadow | Color or surface only, 150ms `ease` or less (a short lift only on cards that already have a step shadow) |
 | Slide or scale entrance on a frequent surface | Opacity only, 150ms `--ease-out` |
 | Over 300ms | 200 to 250ms, same curve |
 | Stagger over 80ms per item or 300ms total | 30ms per item, or one group fade |
@@ -277,7 +277,7 @@ Never ship:
 - [ ] React state or a parent CSS variable driving per-frame motion.
 - [ ] Motion shorthands under v14.2 while the page is busy.
 - [ ] Animated blur at 20px or more; `will-change` without a measured reason.
-- [ ] Ungated `:hover`; cards that scale or lift.
+- [ ] Ungated `:hover`; cards that scale, or lift without a step shadow to lift from.
 - [ ] No reduced-motion variant, or one that removes all feedback.
 - [ ] Everything entering at once, more than one orchestrated entrance, or scroll reveal on every section (outside the Showcase tier; inside it, more than one reveal per section or more than one pinned sequence).
 - [ ] Spring bounce on simple UI; bounce without momentum.

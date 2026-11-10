@@ -72,3 +72,13 @@ node contrast.mjs --css tokens.css --pairs "--text-muted:--card,--on-primary:--p
 ```
 
 Token names are guessed in English (`--text`, `--surface`, `--muted`); for other names, list the pairs with `--pairs`. It reads `:root`, `.dark`, `[data-theme=dark]` and `prefers-color-scheme: dark` blocks, resolves `var()` references, and accepts hex, `rgb()`, `hsl()` and `oklch()`. Body text needs 4.5:1; large text and UI glyphs need 3:1.
+
+## Pitfalls when checking in headless Chrome
+
+- Playwright scrolls an element into view before `click()`. To test that a page stays still behind an open sheet, open it with `locator.evaluate(e => e.click())`, or the test moves the page itself.
+- Playwright launches with `--hide-scrollbars`, and headless Chrome reports `pointer: none`, so styles under `(pointer: fine)` never apply. To see a custom scrollbar, launch with `ignoreDefaultArgs: ['--hide-scrollbars']`, replace the media query in a test copy of the CSS, and make sure the list really overflows.
+- Tailwind generates only the classes it finds in the source: arbitrary classes written in a throwaway test page do nothing. Use inline styles there.
+- `env(safe-area-inset-*)` is 0: inject the insets of the target phone before judging a capture.
+- A server that serves built files may list them when it starts. Restart it after each build, or the new bundle is a 404 and the test reads an old screen.
+- A check that fails is a lead, not a verdict: confirm on the capture whether the screen or the check is wrong before changing the screen.
+

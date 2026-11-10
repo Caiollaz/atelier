@@ -66,6 +66,7 @@ Useful searches: `rg -l "DESIGN.md|tokens|theme" -g '!node_modules'`, `rg -n ":r
 - **Only a screenshot:** read it closely. For a refine, rebuild it first as one static HTML file that matches it, and treat that as the original; the deliverable is code the owner can port.
 - **Only code:** audit from code, and label every visual finding as "from code, not seen".
 - Always also run `node <skill>/scripts/scan.mjs <path>` on the source: it finds the tells that are visible in code (gradients, emoji, arbitrary spacing, `transition: all`, ungated hover and more) with file and line.
+- Headless captures hide scrollbars, report no fine pointer and ignore safe areas; the workarounds are in `scripts/README.md`. Check 1024 as well as 390, 1440 and 2560: boards and multi-column grids break there first.
 - For any page people scroll (landing, site, docs), run `node <skill>/scripts/check.mjs <url|file> --frames <dir>`: it measures islands at 2560, sideways overflow, reading with JavaScript off, reduced motion, reveals left hidden, focus, anchors and Page Down, and saves one motion-on frame per screen. Read the frames; `shoot.mjs` captures with reduced motion, so it never shows a reveal that failed.
 
 `<skill>` is the folder that contains this file. The scripts need Node 18+; `shoot.mjs` and `check.mjs` need Playwright or a local Chrome (see `scripts/README.md`).

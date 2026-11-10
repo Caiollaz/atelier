@@ -22,7 +22,10 @@ Read this when you build or fix a component: buttons, inputs, menus, dialogs, to
 - Error: border and message in the negative color, an icon, the message next to the field; focus the first error on submit.
 - Correct `type`, `inputmode`, `autocomplete`, `enterkeyhint`; spellcheck off for codes, emails and usernames. Never block paste.
 - Native `<select>` is fine and accessible; set explicit background and text colors so dark mode on Windows stays readable. Custom selects use an accessible primitive.
-- Search fields: "Search" as the placeholder, a clear button when filled, results that update without losing focus, a keyboard shortcut shown as keycaps.
+- When the product hides every native field (a custom field system), the custom select follows the device. Desktop: a listbox anchored to the field, opening down or up when there is no room below, `position: fixed` so a sheet does not clip it, arrows, Home, End, Enter and Escape, closed by an outside pointer-down and by Tab. Never a centered modal for picking one option. Phone: a new bottom sheet with large rows, even when the field already sits inside a sheet (a sheet over a sheet).
+- Outlined fields with the label on the border (a `legend` inside a `fieldset`): the label always starts at the left, never centered, even when the whole form is centered on the screen. The value sits vertically centered in the field.
+- Search fields: "Search" as the placeholder, a clear button when filled, results that update without losing focus, a keyboard shortcut shown as keycaps. Hide the browser's own clear button (`input[type=search]::-webkit-search-cancel-button { appearance: none }`) and draw yours as an icon button, or a styled field ends in a blue native cross.
+- Long documents get their own search: a recipe, a contract, a PDF. Ctrl+F does not reach a PDF canvas or a filtered list. Filter the parts that match, mark the term with `<mark>`, ignore accents and case, and search the number too ("row 6" finds the range 5 to 8). For a PDF, read the text layer of every page, jump to the first page with a match, draw marks over the words, and step from match page to match page.
 
 ## Menus, popovers and tooltips
 
@@ -45,7 +48,11 @@ Read this when you build or fix a component: buttons, inputs, menus, dialogs, to
 - Enter with `translateY(100%)` (or X) to 0 using the drawer curve, 300 to 400ms; exit the same way, faster.
 - Drag to dismiss with velocity, not only distance; rubber-band past the open position (`motion.md`).
 - Respect safe areas: `padding-bottom: calc(16px + env(safe-area-inset-bottom))`.
-- A sheet that is its own destination on mobile may be a route.
+- A sheet that is its own destination on mobile may be a route. A form that used to be a screen of its own becomes a sheet over the screen it starts from (the list for a new record, the detail for an edit); any old `/new` and `/edit` URLs open that sheet or redirect to that screen, never to a blank page.
+- Bottom sheets stop below the status bar: `max-height: calc(100dvh - env(safe-area-inset-top) - 12px)`.
+- Lock the page behind it, for real. `html:has(dialog[open]) { overflow: hidden }` holds the page still under any open `<dialog>`, a sheet over a sheet included; `overscroll-behavior: contain` on the dialog and its inner scrollers keeps the end of a list inside the sheet from handing the gesture to the page. Closing leaves the page exactly where it was.
+- On desktop the page scrollbar disappears when the page locks, and the content jumps sideways. Reserve its width only while a dialog is open (`html:has(dialog[open]) { scrollbar-gutter: stable }`) and paint that strip with the backdrop color. A permanent `scrollbar-gutter: stable` leaves an empty strip down the right of every screen that does not scroll, and breaks anything placed a fixed distance from the right edge.
+- Long forms (writing a recipe, an order with several items) are sheets too. Phone: a bottom sheet. Desktop: a side panel about 720px wide, floating with the same inset and radius as the app's other floating panels (the sidebar, a work panel), so it reads as part of the app, not as another screen. Title bar and submit stay sticky, so a long form never hides its save button. Clicking outside does not close a form with typed content (Escape and the close button do), and a new record keeps a local draft, so an accidental close loses nothing.
 - CRUD forms work well as drawers on child routes (`/items/new`, `/items/:id/edit`) over the list, which renders the outlet. Close, cancel and save go back in history instead of pushing the list route, and the drawer does not close while saving.
 - Content people read (notifications, activity) opens in a drawer, not a popover: room for title, detail, time and an unread dot. Clicking an item marks it read, closes the drawer and follows its link; "Mark all as read" shows only when something is unread; the trigger's accessible name carries the unread count.
 
@@ -73,7 +80,8 @@ See `layout.md` for dimensions. Component rules:
 - A card groups things that belong together and are acted on together. If the content is a list of comparable items, use a table or a list instead.
 - Separated by a surface step or a hairline; no resting shadow on cards in flow.
 - No colored side stripe, ever. Emphasis comes from position, size, a surface step or a small label.
-- No hover lift or scale. A clickable card gets a surface or border step on hover, a visible focus ring, and the whole card is one link (with nested actions placed outside or above it).
+- No hover scale. A clickable card gets a surface or border step on hover, a visible focus ring, and the whole card is one link (with nested actions placed outside or above it).
+- The hover step must differ from what is behind the card. A white card on a tinted column (a board column, a grouped list) that hovers to that tint vanishes into the column. There, keep the fill and change the edge. In a system whose cards already stand on a solid step shadow, raising the card 1 to 2px and tinting the step reads as the same physical object; pressed, it sinks.
 - Padding 16 to 24; nested radius is outer radius minus padding.
 - Equal-height cards in a row; content aligns to shared baselines (titles on one line, actions at the bottom).
 
@@ -85,6 +93,29 @@ See `layout.md` for dimensions. Component rules:
 - Tabs for peer views of the same object, with the active tab clearly marked and switching without animation or with a quick indicator move (the indicator may move; the content does not slide).
 - Breadcrumbs only for real hierarchy deeper than two levels.
 - Every navigation is a link that works with middle-click, Cmd-click and the back button; filters, tabs and pagination live in the URL.
+- The logo is one component, used everywhere, that always links home: the landing for visitors, the app's home once signed in, back to top when already there. The product name never appears without the mark, and a mascot's name is never the product's name.
+- Desktop sidebar: it may collapse to an icon rail (about 80px). Remember the choice per device (`localStorage`, wrapped in try/catch), and keep each item's name in the rail (`aria-label`, `title`).
+- Phone bottom bar: five items at most. When the active item expands to show its label, test the longest label at 320, 360, 375, 390 and 430 on every route; it must stay inside the bar. What does not fit goes behind the last item, a Menu.
+- Account and legal items (sign out, terms, privacy, install the app) live in one Menu screen, reached from the last item of the bottom bar and the foot of the sidebar. They are never loose at the bottom of work screens.
+- Logged-out pages: the nav links only to sections that exist (Home, Features, Pricing) and holds one action. Plain links work, and so does a segmented track (a solid neutral track, the current item as a white segment) centered in a solid sticky bar. Legal links belong in the footer. Sign-in and sign-up screens carry no marketing nav.
+
+## Action rows
+
+- Order: the primary action first, then edit, then archive or delete last and quiet. A destructive action never sits between the primary and its neighbour.
+- On a detail header the actions are buttons sized to their label, aligned to the right of the title on desktop. A full-width primary is for phones and sheets.
+- On phones, when they do not fit in one row, keep the primary and its pair in one row (two equal columns) and move edit and archive to icon buttons beside Back, each with an accessible name.
+
+## Filter chips and sideways rows
+
+- Chip filters: All first, then states that need attention (only when something is in them), then categories with counts. The active chip is solid; tapping it again returns to All.
+- A row that scrolls sideways fades on the side where more content waits: a `mask-image` gradient of about 40px computed from `scrollLeft` (right only at the start, both in the middle, left only at the end, none when everything fits). Hide the scrollbar on that row only.
+
+## Boards (kanban)
+
+- A board needs width. Columns by stage on desktop. On phones, a list grouped by what matters next (overdue, next 7 days, later, no date) with the stage as a small tag, and the stage changed in a sheet.
+- Count columns by the width you have: four columns in a 1024px content area left 166px each and names broke letter by letter. Two columns below about 1280, four above.
+- Drag only with a fine pointer (`draggable` gated on `(pointer: fine)`) and never as the only way to change the stage; the detail screen changes it too. Move the card now, roll back with a toast if the server refuses, and keep the card opening on click.
+- A done column shows only the latest few, with a pointer to the rest.
 
 ## Badges, tags and status
 
@@ -164,8 +195,9 @@ For Vue, Svelte, Solid or Angular, use the equivalent primitives (Reka UI or Rad
 | SVG transforms | `transform-origin` otherwise uses the whole canvas | Transform a `<g>` with `transform-box: fill-box; transform-origin: center` |
 | Autoplay over 5 seconds beside other content | Required for attention and for WCAG | A visible pause or stop control |
 | Comparison slider | Two images need one honest divider | Clip the top image with `clip-path: inset(0 calc(100% - var(--x)) 0 0)`, drag with pointer capture, arrow keys move it |
-| Scrollbars | The default bar is the loudest chrome on a quiet UI | Thin, transparent track, pill thumb in the strong line color that darkens on hover; `scrollbar-width: thin` and `scrollbar-color` outside WebKit |
+| Scrollbars | The default bar is the loudest chrome on a quiet UI | Thin, transparent track, pill thumb in the strong line color that darkens on hover; `scrollbar-width: thin` and `scrollbar-color` outside WebKit. Under `(pointer: fine)` only, so phones keep the system's overlay bar: `::-webkit-scrollbar` about 10px, the thumb inset by a 3px transparent border with `background-clip: padding-box`, buttons hidden; Firefox under `@supports not selector(::-webkit-scrollbar)` |
 | Drag: ignore extra fingers | A second touch makes the element jump | Track the first `pointerId`, ignore the rest until it ends |
+| Install the PWA from the page | People do not find "Add to Home Screen" | Capture `beforeinstallprompt` at startup (it fires once, often before the button exists). Offer "Install the app" only where it can work: the browser prompt on Chrome and Android, the three Share-menu steps on iPhone, nothing in standalone (`display-mode: standalone` or `navigator.standalone`) |
 
 ## Checklist
 
@@ -174,7 +206,9 @@ For Vue, Svelte, Solid or Angular, use the equivalent primitives (Reka UI or Rad
 - [ ] Popovers grow from the trigger; tooltips are instant after the first; command menu does not animate.
 - [ ] Dialogs only for tasks and destructive confirmations; undo elsewhere.
 - [ ] One toast region at the root; toasts update by id; errors that need action persist.
-- [ ] No side stripes, hover lifts or resting shadows on cards.
+- [ ] No side stripes, hover scale or resting shadows on cards; card hover never turns into the color behind the card.
+- [ ] Sheets lock the page behind them; the scrollbar gutter is reserved only while one is open; long forms keep their submit visible.
+- [ ] Bottom bar fits its longest active label at 320 to 430; account and legal links live in a Menu.
 - [ ] Badges never wrap; status never by color alone; avatars have initials fallback.
 
 *Adapts material from Emil Kowalski's skills (MIT), unslop by Damir Sokolovsky (CC BY 4.0) and the Vercel Web Interface Guidelines. See NOTICE.md.*

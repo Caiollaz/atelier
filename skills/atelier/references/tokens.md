@@ -231,6 +231,7 @@ Nested radius: inner = outer minus the padding between them, never below 4. A 16
 - Same icon box width in every row, 8 to 10px gap to the label.
 - Icon-only buttons have an accessible name. Drop icons that add nothing; categories that need color get a small status dot.
 - Next to bolder text, a thin icon may need a heavier stroke to look the same weight.
+- Before switching sets, list every icon in use (grep the imports) and check the new set covers all of them, in the tier you will actually use. Free tiers often lack the basics (plus, close, chevrons, pause, search, sign out) or replace them with odd glyphs (a recycling bin for delete, a face for an account). Compare the candidates side by side at the app's size, on the app's background. Filling gaps from a second set breaks the one-set rule, and a CC BY licence needs a visible credit.
 
 ## Buttons
 

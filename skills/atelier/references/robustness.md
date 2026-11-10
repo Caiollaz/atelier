@@ -117,6 +117,7 @@ Pick the rows that apply to the surface map. Each value is plausible: someone, s
 | `null`, `undefined`, `NaN` | Rendered raw |
 | de-DE vs en-US | `1.284,5` vs `1,284.5` |
 | A live change from 99 to 100 | Width jump; layout shift |
+| `12,5` and `1.250,75` typed in a Portuguese or German locale | Parsed as 12.5 thousand or as NaN; store money in cents and quantities in hundredths, as integers, and parse the local format |
 
 ### Collections
 
@@ -139,6 +140,7 @@ Pick the rows that apply to the surface map. Each value is plausible: someone, s
 | `1970-01-01` | Epoch from a null timestamp |
 | `2025-12-31T23:30:00-08:00` | The day and year shift across time zones |
 | `1,284 hours` | Never rolls up into days |
+| A due date stored as a timestamp | The day moves near midnight. Calendar days (due, ordered, paid) are `YYYY-MM-DD` strings; "overdue" and "this week" are computed in the device's time zone |
 
 ### Images and media
 
