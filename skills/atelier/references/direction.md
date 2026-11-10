@@ -43,6 +43,8 @@ Then write what the five lines imply:
 
 Keep a real brand: a logo file, a color or a typeface that is not slop. Build around it. A violet to blue gradient, sparkles and glow are slop even when they sit in the logo, and do not count as brand unless the user says so. Never rename the product. A slop logo (emoji, sparkle in a gradient tile, glossy orb) is redrawn flat: the name in the chosen family, or a simple glyph from the product's idea in one solid color.
 
+When a new logo is needed: three directions as hand-written SVG, the wordmark converted to paths (opentype.js) so it needs no font. One direction comes from the product's world in a non-obvious way, one is typographic. Test each at 16 and 32px, at 24px next to 14px text in the app bar, black on light, white on dark and in the brand color, and say where each is weak. The user picks; then set the wordmark text exactly as they write the name, including case and accents.
+
 ### Examples of the shape (derive your own)
 
 - Monitoring for small hosting companies. Character: alert, steady, unhurried. World: night shift, instrument panels, a lighthouse. Moments: the incident timeline, one uptime chart. Signature: a small live pulse dot used only where data is live.

@@ -27,6 +27,9 @@ Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `sc
 | Icon topper on every heading | A rounded square with an icon above each section title | Remove; use icons only where they help scanning |
 | Monument stat | Huge numbers with tiny labels used as decoration in a hero | Numbers only where the number is the message, with a comparison |
 | Narrow app | An app squeezed into a centered column with empty sides | App shell fills the viewport; content fluid with a sensible max width |
+| Dashboard on every screen | A side panel of charts, team stats or tabs next to a list or CRUD table | List screens carry at most three to five figures as type in the header; charts live on the dashboard only |
+| Sibling screens built differently | One list screen has a subtitle, another a boxed search, a third keeps its action inside the card | One header recipe for every list screen (`layout.md`, operate surfaces) |
+| An action parked in its own pill beside the nav | A lone button in a gap of the top bar that belongs to nothing | Make it a nav item, or a page action on the screen it acts on |
 | A visual on every section | Every band has an illustration, image or glow that says nothing about the product | One visual where it helps, usually only in the hero. Not a tell on personal-brand, local business, launch and vertical SaaS pages, where photos of the person, the place or the work, or views of the real product, carry each section (`niches.md`) |
 
 ## 2. Color and surfaces
@@ -52,8 +55,10 @@ Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `sc
 |---|---|---|
 | Headings at weight 800 or 900 as a reflex | `font-weight: 800/900`, `font-extrabold`, `font-black` `scan:heavy-weight` | 400 to 600 and size for hierarchy, unless the typeface is a heavy display face chosen on purpose |
 | Uppercase tracked labels everywhere (`NAVIGATION`, `PAID THIS MONTH`) | `text-transform: uppercase` with wide `letter-spacing`, `uppercase tracking-widest` `scan:tracked-caps` | Sentence case. Keep caps only where they carry information, sparingly |
+| Eyebrow with a colored dot (`● HOW IT WORKS`) | A mono, uppercase label led by an accent dot above each section | Drop the dot; if a label stays, plain text in the secondary color |
 | Eyebrow above every heading | A small label sitting over each section title saying what the title already says | Remove it; the heading is enough |
 | One word accented in a headline | A span in a headline with italic, a gradient or the accent color, used once or differently in each heading | Treat the whole headline; or emphasize nothing. On marketing pages in rich niches, one emphasis system (an italic serif phrase, weight 600 in the accent, or two tones by line) applied to every headline is a convention, not a tell (`niches.md` section 3) |
+| Light weights for reading text | `font-weight: 300` or `font-light` on body, leads or headings `scan:light-weight` | 400 for text, 500 to 600 for emphasis; light only on a display face at very large sizes, chosen on purpose |
 | Too many sizes and weights | Six or more sizes and four weights on one screen | A few steps from the scale; weights 400 and 500, 600 for rare emphasis |
 | Mixed number formats | `$48,210` next to `$124,860.40`, `07`, proportional digits jumping in tables | One format; `font-variant-numeric: tabular-nums` |
 | Negative tracking on small text | `tracking-tight` or negative `letter-spacing` under 16px `scan:tight-small` | Zero or slightly positive below 16px; tighten only display sizes |
@@ -66,7 +71,8 @@ Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `sc
 
 | Tell | How to spot it | Fix |
 |---|---|---|
-| Emoji as nav icons, label decoration, status or section markers (🏠 📥 🚀 💰 ⚠️ 📈 🔥) | Emoji code points in markup or strings `scan:emoji` | One line-icon set (the project's, else lucide or similar) or nothing |
+| Emoji as nav icons, label decoration, status or section markers (🏠 📥 🚀 💰 ⚠️ 📈 🔥) | Emoji code points in markup or strings `scan:emoji` | One line-icon set (the project's, else one chosen for the type) or nothing |
+| The icon set nobody chose | Lucide on every product, `lucide-react` added by reflex | Pick a set that matches the type: Iconoir, Phosphor, Tabler, Remix. Lucide only when the project already uses it |
 | Sparkles for anything AI | ✨ in buttons, badges, headings `scan:sparkles` | Remove, or a plain icon only where it explains something |
 | Icons in many sizes, strokes and colors | Mixed 14, 18, 22px icons, filled next to outline, each a different color | One size (16 or 18px), one stroke (1.5), the color of its text role |
 | Icons off the column | Labels not aligned because icon boxes differ in width | Same icon box width in every row; fixed 8 or 10px gap |
@@ -118,6 +124,11 @@ Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `sc
 | Missing states | No hover, focus, active, disabled, loading, empty or error styles | Design every state inside the palette (`interaction.md`) |
 | Spinner as the only loading state | A centered spinner over a blank page | Skeleton shaped like the final layout; spinner only inside a button |
 | Empty state that says only "No results" | Visual | What happened and what to do next |
+| Hover fill that ignores the separators | A rounded hover background with the row rules still drawn straight through it, or a square row hover under a rounded table header | Hide the rules touching the hovered row (`li:has(a:hover)` and `li:has(a:hover) + li`); in tables round the first and last cell of the hovered row to the header radius |
+| The same action twice on one screen | "+ New" in the header and again inside the empty state | Once, in the header; the empty state says what to do |
+| A small dropdown for content people read | Notifications or activity squeezed into a popover | A drawer: side panel on desktop, bottom sheet on phones (`components.md`) |
+| Inline select and button to add to a list | A picker and an "Add" button sitting under a list inside a tab | A primary button in the tab header that opens a drawer with the form |
+| Repeated identical rows | Sessions, devices or events that differ only by time | Group them with a count, the current or most relevant first; actions apply to the group |
 | Confirmation dialog for reversible actions | `confirm(` or a modal before every delete | Undo for slips; confirm only destructive, irreversible actions |
 
 ## 8. Landing pages and heroes
@@ -132,6 +143,7 @@ Rows marked `scan:<id>` are detected in code by `scripts/scan.mjs` (rules in `sc
 | Stock robots, glowing brains, circuit lines, holograms for AI | Visual | Show what the AI actually produces |
 | Text, fake buttons or a fake logo baked into an image | Visual | Real text in the page; images without text |
 | Image with a hard edge or a different black than the page | Visual | Match the page color; mask the edges |
+| Production notes on the page | "Example data", "provisional", photo credits over the hero, notes about what is a placeholder | Keep the page clean; license credits go in the footer or a credits page, and the report lists what must change before launch |
 | Logo wall of companies that are not customers | Visual | Remove unless real and permitted |
 
 ## 9. Motion

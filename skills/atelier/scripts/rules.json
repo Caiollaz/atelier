@@ -99,6 +99,20 @@
       ]
     },
     {
+      "id": "light-weight",
+      "family": "Type",
+      "title": "Weight 300 or lighter",
+      "fix": "400 for text, 500 to 600 for emphasis; light only on a chosen display face at large sizes",
+      "severity": "polish",
+      "ext": "any",
+      "patterns": [
+        {
+          "source": "font-weight\\s*:\\s*(?:100|200|300)\\b|\\bfont-(?:thin|extralight|light)\\b|fontWeight\\s*:\\s*['\"]?(?:100|200|300)\\b",
+          "flags": "gi"
+        }
+      ]
+    },
+    {
       "id": "tracked-caps",
       "family": "Type",
       "title": "Uppercase label with wide tracking",
